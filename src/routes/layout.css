@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@theme {
+	--color-forest-green: #2d5a27;
+	--color-forest-green-dark: #1e3d1a;
+	--color-text-dark: #1a1a1a;
+	--color-text-muted: #4a4a4a;
+	--color-bg-white: #ffffff;
+
+	--animate-fade-in-up: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	--animate-fade-in-left: fade-in-left 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fade-in-up {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fade-in-left {
+	from {
+		opacity: 0;
+		transform: translateX(-30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+
+:root {
+	--forest-green: #2d5a27;
+	--forest-green-dark: #1e3d1a;
+	--text-dark: #1a1a1a;
+	--text-muted: #4a4a4a;
+	--bg-white: #ffffff;
+}
+
+
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.container {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+body {
+	font-family: 'Inter', sans-serif;
+	color: var(--text-dark);
+	background-color: var(--bg-white);
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+
+
+html {
+	scroll-behavior: smooth;
+}
