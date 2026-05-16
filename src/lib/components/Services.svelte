@@ -2,9 +2,11 @@
 	import { services } from '$lib/lang/pl/services';
 	import { Menu, X, ChevronRight, Leaf } from 'lucide-svelte';
 	import { fade, fly } from 'svelte/transition';
+	import ImageModal from './ImageModal.svelte';
 
 	let activeServiceId = $state<string | null>(null);
 	let isMobileSidebarOpen = $state(false);
+	let lightboxImage = $state<{ url: string; annotation: string } | null>(null);
 
 	let activeService = $derived(services.list.find((s) => s.id === activeServiceId) || null);
 </script>
@@ -155,16 +157,23 @@
 											? 'col-span-2 mx-auto w-1/2 sm:col-span-1 sm:mx-0 sm:w-full'
 											: ''}"
 									>
-										<img
-											src={s.images[0]}
-											alt={s.title}
-											class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-										/>
-										<div
-											class="absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4"
+										<button
+											class="h-full w-full cursor-pointer text-left"
+											onclick={() => (lightboxImage = s.images[0])}
+											aria-label="Powiększ obraz"
 										>
-											<span class="font-semibold text-white">{s.title}</span>
-										</div>
+											<img
+												src={s.images[0].url}
+												alt={s.images[0].annotation}
+												class="h-full w-full object-cover transition-all duration-500 group-hover:shadow-lg group-hover:brightness-75"
+												loading="lazy"
+											/>
+											<div
+												class="pointer-events-none absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4"
+											>
+												<span class="font-semibold text-white">{s.title}</span>
+											</div>
+										</button>
 									</div>
 								{/each}
 							</div>
@@ -191,11 +200,18 @@
 												? 'sm:col-span-2 lg:col-span-1'
 												: ''}"
 										>
-											<img
-												src={image}
-												alt="{activeService.title} - {i + 1}"
-												class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-											/>
+											<button
+												class="h-full w-full cursor-pointer text-left"
+												onclick={() => (lightboxImage = image)}
+												aria-label="Powiększ obraz"
+											>
+												<img
+													src={image.url}
+													alt={image.annotation}
+													class="h-full w-full object-cover transition-all duration-500 group-hover:shadow-lg group-hover:brightness-75"
+													loading="lazy"
+												/>
+											</button>
 										</div>
 									{/each}
 								</div>
@@ -206,4 +222,6 @@
 			</div>
 		</div>
 	</div>
+
+	<ImageModal image={lightboxImage} onclose={() => (lightboxImage = null)} />
 </section>
