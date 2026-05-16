@@ -45,8 +45,8 @@
 								<button
 									class="group flex w-full items-center justify-between rounded-xl px-4 py-4 text-left transition-all duration-300 {activeServiceId ===
 									null
-										? 'bg-[var(--forest-green)] text-white shadow-md'
-										: 'text-[var(--text-dark)] hover:bg-[var(--forest-green)]/10'}"
+										? 'bg-(--forest-green) text-white shadow-md'
+										: 'text-(--text-dark) hover:bg-(--forest-green)/10'}"
 									onclick={() => {
 										activeServiceId = null;
 										setTimeout(() => {
@@ -65,8 +65,8 @@
 									<button
 										class="group flex w-full items-center justify-between rounded-xl px-4 py-4 text-left transition-all duration-300 {activeServiceId ===
 										service.id
-											? 'bg-[var(--forest-green)] text-white shadow-md'
-											: 'text-[var(--text-dark)] hover:bg-[var(--forest-green)]/10'}"
+											? 'bg-(--forest-green) text-white shadow-md'
+											: 'text-(--text-dark) hover:bg-(--forest-green)/10'}"
 										onclick={() => {
 											activeServiceId = service.id;
 											setTimeout(() => {
