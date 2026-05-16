@@ -16,11 +16,11 @@ export const services = {
 					annotation: 'Wizualizacja projektu ogrodu'
 				},
 				{
-					url: 'https://images.unsplash.com/photo-1592424001809-51dccdd0e513?auto=format&fit=crop&w=800&q=80',
+					url: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
 					annotation: 'Dobór roślin i układ przestrzenny'
 				},
 				{
-					url: 'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&w=800&q=80',
+					url: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
 					annotation: 'Detale w projekcie małej architektury'
 				}
 			]
@@ -36,11 +36,11 @@ export const services = {
 					annotation: 'Prace przygotowawcze i ziemne'
 				},
 				{
-					url: 'https://images.unsplash.com/photo-1592424001809-51dccdd0e513?auto=format&fit=crop&w=800&q=80',
+					url: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
 					annotation: 'Sadzenie roślin zgodnie z projektem'
 				},
 				{
-					url: 'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&w=800&q=80',
+					url: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
 					annotation: 'Gotowa realizacja założenia'
 				}
 			]
@@ -56,11 +56,11 @@ export const services = {
 					annotation: 'Wiosenne cięcie krzewów'
 				},
 				{
-					url: 'https://images.unsplash.com/photo-1592424001809-51dccdd0e513?auto=format&fit=crop&w=800&q=80',
+					url: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
 					annotation: 'Pielęgnacja i nawożenie trawnika'
 				},
 				{
-					url: 'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&w=800&q=80',
+					url: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
 					annotation: 'Zadbany, zdrowy ogród'
 				}
 			]
@@ -76,11 +76,11 @@ export const services = {
 					annotation: 'Montaż instalacji nawadniającej'
 				},
 				{
-					url: 'https://images.unsplash.com/photo-1592424001809-51dccdd0e513?auto=format&fit=crop&w=800&q=80',
+					url: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
 					annotation: 'Automatyczne zraszacze wynurzalne'
 				},
 				{
-					url: 'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&w=800&q=80',
+					url: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
 					annotation: 'Linie kroplujące w rabatach'
 				}
 			]
@@ -96,11 +96,11 @@ export const services = {
 					annotation: 'Nowoczesna pergola z drewna'
 				},
 				{
-					url: 'https://images.unsplash.com/photo-1592424001809-51dccdd0e513?auto=format&fit=crop&w=800&q=80',
+					url: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
 					annotation: 'Estetyczne ścieżki z kamienia'
 				},
 				{
-					url: 'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&w=800&q=80',
+					url: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
 					annotation: 'Murki oporowe z naturalnego materiału'
 				}
 			]

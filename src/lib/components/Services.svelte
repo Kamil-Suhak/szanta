@@ -9,6 +9,25 @@
 	let lightboxImage = $state<{ url: string; annotation: string } | null>(null);
 
 	let activeService = $derived(services.list.find((s) => s.id === activeServiceId) || null);
+
+	// Easily switch layouts: 'grid' | 'collage' | 'bento' | 'masonry'
+	let galleryLayoutMode = 'collage';
+
+	let galleryWrapperClasses = $derived(
+		galleryLayoutMode === 'collage' 
+			? 'relative h-[320px] sm:h-[400px] w-full mt-auto mb-4' 
+			: 'mt-auto grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'
+	);
+
+	let getImageWrapperClasses = (i: number) => {
+		if (galleryLayoutMode === 'collage') {
+			if (i === 0) return 'absolute z-10 w-[65%] h-full right-0 top-0 overflow-hidden rounded-2xl shadow-lg transition-transform hover:-translate-y-1';
+			if (i === 1) return 'absolute z-20 w-[50%] h-[55%] left-0 top-[5%] overflow-hidden rounded-2xl border-4 border-white shadow-xl transition-transform hover:-translate-y-1';
+			if (i === 2) return 'absolute z-30 w-[45%] h-[45%] left-[5%] bottom-0 overflow-hidden rounded-2xl border-4 border-white shadow-xl transition-transform hover:-translate-y-1';
+		}
+		// Default Grid
+		return `overflow-hidden rounded-2xl shadow-md h-48 sm:h-64 ${i === 0 ? 'sm:col-span-2 lg:col-span-1' : ''}`;
+	};
 </script>
 
 <section id="uslugi" class="relative bg-gray-50 py-24">
@@ -193,12 +212,10 @@
 									{activeService.description}
 								</p>
 
-								<div class="mt-auto grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+								<div class={galleryWrapperClasses}>
 									{#each activeService.images as image, i (i)}
 										<div
-											class="group h-48 overflow-hidden rounded-2xl shadow-md sm:h-64 {i === 0
-												? 'sm:col-span-2 lg:col-span-1'
-												: ''}"
+											class="{getImageWrapperClasses(i)} group"
 										>
 											<button
 												class="h-full w-full cursor-pointer text-left"
@@ -208,7 +225,7 @@
 												<img
 													src={image.url}
 													alt={image.annotation}
-													class="h-full w-full object-cover transition-all duration-500 group-hover:shadow-lg group-hover:brightness-75"
+													class="h-full w-full object-cover transition-all duration-500 group-hover:brightness-75"
 													loading="lazy"
 												/>
 											</button>
