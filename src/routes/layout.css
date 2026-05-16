@@ -4,7 +4,7 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-	--color-forest-green: #2d5a27;
+	--color-forest-green: #3e8435;
 	--color-forest-green-dark: #1e3d1a;
 	--color-text-dark: #1a1a1a;
 	--color-text-muted: #4a4a4a;
@@ -36,7 +36,6 @@
 	}
 }
 
-
 :root {
 	--forest-green: #2d5a27;
 	--forest-green-dark: #1e3d1a;
@@ -45,9 +44,7 @@
 	--bg-white: #ffffff;
 }
 
-
 * {
-	margin: 0;
 	box-sizing: border-box;
 }
 
@@ -65,7 +62,77 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
-
 html {
 	scroll-behavior: smooth;
+}
+
+@layer utilities {
+	/* Shared Premium Button Styles */
+	.btn-primary,
+	.btn-secondary,
+	.btn-premium {
+		@apply relative inline-block overflow-hidden rounded-full font-bold tracking-wider uppercase transition-all duration-500 ease-out hover:-translate-y-1;
+	}
+
+	.btn-primary::after,
+	.btn-secondary::after,
+	.btn-premium::after {
+		content: '';
+		@apply absolute inset-0 -translate-x-full transition-transform duration-700 ease-in-out;
+		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+		transform: skewX(-25deg) translateX(-150%);
+	}
+
+	.btn-primary:hover::after,
+	.btn-secondary:hover::after,
+	.btn-premium:hover::after {
+		transform: skewX(-25deg) translateX(150%);
+	}
+
+	/* Primary Variation */
+	.btn-primary {
+		@apply bg-forest-green text-white shadow-[0_10px_20px_-5px_rgba(45,132,53,0.3)] hover:bg-forest-green-dark hover:shadow-[0_15px_30px_-5px_rgba(45,132,53,0.4)];
+	}
+
+	/* Secondary Variation */
+	.btn-secondary {
+		@apply border border-white/30 bg-white/10 text-white shadow-xl backdrop-blur-md hover:bg-white hover:text-forest-green;
+	}
+
+	/* Nav Link Hover Magic */
+	.nav-link-premium {
+		@apply relative flex items-center px-4 py-2 text-sm font-bold tracking-widest uppercase transition-all duration-300;
+	}
+
+	.nav-link-premium .text-wrapper {
+		@apply relative z-10 transition-transform duration-300;
+	}
+
+	.nav-link-premium:hover .text-wrapper {
+		@apply -translate-y-0.5;
+	}
+
+	.nav-link-premium .bg-bubble {
+		@apply absolute inset-0 z-0 scale-90 rounded-xl opacity-0 transition-all duration-300 ease-out;
+	}
+
+	.nav-link-premium:hover .bg-bubble {
+		@apply scale-100 opacity-100;
+	}
+
+	.nav-link-premium .underline-base {
+		@apply absolute right-4 bottom-1 left-4 h-[1.5px] origin-right scale-x-0 transition-transform duration-500 ease-out;
+	}
+
+	.nav-link-premium:hover .underline-base {
+		@apply origin-left scale-x-100;
+	}
+
+	.nav-link-premium .underline-active {
+		@apply absolute right-4 bottom-1 left-4 h-[1.5px] origin-left scale-x-0 transition-transform duration-300 ease-out;
+	}
+
+	.nav-link-premium:hover .underline-active {
+		@apply scale-x-100;
+	}
 }

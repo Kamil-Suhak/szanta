@@ -16,20 +16,22 @@
 	></div>
 
 	<!-- Overlay -->
-	<div class="absolute inset-0 z-20 bg-linear-to-r from-black/70 via-black/40 to-transparent"></div>
+	<!-- <div class="absolute inset-0 z-20 bg-linear-to-r from-black/70 via-black/40 to-transparent"></div> -->
 
-	<div class="container relative z-30 max-w-[1200px] px-8">
+	<div class="relative z-30 container max-w-[1200px] px-8 py-20">
 		<div
-			class="max-w-[800px] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] {visible
+			class="max-w-[850px] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] {visible
 				? 'translate-x-0 opacity-100'
-				: '-translate-x-[40px] opacity-0'}"
+				: 'translate-x-[-40px] opacity-0'}"
 		>
 			<!-- Title -->
-			<h1 class="mb-8 text-[clamp(2.5rem,8.5vw,5rem)] font-extrabold leading-[1.05] tracking-tight text-white">
+			<h1
+				class="mt-20 mb-10 text-[clamp(2.25rem,7.5vw,4.5rem)] leading-[1.1] font-extrabold tracking-tight text-white"
+			>
 				{#each hero.title.split(', ') as part, i (part)}
 					<span
 						class="inline-block animate-fade-in-left opacity-0"
-						style="animation-delay: {i * 0.3}s"
+						style="animation-delay: {(i + 1) * 0.2}s"
 					>
 						{part}{i === 0 ? ',' : ''}
 					</span>
@@ -38,41 +40,37 @@
 			</h1>
 
 			<!-- Subtitle -->
-			<p
-				class="mb-12 max-w-[600px] animate-fade-in-left text-xl leading-relaxed text-white/90 opacity-0"
+			<div
+				class="prose prose-xl mb-16 animate-fade-in-left opacity-0 prose-invert"
 				style="animation-delay: 0.6s"
 			>
-				{hero.subtitle}
-			</p>
+				<p class="max-w-[600px] leading-[1.6] text-white/90">
+					{hero.subtitle}
+				</p>
+			</div>
 
 			<!-- Actions -->
 			<div
-				class="mb-20 flex flex-wrap gap-6 animate-fade-in-left opacity-0"
+				class="mb-24 flex animate-fade-in-left flex-wrap gap-6 opacity-0"
 				style="animation-delay: 0.8s"
 			>
-				<a
-					href="#realizacje"
-					class="inline-block rounded-full bg-forest-green px-10 py-5 text-lg font-bold text-white shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-forest-green-dark"
-				>
+				<a href="#realizacje" class="btn-primary px-12 py-5 text-lg">
 					{hero.ctaPrimary}
 				</a>
-				<a
-					href="#kontakt"
-					class="inline-block rounded-full border border-white/30 bg-white/10 px-10 py-5 text-lg font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/20"
-				>
+				<a href="#kontakt" class="btn-secondary px-12 py-5 text-lg">
 					{hero.ctaSecondary}
 				</a>
 			</div>
 
 			<!-- Stats -->
-			<div class="flex flex-wrap gap-x-16 gap-y-10 border-t border-white/10 pt-10">
+			<div class="grid grid-cols-2 gap-x-12 gap-y-10 border-t border-white/10 pt-12 md:grid-cols-3">
 				{#each hero.stats as stat, i (stat.label)}
 					<div
-						class="flex flex-col animate-fade-in-left opacity-0"
+						class="flex animate-fade-in-left flex-col opacity-0"
 						style="animation-delay: {1 + i * 0.1}s"
 					>
-						<span class="text-5xl font-extrabold text-white">{stat.value}</span>
-						<span class="text-sm font-semibold uppercase tracking-[0.2em] text-white/60"
+						<span class="text-4xl font-extrabold text-white md:text-5xl">{stat.value}</span>
+						<span class="mt-2 text-xs font-semibold tracking-[0.2em] text-white/50 uppercase"
 							>{stat.label}</span
 						>
 					</div>

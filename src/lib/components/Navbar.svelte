@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { nav } from '$lib/lang/pl/nav';
+	import { Leaf } from 'lucide-svelte';
 
 	let isScrolled = $state(false);
 
@@ -11,36 +12,50 @@
 </script>
 
 <nav
-	class="sticky top-0 z-1000 w-full bg-white transition-all duration-300 {isScrolled
-		? 'h-[60px] border-b border-gray-100 shadow-md'
-		: 'h-[70px]'}"
+	class="fixed top-0 left-0 z-1000 w-full transition-all duration-500 ease-in-out {isScrolled
+		? 'h-[70px] border-b border-gray-200/20 bg-white/80 py-2 shadow-lg backdrop-blur-xl'
+		: 'h-[90px] bg-transparent py-4'}"
 >
-	<div class="mx-auto flex h-full max-w-[1200px] items-center justify-between px-8">
+	<div class="mx-auto flex h-full max-w-[1200px] items-center justify-between px-4 md:px-8">
 		<a
 			href="/"
-			class="flex items-center gap-2 text-2xl font-bold text-text-dark decoration-0 transition-colors hover:text-forest-green"
+			class="flex items-center gap-2 text-xl font-bold decoration-0 transition-all duration-300 md:text-2xl {isScrolled
+				? 'text-text-dark'
+				: 'text-white'}"
 		>
-			<span class="text-xl">🌿</span>
-			{nav.brand}
+			<Leaf
+				size={28}
+				class="transition-colors duration-300 {isScrolled ? 'text-forest-green' : 'text-white'}"
+				strokeWidth={2.5}
+			/>
+			<span class="tracking-tight">{nav.brand}</span>
 		</a>
 
-		<div class="hidden gap-10 md:flex">
+		<div class="hidden gap-8 md:flex">
 			{#each nav.links as link (link.href)}
 				<a
 					href={link.href}
-					class="group relative text-base font-medium text-text-muted transition-colors duration-200 hover:text-forest-green"
+					class="nav-link-premium {isScrolled
+						? 'text-text-muted hover:text-forest-green'
+						: 'text-white/90 hover:text-white'}"
 				>
-					{link.text}
-					<span
-						class="absolute -bottom-1 left-0 h-0.5 w-0 bg-forest-green transition-all duration-300 group-hover:w-full"
-					></span>
+					<span class="text-wrapper">
+						{link.text}
+					</span>
+
+					<span class="bg-bubble {isScrolled ? 'bg-forest-green/10' : 'bg-white/20'}"></span>
+
+					<span class="underline-base {isScrolled ? 'bg-forest-green/40' : 'bg-white/40'}"></span>
+					<span class="underline-active {isScrolled ? 'bg-forest-green' : 'bg-white'}"></span>
 				</a>
 			{/each}
 		</div>
 
 		<a
 			href="#kontakt"
-			class="inline-block rounded-full bg-forest-green px-6 py-3 font-semibold text-white shadow-[0_4px_15px_rgba(45,90,39,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-forest-green-dark hover:shadow-[0_6px_20px_rgba(45,90,39,0.3)]"
+			class="px-5 py-2.5 text-xs whitespace-nowrap md:px-8 md:py-3.5 md:text-sm {isScrolled
+				? 'btn-primary'
+				: 'btn-secondary'}"
 		>
 			{nav.cta}
 		</a>

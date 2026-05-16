@@ -7,10 +7,9 @@
 </script>
 
 <svelte:head>
-    <title>Szanta Ogrody | Profesjonalne Usługi Ogrodnicze</title>
-    <link rel="icon" href={favicon} />
+	<title>Szanta Ogrody | Profesjonalne Usługi Ogrodnicze</title>
+	<link rel="icon" href={favicon} />
 </svelte:head>
 
 <Navbar />
 {@render children()}
-
