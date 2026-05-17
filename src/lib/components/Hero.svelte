@@ -57,10 +57,10 @@
 				class="mb-24 flex animate-fade-in-left flex-wrap gap-6 opacity-0"
 				style="animation-delay: 0.8s"
 			>
-				<a href="#realizacje" class="btn-primary px-12 py-5 text-lg">
+				<a href="#realizacje" class="btn-primary px-12 py-5 text-center text-lg">
 					{hero.ctaPrimary}
 				</a>
-				<a href="#kontakt" class="btn-secondary px-12 py-5 text-lg">
+				<a href="#kontakt" class="btn-secondary px-12 py-5 text-center text-lg">
 					{hero.ctaSecondary}
 				</a>
 			</div>
@@ -71,22 +71,24 @@
 	<div
 		class="absolute bottom-0 left-0 z-30 w-full border-t border-white/5 bg-black/10 backdrop-blur-xs"
 	>
-		<div class="container mx-auto max-w-[1200px] px-8 py-6">
-			<div class="grid grid-cols-1 gap-8 sm:grid-cols-3">
+		<div class="container mx-auto max-w-[1200px] px-4 py-4 sm:px-8 sm:py-6">
+			<div class="grid grid-cols-3 gap-2 sm:gap-8">
 				{#each hero.stats as stat, i (stat.label)}
 					{@const IconComponent = statIcons[i % statIcons.length]}
 					<div
-						class="flex animate-fade-in-up flex-col items-center gap-3 opacity-0 sm:flex-row sm:justify-start sm:gap-6"
+						class="flex animate-fade-in-up flex-col items-center gap-2 opacity-0 sm:flex-row sm:justify-start sm:gap-6"
 						style="animation-delay: {1 + i * 0.1}s; animation-fill-mode: forwards;"
 					>
 						<div
-							class="flex h-14 w-14 items-center justify-center rounded-full bg-(--forest-green)/20 text-white"
+							class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--forest-green)]/20 text-white sm:h-14 sm:w-14"
 						>
-							<IconComponent size={28} />
+							<!-- Responsive icon sizes (using standard lucide sizes via classes is tricky, so we use tailwind sizing classes directly on a wrapper or pass standard sizes if possible. Lucide svelte uses size prop) -->
+							<div class="hidden sm:block"><IconComponent size={28} /></div>
+							<div class="block sm:hidden"><IconComponent size={20} /></div>
 						</div>
 						<div class="text-center sm:text-left">
-							<div class="text-3xl font-extrabold text-white md:text-4xl">{stat.value}</div>
-							<div class="mt-1 text-xs font-semibold tracking-[0.15em] text-white/70 uppercase">
+							<div class="text-lg font-extrabold text-white sm:text-3xl md:text-4xl">{stat.value}</div>
+							<div class="mt-1 text-[9px] font-semibold tracking-wider text-white/70 uppercase sm:text-xs sm:tracking-[0.15em]">
 								{stat.label}
 							</div>
 						</div>
