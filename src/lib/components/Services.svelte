@@ -1,8 +1,26 @@
 <script lang="ts">
 	import { services } from '$lib/lang/pl/services';
-	import { Menu, X, ChevronRight, Leaf } from 'lucide-svelte';
+	import {
+		Menu,
+		X,
+		ChevronRight,
+		Leaf,
+		PenTool,
+		Sprout,
+		Scissors,
+		Droplets,
+		Hammer
+	} from 'lucide-svelte';
 	import { fade, fly } from 'svelte/transition';
 	import ImageModal from './ImageModal.svelte';
+
+	const iconMap: Record<string, any> = {
+		PenTool,
+		Sprout,
+		Scissors,
+		Droplets,
+		Hammer
+	};
 
 	let activeServiceId = $state<string | null>(null);
 	let isMobileSidebarOpen = $state(false);
@@ -10,23 +28,14 @@
 
 	let activeService = $derived(services.list.find((s) => s.id === activeServiceId) || null);
 
-	// Easily switch layouts: 'grid' | 'collage' | 'bento' | 'masonry'
-	let galleryLayoutMode = 'collage';
-
-	let galleryWrapperClasses = $derived(
-		galleryLayoutMode === 'collage' 
-			? 'relative h-[320px] sm:h-[400px] w-full mt-auto mb-4' 
-			: 'mt-auto grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'
-	);
-
-	let getImageWrapperClasses = (i: number) => {
-		if (galleryLayoutMode === 'collage') {
-			if (i === 0) return 'absolute z-10 w-[65%] h-full right-0 top-0 overflow-hidden rounded-2xl shadow-lg transition-transform hover:-translate-y-1';
-			if (i === 1) return 'absolute z-20 w-[50%] h-[55%] left-0 top-[5%] overflow-hidden rounded-2xl border-4 border-white shadow-xl transition-transform hover:-translate-y-1';
-			if (i === 2) return 'absolute z-30 w-[45%] h-[45%] left-[5%] bottom-0 overflow-hidden rounded-2xl border-4 border-white shadow-xl transition-transform hover:-translate-y-1';
-		}
-		// Default Grid
-		return `overflow-hidden rounded-2xl shadow-md h-48 sm:h-64 ${i === 0 ? 'sm:col-span-2 lg:col-span-1' : ''}`;
+	let getCollageClasses = (i: number) => {
+		if (i === 0)
+			return 'absolute z-10 w-[65%] h-full right-0 top-0 overflow-hidden rounded-2xl shadow-lg transition-transform hover:-translate-y-1';
+		if (i === 1)
+			return 'absolute z-20 w-[50%] h-[55%] left-0 top-[5%] overflow-hidden rounded-2xl border-4 border-white shadow-xl transition-transform hover:-translate-y-1';
+		if (i === 2)
+			return 'absolute z-30 w-[45%] h-[45%] left-[5%] bottom-0 overflow-hidden rounded-2xl border-4 border-white shadow-xl transition-transform hover:-translate-y-1';
+		return '';
 	};
 </script>
 
@@ -155,56 +164,58 @@
 						</button>
 					</div>
 
-					{#if activeService === null}
-						<!-- Overview State -->
-						<div class="flex h-full flex-col justify-center">
-							<div
-								class="mb-8 inline-flex items-center justify-center self-start rounded-full bg-[var(--forest-green)]/10 p-4"
-							>
-								<Leaf size={48} class="text-[var(--forest-green)]" />
-							</div>
-							<h3 class="mb-6 pr-16 text-3xl font-bold text-[var(--text-dark)] lg:pr-0">
-								{services.overview.title}
-							</h3>
-							<p class="max-w-3xl text-lg leading-relaxed text-[var(--text-muted)]">
-								{services.overview.description}
-							</p>
-							<div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
-								{#each services.list.slice(0, 3) as s, i (s.id)}
-									<div
-										class="group relative aspect-square overflow-hidden rounded-2xl {i === 2
-											? 'col-span-2 mx-auto w-1/2 sm:col-span-1 sm:mx-0 sm:w-full'
-											: ''}"
-									>
-										<button
-											class="h-full w-full cursor-pointer text-left"
-											onclick={() => (lightboxImage = s.images[0])}
-											aria-label="Powiększ obraz"
-										>
-											<img
-												src={s.images[0].url}
-												alt={s.images[0].annotation}
-												class="h-full w-full object-cover transition-all duration-500 group-hover:shadow-lg group-hover:brightness-75"
-												loading="lazy"
-											/>
-											<div
-												class="pointer-events-none absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4"
+					{#key activeServiceId}
+						<div
+							class="flex h-full flex-col {activeService === null ? 'justify-center' : ''}"
+							in:fade={{ duration: 400, delay: 100 }}
+							out:fade={{ duration: 100 }}
+						>
+							{#if activeService === null}
+								<!-- Overview State -->
+								<div
+									class="mb-8 inline-flex items-center justify-center self-start rounded-full bg-[var(--forest-green)]/10 p-4"
+								>
+									<Leaf size={48} class="text-[var(--forest-green)]" />
+								</div>
+								<h3 class="mb-6 pr-16 text-3xl font-bold text-[var(--text-dark)] lg:pr-0">
+									{services.overview.title}
+								</h3>
+								<p class="max-w-3xl text-lg leading-relaxed text-[var(--text-muted)]">
+									{services.overview.description}
+								</p>
+								<div class="relative mt-12 h-[320px] w-full sm:h-[400px]">
+									{#each services.list.slice(0, 3) as s, i (s.id)}
+										<div class="{getCollageClasses(i)} group">
+											<button
+												class="h-full w-full cursor-pointer text-left"
+												onclick={() => (lightboxImage = s.images[0])}
+												aria-label="Powiększ obraz"
 											>
-												<span class="font-semibold text-white">{s.title}</span>
-											</div>
-										</button>
-									</div>
-								{/each}
-							</div>
-						</div>
-					{:else}
-						<!-- Active Service State -->
-						{#key activeServiceId}
-							<div
-								class="flex h-full flex-col"
-								in:fade={{ duration: 400, delay: 100 }}
-								out:fade={{ duration: 100 }}
-							>
+												<img
+													src={s.images[0].url}
+													alt={s.images[0].annotation}
+													class="h-full w-full object-cover transition-all duration-500 group-hover:brightness-75"
+													loading="lazy"
+												/>
+												<div
+													class="pointer-events-none absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4"
+												>
+													<span class="font-semibold text-white">{s.title}</span>
+												</div>
+											</button>
+										</div>
+									{/each}
+								</div>
+							{:else}
+								<!-- Active Service State -->
+								<div
+									class="mb-8 inline-flex items-center justify-center self-start rounded-full bg-[var(--forest-green)]/10 p-4"
+								>
+									{#if activeService.icon && iconMap[activeService.icon]}
+										{@const IconComponent = iconMap[activeService.icon]}
+										<IconComponent size={48} class="text-[var(--forest-green)]" />
+									{/if}
+								</div>
 								<h3 class="mb-6 pr-16 text-3xl font-bold text-[var(--text-dark)] lg:pr-0">
 									{activeService.title}
 								</h3>
@@ -212,11 +223,9 @@
 									{activeService.description}
 								</p>
 
-								<div class={galleryWrapperClasses}>
+								<div class="relative mt-auto mb-4 h-[320px] w-full sm:h-[400px]">
 									{#each activeService.images as image, i (i)}
-										<div
-											class="{getImageWrapperClasses(i)} group"
-										>
+										<div class="{getCollageClasses(i)} group">
 											<button
 												class="h-full w-full cursor-pointer text-left"
 												onclick={() => (lightboxImage = image)}
@@ -232,9 +241,9 @@
 										</div>
 									{/each}
 								</div>
-							</div>
-						{/key}
-					{/if}
+							{/if}
+						</div>
+					{/key}
 				</div>
 			</div>
 		</div>

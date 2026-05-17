@@ -1,15 +1,18 @@
 <script lang="ts">
 	import { hero } from '$lib/lang/pl/hero';
 	import { onMount } from 'svelte';
+	import { CalendarDays, FolderCheck, BadgeCheck } from 'lucide-svelte';
 
 	let visible = $state(false);
+
+	const statIcons = [CalendarDays, FolderCheck, BadgeCheck];
 
 	onMount(() => {
 		setTimeout(() => (visible = true), 100);
 	});
 </script>
 
-<section class="relative flex min-h-[95vh] items-center overflow-hidden bg-gray-50">
+<section class="relative flex h-screen min-h-[600px] items-center overflow-hidden bg-gray-50">
 	<!-- Background Image -->
 	<div
 		class="absolute inset-0 z-10 bg-[url('/images/hero_bg.png')] bg-cover bg-center brightness-[0.65]"
@@ -18,7 +21,7 @@
 	<!-- Overlay -->
 	<!-- <div class="absolute inset-0 z-20 bg-linear-to-r from-black/70 via-black/40 to-transparent"></div> -->
 
-	<div class="relative z-30 container max-w-[1200px] px-8 py-20">
+	<div class="relative z-30 container max-w-[1200px] px-8 pt-20 pb-32">
 		<div
 			class="max-w-[850px] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] {visible
 				? 'translate-x-0 opacity-100'
@@ -61,18 +64,32 @@
 					{hero.ctaSecondary}
 				</a>
 			</div>
+		</div>
+	</div>
 
-			<!-- Stats -->
-			<div class="grid grid-cols-2 gap-x-12 gap-y-10 border-t border-white/10 pt-12 md:grid-cols-3">
+	<!-- Bottom Stats / Attestations Bar -->
+	<div
+		class="absolute bottom-0 left-0 z-30 w-full border-t border-white/5 bg-black/10 backdrop-blur-xs"
+	>
+		<div class="container mx-auto max-w-[1200px] px-8 py-6">
+			<div class="grid grid-cols-1 gap-8 sm:grid-cols-3">
 				{#each hero.stats as stat, i (stat.label)}
+					{@const IconComponent = statIcons[i % statIcons.length]}
 					<div
-						class="flex animate-fade-in-left flex-col opacity-0"
-						style="animation-delay: {1 + i * 0.1}s"
+						class="flex animate-fade-in-up flex-col items-center gap-3 opacity-0 sm:flex-row sm:justify-start sm:gap-6"
+						style="animation-delay: {1 + i * 0.1}s; animation-fill-mode: forwards;"
 					>
-						<span class="text-4xl font-extrabold text-white md:text-5xl">{stat.value}</span>
-						<span class="mt-2 text-xs font-semibold tracking-[0.2em] text-white/50 uppercase"
-							>{stat.label}</span
+						<div
+							class="flex h-14 w-14 items-center justify-center rounded-full bg-(--forest-green)/20 text-white"
 						>
+							<IconComponent size={28} />
+						</div>
+						<div class="text-center sm:text-left">
+							<div class="text-3xl font-extrabold text-white md:text-4xl">{stat.value}</div>
+							<div class="mt-1 text-xs font-semibold tracking-[0.15em] text-white/70 uppercase">
+								{stat.label}
+							</div>
+						</div>
 					</div>
 				{/each}
 			</div>

@@ -7,6 +7,7 @@ export const services = {
 	list: [
 		{
 			id: 'projektowanie',
+			icon: 'PenTool',
 			title: 'Projektowanie Ogrodów',
 			description:
 				'Tworzymy unikalne, dopasowane do Twoich potrzeb koncepcje przestrzeni. Nasze projekty łączą estetykę z funkcjonalnością, uwzględniając warunki panujące na działce oraz Twoje osobiste preferencje. Od wstępnych szkiców po szczegółowe plany nasadzeń – dbamy o każdy detal.',
@@ -27,6 +28,7 @@ export const services = {
 		},
 		{
 			id: 'zakladanie',
+			icon: 'Sprout',
 			title: 'Zakładanie Ogrodów',
 			description:
 				'Kompleksowo realizujemy zatwierdzone projekty. Zajmujemy się przygotowaniem terenu, pracami ziemnymi, zakładaniem trawników (z siewu i z rolki), a także precyzyjnym sadzeniem roślin. Nasze prace są zawsze wykonywane terminowo i z najwyższą starannością.',
@@ -47,6 +49,7 @@ export const services = {
 		},
 		{
 			id: 'pielegnacja',
+			icon: 'Scissors',
 			title: 'Pielęgnacja Zieleni',
 			description:
 				'Ogród wymaga regularnej opieki, by wyglądać olśniewająco. Oferujemy sezonową oraz całoroczną pielęgnację: koszenie, wertykulację, przycinanie krzewów i drzew, nawożenie oraz ochronę przed szkodnikami. Zadbamy o to, by Twój ogród był zawsze w doskonałej formie.',
@@ -67,6 +70,7 @@ export const services = {
 		},
 		{
 			id: 'systemy-nawadniajace',
+			icon: 'Droplets',
 			title: 'Systemy Nawadniające',
 			description:
 				'Projektujemy i instalujemy nowoczesne, zautomatyzowane systemy nawadniania. Dzięki nim Twoje rośliny otrzymają odpowiednią ilość wody, a Ty zaoszczędzisz czas i zoptymalizujesz jej zużycie. Oferujemy również serwis i konserwację istniejących instalacji.',
@@ -87,6 +91,7 @@ export const services = {
 		},
 		{
 			id: 'mala-architektura',
+			icon: 'Hammer',
 			title: 'Mała Architektura',
 			description:
 				'Wzbogacamy przestrzeń ogrodu o elementy małej architektury: altany, pergole, murki oporowe czy ścieżki ogrodowe. Dobieramy materiały tak, by idealnie komponowały się ze stylem domu i ogrodu, dodając mu niepowtarzalnego charakteru.',
