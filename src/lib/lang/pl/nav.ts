@@ -2,7 +2,7 @@ export const nav = {
 	brand: 'Szanta Ogrody',
 	links: [
 		{ href: '#uslugi', text: 'Usługi' },
-		{ href: '#projekty', text: 'Projekty' },
+		{ href: '#realizacje', text: 'Realizacje' },
 		{ href: '#o-nas', text: 'O nas' },
 		{ href: '#kontakt', text: 'Kontakt' }
 	],
