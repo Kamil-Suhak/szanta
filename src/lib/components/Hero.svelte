@@ -15,7 +15,7 @@
 <section class="relative flex h-screen min-h-[600px] items-center overflow-hidden bg-gray-50">
 	<!-- Background Image -->
 	<div
-		class="absolute inset-0 z-10 bg-[url('/images/hero_bg.png')] bg-cover bg-center brightness-[0.65]"
+		class="absolute inset-[-2px] z-10 bg-[url('/images/hero_bg.png')] bg-cover bg-center brightness-[0.65]"
 	></div>
 
 	<!-- Overlay -->
@@ -87,8 +87,12 @@
 							<div class="block sm:hidden"><IconComponent size={20} /></div>
 						</div>
 						<div class="text-center sm:text-left">
-							<div class="text-lg font-extrabold text-white sm:text-3xl md:text-4xl">{stat.value}</div>
-							<div class="mt-1 text-[9px] font-semibold tracking-wider text-white/70 uppercase sm:text-xs sm:tracking-[0.15em]">
+							<div class="text-lg font-extrabold text-white sm:text-3xl md:text-4xl">
+								{stat.value}
+							</div>
+							<div
+								class="mt-1 text-[9px] font-semibold tracking-wider text-white/70 uppercase sm:text-xs sm:tracking-[0.15em]"
+							>
 								{stat.label}
 							</div>
 						</div>
