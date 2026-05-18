@@ -155,7 +155,7 @@
 										>Wyróżnione</span
 									>
 									<Star
-										class="mx-0 inline-block h-[1.375rem] w-[1.375rem] rounded-lg rounded-l-none bg-yellow-100 fill-yellow-500 px-1 py-0.5 text-yellow-500 sm:h-[1.5rem] sm:w-[1.5rem]"
+										class="mx-0 inline-block h-5.5 w-5.5 rounded-lg rounded-l-none bg-yellow-100 fill-yellow-500 px-1 py-0.5 text-yellow-500 sm:h-6 sm:w-6"
 									/>
 								</div>
 							{/if}
@@ -272,7 +272,7 @@
 									>Wyróżnione</span
 								>
 								<Star
-									class="mx-0 inline-block h-[1.625rem] w-[1.625rem] rounded-lg rounded-l-none bg-yellow-100 fill-yellow-500 px-1.5 py-0.5 text-yellow-500"
+									class="mx-0 inline-block h-6.5 w-6.5 rounded-lg rounded-l-none bg-yellow-100 fill-yellow-500 px-1.5 py-0.5 text-yellow-500"
 								/>
 							</div>
 						{/if}
