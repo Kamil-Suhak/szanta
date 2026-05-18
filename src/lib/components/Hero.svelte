@@ -80,7 +80,7 @@
 						style="animation-delay: {1 + i * 0.1}s; animation-fill-mode: forwards;"
 					>
 						<div
-							class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--forest-green)]/20 text-white sm:h-14 sm:w-14"
+							class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-(--forest-green)/20 text-white sm:h-14 sm:w-14"
 						>
 							<!-- Responsive icon sizes (using standard lucide sizes via classes is tricky, so we use tailwind sizing classes directly on a wrapper or pass standard sizes if possible. Lucide svelte uses size prop) -->
 							<div class="hidden sm:block"><IconComponent size={28} /></div>

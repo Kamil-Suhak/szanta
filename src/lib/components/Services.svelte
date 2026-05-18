@@ -43,9 +43,7 @@
 	<div class="container mx-auto px-4 sm:px-6 lg:px-8">
 		<!-- Section Header -->
 		<div class="mb-16 text-center">
-			<h2
-				class="mb-4 text-4xl font-extrabold tracking-tight text-[var(--forest-green)] sm:text-5xl"
-			>
+			<h2 class="mb-4 text-4xl font-extrabold tracking-tight text-(--forest-green) sm:text-5xl">
 				Nasze Usługi
 			</h2>
 			<div class="mx-auto h-1 w-24 rounded bg-(--forest-green)"></div>
@@ -60,7 +58,7 @@
 				>
 					<!-- Mobile Header -->
 					<div class="flex items-center justify-between border-b p-6 lg:hidden">
-						<span class="text-xl font-bold text-[var(--forest-green)]">Usługi</span>
+						<span class="text-xl font-bold text-(--forest-green)">Usługi</span>
 						<button
 							class="rounded-full p-2 text-gray-500 hover:bg-gray-100"
 							onclick={() => (isMobileSidebarOpen = false)}
@@ -156,7 +154,7 @@
 					<!-- Mobile Sidebar Toggle Button -->
 					<div class="absolute top-6 right-6 lg:hidden">
 						<button
-							class="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--forest-green)]/10 text-[var(--forest-green)] transition-transform hover:scale-105 hover:bg-[var(--forest-green)]/20 active:scale-95"
+							class="flex h-12 w-12 items-center justify-center rounded-full bg-(--forest-green)/10 text-(--forest-green) transition-transform hover:scale-105 hover:bg-[var(--forest-green)]/20 active:scale-95"
 							onclick={() => (isMobileSidebarOpen = true)}
 							aria-label="Wybierz Usługę"
 						>
@@ -173,14 +171,14 @@
 							{#if activeService === null}
 								<!-- Overview State -->
 								<div
-									class="mb-8 inline-flex items-center justify-center self-start rounded-full bg-[var(--forest-green)]/10 p-4"
+									class="mb-8 inline-flex items-center justify-center self-start rounded-full bg-(--forest-green)/10 p-4"
 								>
-									<Leaf size={48} class="text-[var(--forest-green)]" />
+									<Leaf size={48} class="text-(--forest-green)" />
 								</div>
-								<h3 class="mb-6 pr-16 text-3xl font-bold text-[var(--text-dark)] lg:pr-0">
+								<h3 class="mb-6 pr-16 text-3xl font-bold text-(--text-dark) lg:pr-0">
 									{services.overview.title}
 								</h3>
-								<p class="max-w-3xl text-lg leading-relaxed text-[var(--text-muted)]">
+								<p class="max-w-3xl text-lg leading-relaxed text-(--text-muted)">
 									{services.overview.description}
 								</p>
 								<div class="relative mt-12 h-[320px] w-full sm:h-[400px]">
@@ -198,7 +196,7 @@
 													loading="lazy"
 												/>
 												<div
-													class="pointer-events-none absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4"
+													class="pointer-events-none absolute inset-0 flex items-end bg-linear-to-t from-black/80 via-black/20 to-transparent p-4"
 												>
 													<span class="font-semibold text-white">{s.title}</span>
 												</div>
@@ -209,17 +207,17 @@
 							{:else}
 								<!-- Active Service State -->
 								<div
-									class="mb-8 inline-flex items-center justify-center self-start rounded-full bg-[var(--forest-green)]/10 p-4"
+									class="mb-8 inline-flex items-center justify-center self-start rounded-full bg-(--forest-green)/10 p-4"
 								>
 									{#if activeService.icon && iconMap[activeService.icon]}
 										{@const IconComponent = iconMap[activeService.icon]}
-										<IconComponent size={48} class="text-[var(--forest-green)]" />
+										<IconComponent size={48} class="text-(--forest-green)" />
 									{/if}
 								</div>
-								<h3 class="mb-6 pr-16 text-3xl font-bold text-[var(--text-dark)] lg:pr-0">
+								<h3 class="mb-6 pr-16 text-3xl font-bold text-(--text-dark) lg:pr-0">
 									{activeService.title}
 								</h3>
-								<p class="mb-10 text-lg leading-relaxed text-[var(--text-muted)]">
+								<p class="mb-10 text-lg leading-relaxed text-(--text-muted)">
 									{activeService.description}
 								</p>
 

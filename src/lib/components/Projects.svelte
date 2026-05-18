@@ -81,15 +81,13 @@
 	<div class="container mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
 		<!-- Section Header -->
 		<div class="mb-12 text-center">
-			<h2
-				class="mb-4 text-4xl font-extrabold tracking-tight text-[var(--forest-green)] sm:text-5xl"
-			>
+			<h2 class="mb-4 text-4xl font-extrabold tracking-tight text-(--forest-green) sm:text-5xl">
 				{sectionData.title}
 			</h2>
 			<p class="mb-6 text-lg font-medium text-gray-600 sm:text-xl">
 				<FormattedText text={sectionData.subtitle} />
 			</p>
-			<div class="mx-auto h-1 w-24 rounded bg-[var(--forest-green)]"></div>
+			<div class="mx-auto h-1 w-24 rounded bg-(--forest-green)"></div>
 		</div>
 
 		<!-- Category Filters -->
@@ -98,19 +96,23 @@
 				<button
 					class="flex items-center gap-1.5 rounded-full border px-6 py-2 text-sm font-semibold transition-colors duration-300
 						{category === 'Wyróżnione'
-							? activeCategory === category
-								? 'border-yellow-400 bg-yellow-400 text-white shadow-md'
-								: 'border-yellow-400 bg-yellow-50 text-yellow-700 hover:bg-yellow-100'
-							: activeCategory === category
-								? 'border-[var(--forest-green)] bg-[var(--forest-green)] text-white shadow-md'
-								: 'border-[var(--forest-green)] bg-transparent text-[var(--text-dark)] hover:bg-gray-100'}"
+						? activeCategory === category
+							? 'border-yellow-400 bg-yellow-400 text-white shadow-md'
+							: 'border-yellow-400 bg-yellow-50 text-yellow-700 hover:bg-yellow-100'
+						: activeCategory === category
+							? 'border-(--forest-green) bg-(--forest-green) text-white shadow-md'
+							: 'border-(--forest-green) bg-transparent text-(--text-dark) hover:bg-gray-100'}"
 					onclick={() => {
 						activeCategory = category;
 						currentPage = 1;
 					}}
 				>
 					{#if category === 'Wyróżnione'}
-						<Star class="h-4 w-4 {activeCategory === category ? 'text-white fill-white' : 'text-yellow-500 fill-yellow-500'}" />
+						<Star
+							class="h-4 w-4 {activeCategory === category
+								? 'fill-white text-white'
+								: 'fill-yellow-500 text-yellow-500'}"
+						/>
 					{/if}
 					{category}
 				</button>
@@ -128,7 +130,7 @@
 					onclick={() => (selectedProject = project)}
 				>
 					<!-- Thumbnail Image (Top rounded only) -->
-					<div class="aspect-[4/3] w-full overflow-hidden rounded-t-2xl">
+					<div class="aspect-4/3 w-full overflow-hidden rounded-t-2xl">
 						<img
 							src={project.images[0].url}
 							alt={project.title}
@@ -141,11 +143,11 @@
 						class="rounded-b-2xl border border-t-0 border-gray-100 bg-white p-5 shadow-sm transition-shadow duration-300 group-hover:shadow-md"
 					>
 						<span
-							class="mb-2 block text-xs font-bold tracking-wider text-[var(--forest-green)] uppercase"
+							class="mb-2 block text-xs font-bold tracking-wider text-(--forest-green) uppercase"
 						>
 							{project.category}
 						</span>
-						<h3 class="text-xl font-bold text-[var(--text-dark)]">
+						<h3 class="text-xl font-bold text-(--text-dark)">
 							{project.title}
 						</h3>
 					</div>
@@ -163,7 +165,7 @@
 		{#if totalPages > 1}
 			<div class="mt-12 flex items-center justify-center gap-4">
 				<button
-					class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 transition-colors hover:bg-gray-50 hover:text-[var(--forest-green)] disabled:opacity-50"
+					class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 transition-colors hover:bg-gray-50 hover:text-(--forest-green) disabled:opacity-50"
 					disabled={currentPage === 1}
 					onclick={() => currentPage--}
 				>
@@ -173,7 +175,7 @@
 					{currentPage} z {totalPages}
 				</span>
 				<button
-					class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 transition-colors hover:bg-gray-50 hover:text-[var(--forest-green)] disabled:opacity-50"
+					class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 transition-colors hover:bg-gray-50 hover:text-(--forest-green) disabled:opacity-50"
 					disabled={currentPage === totalPages}
 					onclick={() => currentPage++}
 				>
@@ -246,11 +248,11 @@
 				<!-- Text Content -->
 				<div class="prose prose-lg max-w-none">
 					<span
-						class="mb-2 inline-block rounded-full bg-[var(--forest-green)]/10 px-3 py-1 text-xs font-bold tracking-widest text-[var(--forest-green)] uppercase"
+						class="mb-2 inline-block rounded-full bg-(--forest-green)/10 px-3 py-1 text-xs font-bold tracking-widest text-(--forest-green) uppercase"
 					>
 						{selectedProject.category}
 					</span>
-					<h2 class="mb-6 text-3xl leading-tight font-extrabold text-[var(--text-dark)]">
+					<h2 class="mb-6 text-3xl leading-tight font-extrabold text-(--text-dark)">
 						{selectedProject.title}
 					</h2>
 					<p class="leading-relaxed text-gray-600">
