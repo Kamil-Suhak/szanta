@@ -1,6 +1,6 @@
 export const sectionData = {
 	title: 'Nasze Realizacje',
-	subtitle: 'Rzuć okiem na nasze **Wyróżnione** * projekty',
+	subtitle: 'Rzuć okiem na nasze **Wyróżnione*** projekty',
 	emptyState: 'Brak projektów w tej kategorii.'
 };
 
@@ -34,9 +34,7 @@ export const projects = [
 		category: 'Zakładanie Ogrodów',
 		description:
 			'Minimalistyczna kompozycja ogrodowa z wykorzystaniem jasnego piasku kwarcowego. Zastosowaliśmy tu geometryczne podziały i wyraziste rośliny sucholubne, tworząc przestrzeń o niezwykle niskich wymaganiach pielęgnacyjnych, idealną dla zapracowanych właścicieli.',
-		images: [
-			{ url: '/images/piasek1A.jpeg', alt: 'Kompozycja piaskowa z trawami' }
-		]
+		images: [{ url: '/images/piasek1A.jpeg', alt: 'Kompozycja piaskowa z trawami' }]
 	},
 	{
 		id: 'piasek2',
@@ -45,9 +43,7 @@ export const projects = [
 		isFeatured: true,
 		description:
 			'Kolejna odsłona ogrodu żwirowo-piaskowego. Dominują w nim okrągłe formy kamieni oraz starannie przycięte krzewy formowane, które na tle jasnego podłoża zyskują niezwykle rzeźbiarski i nowoczesny charakter.',
-		images: [
-			{ url: '/images/piasek2A.jpeg', alt: 'Formowane krzewy na jasnym piasku' }
-		]
+		images: [{ url: '/images/piasek2A.jpeg', alt: 'Formowane krzewy na jasnym piasku' }]
 	},
 	{
 		id: 'piasek3',
@@ -55,9 +51,7 @@ export const projects = [
 		category: 'Zakładanie Ogrodów',
 		description:
 			'Trzeci projekt z cyklu ogrodów suchych. Tym razem skupiliśmy się na wprowadzeniu barwnych akcentów poprzez kwitnące byliny i sukulenty, które przełamują surowość piaskowego tła, zachowując jednocześnie odporność na suszę.',
-		images: [
-			{ url: '/images/piasek3A.jpeg', alt: 'Detale roślinne w ogrodzie piaskowym' }
-		]
+		images: [{ url: '/images/piasek3A.jpeg', alt: 'Detale roślinne w ogrodzie piaskowym' }]
 	},
 	{
 		id: 'wyspa1',
@@ -66,9 +60,7 @@ export const projects = [
 		isFeatured: true,
 		description:
 			'Reprezentacyjna, wyniesiona rabata stanowiąca centralny punkt ogrodu. Gęste nasadzenia krzewów zimozielonych połączone z kwitnącymi bylinami zapewniają atrakcyjny wygląd tej strefy przez okrągły rok.',
-		images: [
-			{ url: '/images/wyspa-zieleni1A.jpeg', alt: 'Widok na wielopoziomową wyspę zieleni' }
-		]
+		images: [{ url: '/images/wyspa-zieleni1A.jpeg', alt: 'Widok na wielopoziomową wyspę zieleni' }]
 	},
 	{
 		id: 'wyspa2',
@@ -76,9 +68,7 @@ export const projects = [
 		category: 'Projektowanie Ogrodów',
 		description:
 			'Alternatywna koncepcja centralnej wyspy zieleni, tym razem oparta na łagodniejszych liniach i dominacji traw ozdobnych, które wprowadzają do ogrodu element dynamiki i lekkości przy każdym podmuchu wiatru.',
-		images: [
-			{ url: '/images/wyspa-zieleni2A.jpeg', alt: 'Dynamiczna kompozycja z traw ozdobnych' }
-		]
+		images: [{ url: '/images/wyspa-zieleni2A.jpeg', alt: 'Dynamiczna kompozycja z traw ozdobnych' }]
 	},
 	{
 		id: 'patio',
@@ -97,9 +87,7 @@ export const projects = [
 		category: 'Pielęgnacja Zieleni',
 		description:
 			'Gruntowna regeneracja i odświeżenie istniejących rabat bylinowych. Przeprowadzone prace objęły odchwaszczanie, wymianę podłoża oraz dosadzenie nowych, intensywnie kwitnących odmian, co przywróciło ogrodowi dawny blask.',
-		images: [
-			{ url: '/images/kwiaty1A.jpeg', alt: 'Zrewitalizowana, obficie kwitnąca rabata' }
-		]
+		images: [{ url: '/images/kwiaty1A.jpeg', alt: 'Zrewitalizowana, obficie kwitnąca rabata' }]
 	}
 ];
 

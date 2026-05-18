@@ -36,7 +36,7 @@
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
-		class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 p-4 sm:p-8"
+		class="fixed inset-0 z-9999 flex items-center justify-center bg-black/90 p-4 sm:p-8"
 		in:fade={{ duration: 200 }}
 		out:fade={{ duration: 200 }}
 		onclick={onclose}

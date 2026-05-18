@@ -142,11 +142,24 @@
 					<div
 						class="rounded-b-2xl border border-t-0 border-gray-100 bg-white p-5 shadow-sm transition-shadow duration-300 group-hover:shadow-md"
 					>
-						<span
-							class="mb-2 block text-xs font-bold tracking-wider text-(--forest-green) uppercase"
-						>
-							{project.category}
-						</span>
+						<div class="mb-2 flex items-center justify-between gap-2">
+							<span class="block text-xs font-bold tracking-wider text-(--forest-green) uppercase">
+								{project.category}
+							</span>
+							{#if project.isFeatured}
+								<div
+									class="flex items-center text-[10px] font-bold tracking-wider uppercase sm:text-xs"
+								>
+									<span
+										class="mr-0 rounded-lg rounded-r-none bg-yellow-100 py-1 pl-2 text-yellow-800"
+										>Wyróżnione</span
+									>
+									<Star
+										class="mx-0 inline-block h-[1.375rem] w-[1.375rem] rounded-lg rounded-l-none bg-yellow-100 fill-yellow-500 px-1 py-0.5 text-yellow-500 sm:h-[1.5rem] sm:w-[1.5rem]"
+									/>
+								</div>
+							{/if}
+						</div>
 						<h3 class="text-xl font-bold text-(--text-dark)">
 							{project.title}
 						</h3>
@@ -247,11 +260,23 @@
 
 				<!-- Text Content -->
 				<div class="prose prose-lg max-w-none">
-					<span
-						class="mb-2 inline-block rounded-full bg-(--forest-green)/10 px-3 py-1 text-xs font-bold tracking-widest text-(--forest-green) uppercase"
-					>
-						{selectedProject.category}
-					</span>
+					<div class="mb-2 flex items-center justify-between gap-2">
+						<span
+							class="inline-block rounded-full bg-(--forest-green)/10 px-3 py-1 text-xs font-bold tracking-widest text-(--forest-green) uppercase"
+						>
+							{selectedProject.category}
+						</span>
+						{#if selectedProject.isFeatured}
+							<div class="flex items-center text-xs font-bold tracking-widest uppercase">
+								<span class="mr-0 rounded-lg rounded-r-none bg-yellow-100 py-1 pl-2 text-yellow-800"
+									>Wyróżnione</span
+								>
+								<Star
+									class="mx-0 inline-block h-[1.625rem] w-[1.625rem] rounded-lg rounded-l-none bg-yellow-100 fill-yellow-500 px-1.5 py-0.5 text-yellow-500"
+								/>
+							</div>
+						{/if}
+					</div>
 					<h2 class="mb-6 text-3xl leading-tight font-extrabold text-(--text-dark)">
 						{selectedProject.title}
 					</h2>
