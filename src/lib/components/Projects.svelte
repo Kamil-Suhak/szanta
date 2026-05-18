@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { projects, categories } from '$lib/lang/pl/projects';
-	import { X, ChevronLeft, ChevronRight } from 'lucide-svelte';
+	import { projects, categories, sectionData } from '$lib/lang/pl/projects';
+	import { X, ChevronLeft, ChevronRight, Star } from 'lucide-svelte';
+	import FormattedText from '$lib/components/FormattedText.svelte';
 	import { fade, fly, slide } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 	import { onMount } from 'svelte';
@@ -29,7 +30,9 @@
 	let filteredProjects = $derived(
 		activeCategory === 'Wszystkie'
 			? projects
-			: projects.filter((p) => p.category === activeCategory)
+			: activeCategory === 'Wyróżnione'
+				? projects.filter((p: any) => p.isFeatured)
+				: projects.filter((p) => p.category === activeCategory)
 	);
 
 	let itemsPerPage = $derived(isMobile ? 3 : 6);
@@ -81,24 +84,34 @@
 			<h2
 				class="mb-4 text-4xl font-extrabold tracking-tight text-[var(--forest-green)] sm:text-5xl"
 			>
-				Nasze Realizacje
+				{sectionData.title}
 			</h2>
-			<div class="mx-auto h-1 w-24 rounded bg-(--forest-green)"></div>
+			<p class="mb-6 text-lg font-medium text-gray-600 sm:text-xl">
+				<FormattedText text={sectionData.subtitle} />
+			</p>
+			<div class="mx-auto h-1 w-24 rounded bg-[var(--forest-green)]"></div>
 		</div>
 
 		<!-- Category Filters -->
 		<div class="mb-12 flex flex-wrap justify-center gap-3">
 			{#each categories as category (category)}
 				<button
-					class="rounded-full border px-6 py-2 text-sm font-semibold transition-colors duration-300
-						{activeCategory === category
-						? 'border-[var(--forest-green)] bg-[var(--forest-green)] text-white shadow-md'
-						: 'border-[var(--forest-green)] bg-transparent text-[var(--text-dark)] hover:bg-gray-100'}"
+					class="flex items-center gap-1.5 rounded-full border px-6 py-2 text-sm font-semibold transition-colors duration-300
+						{category === 'Wyróżnione'
+							? activeCategory === category
+								? 'border-yellow-400 bg-yellow-400 text-white shadow-md'
+								: 'border-yellow-400 bg-yellow-50 text-yellow-700 hover:bg-yellow-100'
+							: activeCategory === category
+								? 'border-[var(--forest-green)] bg-[var(--forest-green)] text-white shadow-md'
+								: 'border-[var(--forest-green)] bg-transparent text-[var(--text-dark)] hover:bg-gray-100'}"
 					onclick={() => {
 						activeCategory = category;
 						currentPage = 1;
 					}}
 				>
+					{#if category === 'Wyróżnione'}
+						<Star class="h-4 w-4 {activeCategory === category ? 'text-white fill-white' : 'text-yellow-500 fill-yellow-500'}" />
+					{/if}
 					{category}
 				</button>
 			{/each}
@@ -141,7 +154,7 @@
 
 			{#if paginatedProjects.length === 0}
 				<div class="col-span-full py-12 text-center text-gray-500" in:fade>
-					Brak projektów w tej kategorii.
+					{sectionData.emptyState}
 				</div>
 			{/if}
 		</div>

@@ -1,8 +1,15 @@
+export const sectionData = {
+	title: 'Nasze Realizacje',
+	subtitle: 'Rzuć okiem na nasze **Wyróżnione** * projekty',
+	emptyState: 'Brak projektów w tej kategorii.'
+};
+
 export const projects = [
 	{
 		id: 'przystanek1',
 		title: 'Zielony Przystanek - Projekt I',
 		category: 'Mała Architektura',
+		isFeatured: true,
 		description:
 			'Pierwszy wariant innowacyjnego "zielonego przystanku". Konstrukcja łączy w sobie nowoczesną architekturę miejską z żywą roślinnością. Zastosowaliśmy tu wyselekcjonowane gatunki traw ozdobnych i pnączy, które doskonale radzą sobie w warunkach miejskich, tworząc przyjemną przestrzeń dla przechodniów.',
 		images: [
@@ -35,6 +42,7 @@ export const projects = [
 		id: 'piasek2',
 		title: 'Aranżacja Piaskowa II',
 		category: 'Zakładanie Ogrodów',
+		isFeatured: true,
 		description:
 			'Kolejna odsłona ogrodu żwirowo-piaskowego. Dominują w nim okrągłe formy kamieni oraz starannie przycięte krzewy formowane, które na tle jasnego podłoża zyskują niezwykle rzeźbiarski i nowoczesny charakter.',
 		images: [
@@ -55,6 +63,7 @@ export const projects = [
 		id: 'wyspa1',
 		title: 'Wyspa Zieleni I',
 		category: 'Projektowanie Ogrodów',
+		isFeatured: true,
 		description:
 			'Reprezentacyjna, wyniesiona rabata stanowiąca centralny punkt ogrodu. Gęste nasadzenia krzewów zimozielonych połączone z kwitnącymi bylinami zapewniają atrakcyjny wygląd tej strefy przez okrągły rok.',
 		images: [
@@ -96,6 +105,7 @@ export const projects = [
 
 export const categories = [
 	'Wszystkie',
+	'Wyróżnione',
 	'Projektowanie Ogrodów',
 	'Zakładanie Ogrodów',
 	'Pielęgnacja Zieleni',
