@@ -154,7 +154,7 @@
 					<!-- Mobile Sidebar Toggle Button -->
 					<div class="absolute top-6 right-6 lg:hidden">
 						<button
-							class="flex h-12 w-12 items-center justify-center rounded-full bg-(--forest-green)/10 text-(--forest-green) transition-transform hover:scale-105 hover:bg-[var(--forest-green)]/20 active:scale-95"
+							class="flex h-12 w-12 items-center justify-center rounded-full bg-(--forest-green)/10 text-(--forest-green) transition-transform hover:scale-105 hover:bg-(--forest-green)/20 active:scale-95"
 							onclick={() => (isMobileSidebarOpen = true)}
 							aria-label="Wybierz Usługę"
 						>
