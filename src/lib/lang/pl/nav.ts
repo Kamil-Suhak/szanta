@@ -3,8 +3,8 @@ export const nav = {
 	links: [
 		{ href: '#uslugi', text: 'Usługi' },
 		{ href: '#realizacje', text: 'Realizacje' },
-		{ href: '#o-nas', text: 'O nas' },
-		{ href: '#kontakt', text: 'Kontakt' }
+		{ href: '#kontakt', text: 'Kontakt' },
+		{ href: '/o-nas', text: 'O nas' }
 	],
 	cta: 'Darmowa Wycena'
 };
