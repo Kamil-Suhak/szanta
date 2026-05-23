@@ -11,7 +11,7 @@
 		Clock,
 		ChevronDown,
 		CheckCircle2,
-		AlertCircle,
+		CircleAlert,
 		PenTool,
 		Sprout,
 		Scissors,
@@ -212,8 +212,8 @@
 								<!-- Global Server Error Display -->
 								{#if serverErrors.global}
 									<div class="mb-6 flex items-center gap-3 rounded-2xl bg-red-50 p-4 text-red-700 border border-red-100" transition:slide>
-										<AlertCircle size={20} class="shrink-0" />
-										<p class="text-sm font-semibold">{contact.form.errors[serverErrors.global] || contact.form.errors.sendFailed}</p>
+										<CircleAlert size={20} class="shrink-0" />
+										<p class="text-sm font-semibold">{contact.form.errors[serverErrors.global as keyof typeof contact.form.errors] || contact.form.errors.sendFailed}</p>
 									</div>
 								{/if}
 
@@ -228,7 +228,7 @@
 												isSuccess = true;
 												serverErrors = {};
 											} else if (result.type === 'failure') {
-												serverErrors = result.data?.errors || {};
+												serverErrors = (result as any).data?.errors || {};
 											} else if (result.type === 'error') {
 												serverErrors = { global: 'sendFailed' };
 											}
@@ -300,7 +300,7 @@
 											/>
 											{#if serverErrors.email}
 												<span class="absolute bottom-[-22px] left-1 text-[11px] font-bold text-red-500" transition:slide>
-													{contact.form.errors[serverErrors.email] || contact.form.errors.emailRequired}
+													{contact.form.errors[serverErrors.email as keyof typeof contact.form.errors] || contact.form.errors.emailRequired}
 												</span>
 											{/if}
 										</div>
