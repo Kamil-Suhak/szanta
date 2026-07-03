@@ -52,22 +52,16 @@
 	let isDropdownOpen = $state(false);
 	let dropdownRef = $state<HTMLElement | null>(null);
 
+	// Extract initial form state values
+	// svelte-ignore state_referenced_locally
+	const initialSuccess = form?.success || false;
+	// svelte-ignore state_referenced_locally
+	const initialErrors = form?.errors || {};
+
 	// Async state
 	let isSubmitting = $state(false);
-	let isSuccess = $state(false);
-	let serverErrors = $state<Record<string, string>>({});
-
-	// Handle server actions response fallback
-	$effect(() => {
-		if (form) {
-			if (form.success) {
-				isSuccess = true;
-				serverErrors = {};
-			} else if (form.errors) {
-				serverErrors = form.errors;
-			}
-		}
-	});
+	let isSuccess = $state(initialSuccess);
+	let serverErrors = $state<Record<string, string>>(initialErrors);
 
 	// Reset form action
 	function handleReset() {

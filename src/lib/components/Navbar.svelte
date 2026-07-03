@@ -3,13 +3,9 @@
 	import { Leaf } from 'lucide-svelte';
 
 	let isScrolled = $state(false);
-
-	if (typeof window !== 'undefined') {
-		window.addEventListener('scroll', () => {
-			isScrolled = window.scrollY > 20;
-		});
-	}
 </script>
+
+<svelte:window onscroll={() => (isScrolled = window.scrollY > 20)} />
 
 <nav
 	class="fixed top-0 left-0 z-1000 w-full transition-all duration-500 ease-in-out {isScrolled

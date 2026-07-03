@@ -209,6 +209,9 @@
 			class="absolute inset-0 bg-black/60 transition-opacity {isMobile ? '' : 'backdrop-blur-sm'}"
 			transition:fade={{ duration: 300 }}
 			onclick={() => (selectedProject = null)}
+			role="button"
+			tabindex="-1"
+			aria-label="Zamknij"
 		></div>
 
 		<!-- Content Panel (Right Drawer on Desktop, Bottom Sheet on Mobile) -->

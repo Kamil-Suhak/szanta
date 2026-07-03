@@ -133,6 +133,9 @@
 						class="absolute inset-0 bg-black/20"
 						transition:fade={{ duration: 200 }}
 						onclick={() => (isMobileSidebarOpen = false)}
+						role="button"
+						tabindex="-1"
+						aria-label="Zamknij"
 					></div>
 
 					<!-- Animated Sidebar Content -->
