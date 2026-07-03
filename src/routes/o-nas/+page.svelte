@@ -20,7 +20,7 @@
 
 <!-- Hero Section to act as the dark background for the transparent navbar -->
 <section
-	class="relative flex h-[45vh] min-h-[350px] items-center overflow-hidden bg-gradient-to-br from-forest-green-dark to-forest-green text-white"
+	class="relative flex h-[45vh] min-h-[350px] items-center overflow-hidden bg-linear-to-br from-forest-green-dark to-forest-green text-white"
 >
 	<!-- Background styling / organic glowing shapes -->
 	<div class="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-white/5 blur-3xl"></div>
@@ -68,7 +68,7 @@
 					>
 						<!-- Background glowing shape -->
 						<div
-							class="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-forest-green to-forest-green-dark opacity-10 blur-xl transition-all duration-500 group-hover:scale-105 group-hover:opacity-20"
+							class="absolute -inset-4 rounded-3xl bg-linear-to-tr from-forest-green to-forest-green-dark opacity-10 blur-xl transition-all duration-500 group-hover:scale-105 group-hover:opacity-20"
 						></div>
 
 						<!-- Photo wrapper card -->
