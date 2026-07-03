@@ -10,15 +10,15 @@
 	$effect(() => {
 		if (typeof document !== 'undefined') {
 			if (image) {
-				document.body.style.overflow = 'hidden';
+				document.documentElement.classList.add('no-scroll');
 			} else {
-				document.body.style.overflow = '';
+				document.documentElement.classList.remove('no-scroll');
 			}
 		}
 
 		return () => {
 			if (typeof document !== 'undefined') {
-				document.body.style.overflow = '';
+				document.documentElement.classList.remove('no-scroll');
 			}
 		};
 	});
