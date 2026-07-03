@@ -81,14 +81,23 @@
 						<div class="absolute avatar-position" style="--index: {i}; --total: {reviewsData.items.length};">
 							<button
 								onclick={() => setActive(i)}
-								class="group relative flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full font-bold transition-all duration-500 focus:outline-none focus:ring-4 focus:ring-(--forest-green)/30
+								class="group relative flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full overflow-hidden font-bold border-2 transition-all duration-500 focus:outline-none focus:ring-4 focus:ring-(--forest-green)/30
 									{activeIndex === i 
-										? 'bg-(--forest-green) text-white shadow-[0_10px_20px_-5px_rgba(45,132,53,0.4)] scale-125' 
-										: 'bg-white text-(--forest-green) border-2 border-(--forest-green)/20 shadow-sm hover:border-(--forest-green) hover:bg-(--forest-green)/5 hover:scale-110 hover:z-50 cursor-pointer'}"
+										? 'border-(--forest-green) shadow-[0_10px_20px_-5px_rgba(45,132,53,0.4)] scale-125 z-40' 
+										: 'border-(--forest-green)/20 shadow-sm hover:border-(--forest-green) hover:scale-110 hover:z-50 cursor-pointer'}"
 								aria-label={`Pokaż opinię od ${review.author_name}`}
 								aria-current={activeIndex === i ? 'true' : 'false'}
 							>
-								<span class="text-base sm:text-lg">{review.initial}</span>
+								<svg 
+									class="h-full w-full transition-colors duration-500
+										{activeIndex === i 
+											? 'text-(--forest-green) bg-linear-to-br from-(--forest-green)/15 to-(--forest-green)/5' 
+											: 'text-gray-400 bg-linear-to-br from-gray-100 to-gray-50 group-hover:text-gray-500 group-hover:from-gray-50 group-hover:to-gray-100/50'}" 
+									fill="currentColor" 
+									viewBox="0 0 24 24"
+								>
+									<path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+								</svg>
 								
 								<!-- Tooltip on hover -->
 								<div class="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-lg bg-gray-900 px-3 py-1 text-xs font-semibold text-white opacity-0 transition-all duration-300 group-hover:-top-12 group-hover:opacity-100 hidden sm:block">
@@ -111,8 +120,8 @@
 			<div class="lg:col-span-7 relative z-30">
 				<div class="relative rounded-3xl bg-linear-to-br from-gray-50 to-white p-6 shadow-xl border border-gray-100 sm:p-10 transition-transform duration-500 lg:hover:-translate-y-1 lg:-ml-10 backdrop-blur-sm">
 					<!-- Large Quote Icon -->
-					<div class="absolute -top-4 -left-2 sm:-top-6 sm:-left-6 text-(--forest-green)/10 transition-transform duration-500 group-hover:scale-110">
-						<Quote size={80} strokeWidth={1} fill="currentColor" />
+					<div class="absolute -top-3 -left-1 sm:-top-6 sm:-left-6 text-(--forest-green)/10 transition-transform duration-500 group-hover:scale-110 pointer-events-none">
+						<Quote class="h-14 w-14 sm:h-20 sm:w-20" strokeWidth={1} fill="currentColor" />
 					</div>
 
 					<!-- Use CSS Grid for overlap to prevent snapping during transition -->
@@ -125,7 +134,7 @@
 								out:fade={{ duration: 150 }}
 							>
 								<!-- Star Rating -->
-								<div class="mb-4 flex gap-1 text-amber-400">
+								<div class="mb-4 flex gap-1 text-amber-400 pl-6 sm:pl-0 pt-2 sm:pt-0">
 									{#each Array(activeReview.rating) as _, i (i)}
 										<Star size={20} fill="currentColor" strokeWidth={0} />
 									{/each}
@@ -139,8 +148,14 @@
 
 								<!-- Author Info (Pushed to bottom via mt-auto) -->
 								<div class="mt-auto flex items-center gap-4 border-t border-gray-200/60 pt-4">
-									<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-(--forest-green) text-lg font-bold text-white shadow-md lg:hidden">
-										{activeReview.initial}
+									<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-(--forest-green)/20 shadow-md lg:hidden overflow-hidden">
+										<svg 
+											class="h-full w-full text-(--forest-green) bg-linear-to-br from-(--forest-green)/15 to-(--forest-green)/5" 
+											fill="currentColor" 
+											viewBox="0 0 24 24"
+										>
+											<path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+										</svg>
 									</div>
 									<div>
 										<div class="font-bold text-base text-(--text-dark)">{activeReview.author_name}</div>
