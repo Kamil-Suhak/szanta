@@ -77,7 +77,7 @@
 						>
 							<div class="aspect-square overflow-hidden rounded-2xl bg-gray-50">
 								<img
-									src="/images/owner.jpg"
+									src="/images/profilowe.jpeg"
 									alt={about.owner.photoAlt}
 									class="h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-105"
 								/>

@@ -1,0 +1,94 @@
+{
+  "beforeAfter": [
+    {
+      "id": "patio-transformacja",
+      "title": "Renowacja ścieżki i patio",
+      "description": "Niesamowity proces przemiany starej, nierównej ścieżki w elegancką i trwałą trasę z wykonaniem z naturalnego kamienia.",
+      "beforeImage": "images/patio-sciezka1A.jpeg",
+      "afterImage": "images/patio-sciezka1B.jpeg"
+    },
+    {
+      "id": "przystanek-zielony",
+      "title": "Zielona wiatka przystankowa",
+      "description": "Przemiana betonowej konstrukcji w oazę ekologiczną z dachem retencyjnym i bujną roślinnością.",
+      "beforeImage": "images/przystanek1A.jpeg",
+      "afterImage": "images/przystanek1B.jpeg"
+    }
+  ],
+  "projects": [
+    {
+      "projectId": "zielony-przystanek-1",
+      "projectName": "Zielony Przystanek - Wariant I",
+      "category": "Mała Architektura",
+      "isFeatured": true,
+      "description": "Nowoczesny zielony przystanek miejski z dachem pokrytym rozchodnikiem oraz kompozycją traw ozdobnych.",
+      "images": ["images/przystanek1A.jpeg", "images/przystanek1B.jpeg"]
+    },
+    {
+      "projectId": "zielony-przystanek-2",
+      "projectName": "Zielony Przystanek - Wariant II",
+      "category": "Mała Architektura",
+      "description": "Kolejna realizacja proekologicznej wiaty miejskiej z gęstym nasadzeniem bylin filtrujących powietrze.",
+      "images": ["images/przystanek2A.jpeg", "images/przystanek2B.jpeg"]
+    },
+    {
+      "projectId": "aranzacja-piaskowa-1",
+      "projectName": "Ogród Piaskowy z Głazami I",
+      "category": "Zakładanie Ogrodów",
+      "description": "Minimalistyczny i niewymagający częstej pielęgnacji ogród żwirowy z elementami sucholubnymi.",
+      "images": ["images/piasek1A.jpeg"]
+    },
+    {
+      "projectId": "aranzacja-piaskowa-2",
+      "projectName": "Ogród Piaskowy z Głazami II",
+      "category": "Zakładanie Ogrodów",
+      "isFeatured": true,
+      "description": "Kompaktowa aranżacja sucha stanowiąca świetną ozdobę przy wjeździe na posesję.",
+      "images": ["images/piasek2A.jpeg"]
+    },
+    {
+      "projectId": "aranzacja-piaskowa-3",
+      "projectName": "Ogród Piaskowy z Głazami III",
+      "category": "Zakładanie Ogrodów",
+      "description": "Suchy ogród ozdobny przełamany barwnymi bylinami tolerującymi wysokie nasłonecznienie.",
+      "images": ["images/piasek3A.jpeg"]
+    },
+    {
+      "projectId": "wyspa-zieleni-1",
+      "projectName": "Centralna Wyspa Ogrodowa I",
+      "category": "Projektowanie Ogrodów",
+      "isFeatured": true,
+      "description": "Wielopoziomowa, podwyższona rabata z bogatą roślinnością zimozieloną jako punkt centralny ogrodu.",
+      "images": ["images/wyspa-zieleni1A.jpeg"]
+    },
+    {
+      "projectId": "wyspa-zieleni-2",
+      "projectName": "Centralna Wyspa Ogrodowa II",
+      "category": "Projektowanie Ogrodów",
+      "description": "Aranżacja wyspowa z dominacją traw ozdobnych szumiących na wietrze i roślin kwitnących.",
+      "images": ["images/wyspa-zieleni2A.jpeg"]
+    },
+    {
+      "projectId": "kamienne-patio",
+      "projectName": "Patio i Ścieżka z Naturalnego Kamienia",
+      "category": "Mała Architektura",
+      "description": "Precyzyjnie ułożona nawierzchnia z łupanego kamienia naturalnego tworząca strefę relaksu w ogrodzie.",
+      "images": ["images/patio-sciezka1A.jpeg", "images/patio-sciezka1B.jpeg"]
+    },
+    {
+      "projectId": "rewitalizacja-rabat",
+      "projectName": "Rewitalizacja Rabat Kwiatowych",
+      "category": "Pielęgnacja Zieleni",
+      "description": "Odnowienie starych rabat kwiatowych, wymiana ziemi oraz wprowadzenie kompozycji bylin wieloletnich.",
+      "images": ["images/kwiaty1A.jpeg"]
+    }
+  ],
+  "categories": [
+    "Wszystkie",
+    "Wyróżnione",
+    "Projektowanie Ogrodów",
+    "Zakładanie Ogrodów",
+    "Pielęgnacja Zieleni",
+    "Mała Architektura"
+  ]
+}
