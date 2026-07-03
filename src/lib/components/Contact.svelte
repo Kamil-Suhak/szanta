@@ -4,6 +4,7 @@
 	import { services } from '$lib/lang/pl/services';
 	import { enhance } from '$app/forms';
 	import { fade, slide, fly } from 'svelte/transition';
+	import Button from './Button.svelte';
 	import {
 		Phone,
 		Mail,
@@ -193,12 +194,12 @@
 								<p class="mb-8 max-w-md text-lg text-(--text-muted) leading-relaxed">
 									{contact.form.successMessage}
 								</p>
-								<button
+								<Button
 									onclick={handleReset}
-									class="btn-primary px-8 py-3.5 text-sm"
+									class="px-8 py-3.5 text-sm"
 								>
 									{contact.form.sendAnother}
-								</button>
+								</Button>
 							</div>
 						{:else}
 							<!-- Contact Form State -->
@@ -427,10 +428,10 @@
 
 									<!-- Submit Button -->
 									<div class="pt-4">
-										<button
+										<Button
 											type="submit"
 											disabled={isSubmitting}
-											class="btn-primary flex w-full items-center justify-center gap-3 py-4.5 text-base disabled:opacity-70 disabled:cursor-not-allowed"
+											class="flex w-full items-center justify-center gap-3 py-4.5 text-base disabled:opacity-70 disabled:cursor-not-allowed"
 										>
 											{#if isSubmitting}
 												<!-- Loading Spinner -->
@@ -439,7 +440,7 @@
 											{:else}
 												<span>{contact.form.submitButton}</span>
 											{/if}
-										</button>
+										</Button>
 									</div>
 								</form>
 							</div>

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { nav } from '$lib/lang/pl/nav';
 	import { Leaf } from 'lucide-svelte';
+	import Button from './Button.svelte';
 
 	let isScrolled = $state(false);
 </script>
@@ -8,7 +9,7 @@
 <svelte:window onscroll={() => (isScrolled = window.scrollY > 20)} />
 
 <nav
-	class="fixed top-0 left-0 z-1000 w-full transition-all duration-500 ease-in-out {isScrolled
+	class="fixed top-0 left-0 z-1000 w-full transition-[height,background-color,padding,border-color,box-shadow] duration-500 ease-in-out {isScrolled
 		? 'h-[70px] border-b border-gray-200/20 bg-white/80 py-2 shadow-lg backdrop-blur-xl'
 		: 'h-[90px] bg-transparent py-4'}"
 >
@@ -47,13 +48,12 @@
 			{/each}
 		</div>
 
-		<a
+		<Button
 			href="#kontakt"
-			class="px-5 py-2.5 text-xs whitespace-nowrap md:px-8 md:py-3.5 md:text-sm {isScrolled
-				? 'btn-primary'
-				: 'btn-secondary'}"
+			variant={isScrolled ? 'primary' : 'secondary'}
+			class="px-5 py-2.5 text-xs whitespace-nowrap md:px-8 md:py-3.5 md:text-sm"
 		>
 			{nav.cta}
-		</a>
+		</Button>
 	</div>
 </nav>

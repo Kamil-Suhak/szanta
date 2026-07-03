@@ -2,6 +2,7 @@
 	import { hero } from '$lib/lang/pl/hero';
 	import { onMount } from 'svelte';
 	import { CalendarDays, FolderCheck, BadgeCheck } from 'lucide-svelte';
+	import Button from './Button.svelte';
 
 	let visible = $state(false);
 
@@ -57,9 +58,9 @@
 				class="mb-24 flex animate-fade-in-left flex-wrap gap-6 opacity-0"
 				style="animation-delay: 0.8s"
 			>
-				<a href="#realizacje" class="btn-primary px-12 py-5 text-center text-lg">
+				<Button href="#realizacje" class="px-12 py-5 text-center text-lg">
 					{hero.ctaPrimary}
-				</a>
+				</Button>
 				<a href="#kontakt" class="btn-secondary px-12 py-5 text-center text-lg">
 					{hero.ctaSecondary}
 				</a>
