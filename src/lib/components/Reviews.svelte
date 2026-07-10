@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { reviewsData } from '$lib/lang/pl/reviews';
-	import { Quote, Star } from 'lucide-svelte';
+	import { Quote } from 'lucide-svelte';
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
@@ -54,14 +54,14 @@
 
 	<div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10">
 		<!-- Section Header -->
-		<div class="mb-12 text-center">
-			<h2 class="mb-3 text-3xl font-extrabold tracking-tight text-(--forest-green) sm:text-4xl">
+		<div class="mb-16 text-center">
+			<h2 class="mb-4 text-4xl font-extrabold tracking-tight text-(--forest-green) sm:text-5xl">
 				{reviewsData.title}
 			</h2>
 			<p class="mx-auto max-w-2xl text-base text-(--text-muted)">
 				{reviewsData.subtitle}
 			</p>
-			<div class="mx-auto mt-4 h-1 w-20 rounded bg-(--forest-green)"></div>
+			<div class="mx-auto mt-4 h-1 w-24 rounded bg-(--forest-green)"></div>
 		</div>
 
 		<!-- Semi-Circular Layout -->
@@ -133,13 +133,6 @@
 								in:fade={{ duration: 300, delay: 150 }}
 								out:fade={{ duration: 150 }}
 							>
-								<!-- Star Rating -->
-								<div class="mb-4 flex gap-1 text-amber-400 pl-6 sm:pl-0 pt-2 sm:pt-0">
-									{#each Array(activeReview.rating) as _, i (i)}
-										<Star size={20} fill="currentColor" strokeWidth={0} />
-									{/each}
-								</div>
-
 								<!-- Review Text -->
 								<!-- Added line-clamp to truncate responsively at full words with an ellipsis -->
 								<blockquote class="mb-6 text-lg sm:text-xl font-medium leading-relaxed text-(--text-dark) italic line-clamp-4 sm:line-clamp-5">

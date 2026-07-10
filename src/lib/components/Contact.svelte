@@ -98,10 +98,10 @@
 			<h2 class="mb-4 text-4xl font-extrabold tracking-tight text-(--forest-green) sm:text-5xl">
 				{contact.title}
 			</h2>
-			<p class="mx-auto max-w-2xl text-lg text-(--text-muted)">
+			<p class="mx-auto max-w-2xl text-base text-(--text-muted)">
 				{contact.subtitle}
 			</p>
-			<div class="mx-auto mt-6 h-1 w-24 rounded bg-(--forest-green)"></div>
+			<div class="mx-auto mt-4 h-1 w-24 rounded bg-(--forest-green)"></div>
 		</div>
 
 		<!-- Main Grid -->

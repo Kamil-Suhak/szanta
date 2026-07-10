@@ -121,16 +121,16 @@
 />
 
 <section id="realizacje" class="relative bg-white py-24">
-	<div class="container mx-auto max-w-[1200px] px-6 sm:px-12 lg:px-16">
+	<div class="container mx-auto max-w-[1440px] px-6 sm:px-12 lg:px-16">
 		
 		<div class="mb-16 text-center">
-			<h2 class="mb-4 text-4xl font-extrabold tracking-tight text-text-dark sm:text-5xl">
+			<h2 class="mb-4 text-4xl font-extrabold tracking-tight text-(--forest-green) sm:text-5xl">
 				{sectionData.title}
 			</h2>
-			<p class="mx-auto max-w-2xl text-lg text-gray-600 font-medium sm:text-xl">
+			<p class="mx-auto max-w-2xl text-base text-(--text-muted)">
 				{sectionData.subtitle}
 			</p>
-			<div class="mx-auto mt-6 h-1.5 w-20 rounded bg-forest-green"></div>
+			<div class="mx-auto mt-4 h-1 w-24 rounded bg-(--forest-green)"></div>
 		</div>
 
 		{#if manifest.beforeAfter && manifest.beforeAfter.length > 0}
@@ -262,17 +262,17 @@
 			{/each}
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 mt-16">
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 lg:gap-12 mt-16">
 			{#each filteredProjects as project, idx (project.projectId)}
 				<button 
 					animate:flip={{ duration: 400 }}
 					in:fade={{ duration: 300 }}
 					out:fade={{ duration: 300 }}
-					class="group w-full text-left cursor-pointer focus:outline-none self-start {getCardClasses(idx).span}"
+					class="group w-full text-left cursor-pointer focus:outline-none self-start col-span-1"
 					onclick={() => selectedProject = project}
 				>
 					<div class="w-full overflow-hidden rounded-2xl shadow-sm border border-gray-100 bg-white transition-transform duration-300 group-hover:-translate-y-1.5">
-						<div class="w-full overflow-hidden {getCardClasses(idx).aspect}">
+						<div class="w-full overflow-hidden aspect-[4/3]">
 							<CloudflareImage 
 								src={project.images[0]} 
 								alt={project.projectName} 
