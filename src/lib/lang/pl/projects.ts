@@ -6,9 +6,10 @@ export const sectionData = {
 	before: 'Przed',
 	after: 'Po',
 	ariaLabel: 'Suwak przed i po',
-	ctaBeforeAfter: 'Chcę podobną zmianę u siebie',
+	ctaBeforeAfter: 'Chcę taką zmianę u siebie',
 	otherProjectsTitle: 'Zobacz pozostałe realizacje',
-	otherProjectsSubtitle: 'Skorzystaj z filtrów poniżej, aby wyszukać realizacje z poszczególnych kategorii prac.',
+	otherProjectsSubtitle:
+		'Skorzystaj z filtrów poniżej, aby wyszukać realizacje z poszczególnych kategorii.',
 	featured: 'Wyróżnione',
 	details: 'Zobacz szczegóły',
 	ctaDetails: 'Chcę podobny projekt'

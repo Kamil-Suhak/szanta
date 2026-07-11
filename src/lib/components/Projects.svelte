@@ -109,11 +109,11 @@
 	}
 </script>
 
-<svelte:window 
+<svelte:window
 	onmousemove={handleMouseMove}
-	onmouseup={() => isDraggingSlider = false}
+	onmouseup={() => (isDraggingSlider = false)}
 	ontouchmove={handleTouchMoveSlider}
-	ontouchend={() => isDraggingSlider = false}
+	ontouchend={() => (isDraggingSlider = false)}
 	onresize={checkMobile}
 	onkeydown={(e) => {
 		if (e.key === 'Escape') selectedProject = null;
@@ -122,7 +122,6 @@
 
 <section id="realizacje" class="relative bg-white py-24">
 	<div class="container mx-auto max-w-[1440px] px-6 sm:px-12 lg:px-16">
-		
 		<div class="mb-16 text-center">
 			<h2 class="mb-4 text-4xl font-extrabold tracking-tight text-(--forest-green) sm:text-5xl">
 				{sectionData.title}
@@ -134,12 +133,12 @@
 		</div>
 
 		{#if manifest.beforeAfter && manifest.beforeAfter.length > 0}
-			<div class="mb-24 bg-gray-50/50 rounded-3xl p-6 md:p-8 lg:p-12 border border-gray-100">
-				<div 
+			<div class="mb-24 rounded-3xl border border-gray-100 bg-gray-50/50 p-6 md:p-8 lg:p-12">
+				<div
 					bind:this={sliderContainer}
-					class="relative w-full max-w-[950px] mx-auto aspect-16/9 overflow-hidden rounded-2xl shadow-md select-none cursor-ew-resize border border-gray-200 bg-gray-100"
-					onmousedown={() => isDraggingSlider = true}
-					ontouchstart={() => isDraggingSlider = true}
+					class="relative mx-auto aspect-video w-full max-w-[950px] cursor-ew-resize overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-md select-none"
+					onmousedown={() => (isDraggingSlider = true)}
+					ontouchstart={() => (isDraggingSlider = true)}
 					onkeydown={handleKeyDownSlider}
 					role="slider"
 					aria-valuenow={sliderPos}
@@ -149,50 +148,58 @@
 					tabindex="0"
 				>
 					<div class="absolute inset-0 bg-gray-200">
-						<CloudflareImage 
-							src={manifest.beforeAfter[activeBeforeAfterIdx].afterImage} 
-							alt={sectionData.after} 
-							class="absolute inset-0 w-full h-full object-cover pointer-events-none" 
+						<CloudflareImage
+							src={manifest.beforeAfter[activeBeforeAfterIdx].afterImage}
+							alt={sectionData.after}
+							class="pointer-events-none absolute inset-0 h-full w-full object-cover"
 						/>
-						<div class="absolute bottom-4 right-4 bg-forest-green/95 backdrop-blur-md text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-lg pointer-events-none">
+						<div
+							class="pointer-events-none absolute right-4 bottom-4 rounded-lg bg-forest-green/95 px-3 py-1.5 text-xs font-bold tracking-widest text-white uppercase backdrop-blur-md"
+						>
 							{sectionData.after}
 						</div>
 					</div>
 
-					<div 
-						class="absolute inset-0 pointer-events-none z-10" 
+					<div
+						class="pointer-events-none absolute inset-0 z-10"
 						style="clip-path: inset(0 {100 - sliderPos}% 0 0);"
 						transition:fade={{ duration: 450 }}
 					>
-						<CloudflareImage 
-							src={manifest.beforeAfter[activeBeforeAfterIdx].beforeImage} 
-							alt={sectionData.before} 
-							class="absolute inset-0 w-full h-full object-cover" 
+						<CloudflareImage
+							src={manifest.beforeAfter[activeBeforeAfterIdx].beforeImage}
+							alt={sectionData.before}
+							class="absolute inset-0 h-full w-full object-cover"
 						/>
-						<div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-lg pointer-events-none">
+						<div
+							class="pointer-events-none absolute bottom-4 left-4 rounded-lg bg-black/60 px-3 py-1.5 text-xs font-bold tracking-widest text-white uppercase backdrop-blur-md"
+						>
 							{sectionData.before}
 						</div>
 					</div>
 
-					<div 
-						class="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-20 shadow-[0_0_10px_rgba(0,0,0,0.3)]"
+					<div
+						class="absolute top-0 bottom-0 z-20 w-1 cursor-ew-resize bg-white shadow-[0_0_10px_rgba(0,0,0,0.3)]"
 						style="left: {sliderPos}%"
 					>
-						<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center border border-gray-200 hover:scale-105 active:scale-95 transition-transform z-30 pointer-events-none">
-							<ChevronLeft size={14} class="text-gray-500 mr-0.5" />
-							<ChevronRight size={14} class="text-gray-500 ml-0.5" />
+						<div
+							class="pointer-events-none absolute top-1/2 left-1/2 z-30 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white shadow-lg transition-transform hover:scale-105 active:scale-95"
+						>
+							<ChevronLeft size={14} class="mr-0.5 text-gray-500" />
+							<ChevronRight size={14} class="ml-0.5 text-gray-500" />
 						</div>
 					</div>
 				</div>
 
-				<div class="mt-8 max-w-[950px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6 border-t border-gray-200/60 pt-8">
-					<div class="flex-1 grid grid-cols-1 grid-rows-1">
+				<div
+					class="mx-auto mt-8 flex max-w-[950px] flex-col justify-between gap-6 border-t border-gray-200/60 pt-8 md:flex-row md:items-center"
+				>
+					<div class="grid flex-1 grid-cols-1 grid-rows-1 min-h-[96px] sm:min-h-[72px]">
 						{#key activeBeforeAfterIdx}
 							<div class="col-start-1 row-start-1" transition:fade={{ duration: 350 }}>
-								<h3 class="text-2xl font-extrabold tracking-tight text-text-dark mb-2">
+								<h3 class="mb-2 text-2xl font-extrabold tracking-tight text-text-dark">
 									{manifest.beforeAfter[activeBeforeAfterIdx].title}
 								</h3>
-								<p class="text-sm text-gray-500 max-w-xl leading-relaxed">
+								<p class="max-w-xl text-sm leading-relaxed text-gray-500">
 									{manifest.beforeAfter[activeBeforeAfterIdx].description}
 								</p>
 							</div>
@@ -200,13 +207,13 @@
 					</div>
 
 					<div class="flex flex-wrap items-center gap-4">
-						<div class="flex gap-1 bg-gray-200/60 p-1 rounded-full">
+						<div class="flex gap-1 rounded-full bg-gray-200/60 p-1">
 							{#each manifest.beforeAfter as item, idx (item.id)}
-								<button 
-									class="px-4 py-1.5 text-xs font-bold rounded-full transition-all duration-300
-										{idx === activeBeforeAfterIdx 
-											? 'bg-white text-forest-green shadow-sm' 
-											: 'text-gray-500 hover:text-text-dark'}"
+								<button
+									class="rounded-full px-4 py-1.5 text-xs font-bold transition-all duration-300
+										{idx === activeBeforeAfterIdx
+										? 'bg-white text-forest-green shadow-sm'
+										: 'text-gray-500 hover:text-text-dark'}"
 									onclick={() => {
 										activeBeforeAfterIdx = idx;
 										sliderPos = 50;
@@ -217,9 +224,9 @@
 							{/each}
 						</div>
 
-						<Button 
-							href="#kontakt" 
-							class="no-underline inline-block px-6 py-3.5 text-center text-sm font-bold tracking-wider"
+						<Button
+							href="#kontakt"
+							class="inline-block px-6 py-3.5 text-center text-sm font-bold tracking-wider no-underline"
 						>
 							{sectionData.ctaBeforeAfter}
 						</Button>
@@ -248,7 +255,7 @@
 						: activeCategory === category
 							? 'border-forest-green bg-forest-green text-white shadow-md'
 							: 'border-forest-green bg-transparent text-text-dark hover:bg-gray-100'}"
-					onclick={() => activeCategory = category}
+					onclick={() => (activeCategory = category)}
 				>
 					{#if category === sectionData.featured}
 						<Star
@@ -262,44 +269,58 @@
 			{/each}
 		</div>
 
-		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 lg:gap-12 mt-16">
+		<div
+			class="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 xl:grid-cols-4"
+		>
 			{#each filteredProjects as project, idx (project.projectId)}
-				<button 
+				<button
 					animate:flip={{ duration: 400 }}
 					in:fade={{ duration: 300 }}
 					out:fade={{ duration: 300 }}
-					class="group w-full text-left cursor-pointer focus:outline-none self-start col-span-1"
-					onclick={() => selectedProject = project}
+					class="group col-span-1 w-full cursor-pointer self-start text-left focus:outline-none"
+					onclick={() => (selectedProject = project)}
 				>
-					<div class="w-full overflow-hidden rounded-2xl shadow-sm border border-gray-100 bg-white transition-transform duration-300 group-hover:-translate-y-1.5">
-						<div class="w-full overflow-hidden aspect-[4/3]">
-							<CloudflareImage 
-								src={project.images[0]} 
-								alt={project.projectName} 
-								class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103" 
+					<div
+						class="w-full overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-transform duration-300 group-hover:-translate-y-1.5"
+					>
+						<div class="aspect-4/3 w-full overflow-hidden">
+							<CloudflareImage
+								src={project.images[0]}
+								alt={project.projectName}
+								class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-103"
 							/>
 						</div>
-						
-						<div class="p-6 bg-white">
+
+						<div class="bg-white p-6">
 							<div>
 								<div class="mb-2 flex items-center justify-between gap-2">
-									<span class="block text-[10px] font-extrabold tracking-widest text-forest-green uppercase">
+									<span
+										class="block text-[10px] font-extrabold tracking-widest text-forest-green uppercase"
+									>
 										{project.category}
 									</span>
 									{#if project.isFeatured}
 										<div class="flex items-center text-[10px] font-bold tracking-wider uppercase">
-											<span class="mr-0 rounded-lg rounded-r-none bg-yellow-100 py-1 pl-2 text-yellow-800">
+											<span
+												class="mr-0 rounded-lg rounded-r-none bg-yellow-100 py-1 pl-2 text-yellow-800"
+											>
 												{sectionData.featured}
 											</span>
-											<Star class="mx-0 inline-block h-5.5 w-5.5 rounded-lg rounded-l-none bg-yellow-100 fill-yellow-500 px-1 py-0.5 text-yellow-500" />
+											<Star
+												class="mx-0 inline-block h-5.5 w-5.5 rounded-lg rounded-l-none bg-yellow-100 fill-yellow-500 px-1 py-0.5 text-yellow-500"
+											/>
 										</div>
 									{/if}
 								</div>
-								<h3 class="text-lg font-extrabold text-text-dark leading-snug group-hover:text-forest-green transition-colors duration-300">
+								<h3
+									class="text-lg leading-snug font-extrabold text-text-dark transition-colors duration-300 group-hover:text-forest-green"
+								>
 									{project.projectName}
 								</h3>
 							</div>
-							<div class="mt-4 flex items-center text-sm font-bold text-forest-green gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+							<div
+								class="mt-4 flex items-center gap-1 text-sm font-bold text-forest-green opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+							>
 								<span>{sectionData.details}</span>
 								<ChevronRight size={16} class="transition-transform group-hover:translate-x-1" />
 							</div>
@@ -314,7 +335,6 @@
 				</div>
 			{/if}
 		</div>
-
 	</div>
 </section>
 
@@ -325,7 +345,7 @@
 		<div
 			class="absolute inset-0 bg-black/60 transition-opacity {isMobile ? '' : 'backdrop-blur-sm'}"
 			transition:fade={{ duration: 300 }}
-			onclick={() => selectedProject = null}
+			onclick={() => (selectedProject = null)}
 		></div>
 
 		<div
@@ -352,7 +372,7 @@
 			{#if !isMobile}
 				<button
 					class="absolute top-6 right-6 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 shadow-sm backdrop-blur-md transition-colors hover:bg-gray-100"
-					onclick={() => selectedProject = null}
+					onclick={() => (selectedProject = null)}
 				>
 					<X size={20} class="text-gray-600" />
 				</button>
@@ -364,7 +384,7 @@
 						<CloudflareImage
 							src={image}
 							alt={selectedProject.projectName}
-							class="w-full max-h-[300px] lg:max-h-[400px] rounded-2xl object-cover shadow-sm"
+							class="max-h-[300px] w-full rounded-2xl object-cover shadow-sm lg:max-h-[400px]"
 						/>
 					{/each}
 				</div>
@@ -378,10 +398,14 @@
 						</span>
 						{#if selectedProject.isFeatured}
 							<div class="flex items-center text-xs font-bold tracking-widest uppercase">
-								<span class="mr-0 rounded-lg rounded-r-none bg-yellow-100 py-1 pl-2 text-yellow-800">
+								<span
+									class="mr-0 rounded-lg rounded-r-none bg-yellow-100 py-1 pl-2 text-yellow-800"
+								>
 									{sectionData.featured}
 								</span>
-								<Star class="mx-0 inline-block h-6.5 w-6.5 rounded-lg rounded-l-none bg-yellow-100 fill-yellow-500 px-1.5 py-0.5 text-yellow-500" />
+								<Star
+									class="mx-0 inline-block h-6.5 w-6.5 rounded-lg rounded-l-none bg-yellow-100 fill-yellow-500 px-1.5 py-0.5 text-yellow-500"
+								/>
 							</div>
 						{/if}
 					</div>
@@ -397,7 +421,7 @@
 					<Button
 						href="#kontakt"
 						class="block w-full px-8 py-4 text-center text-lg no-underline"
-						onclick={() => selectedProject = null}
+						onclick={() => (selectedProject = null)}
 					>
 						{sectionData.ctaDetails}
 					</Button>
