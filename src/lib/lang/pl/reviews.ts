@@ -51,6 +51,30 @@ export const reviewsData = {
 			text: 'Szybka i sprawna przycinka drzew w parkach. Firma dysponuje profesjonalnym sprzętem i wiedzą. Zostawili po sobie idealny porządek. Gorąco polecamy!',
 			relative_time_description: 'miesiąc temu',
 			initial: 'Z'
+		},
+		{
+			id: '6',
+			author_name: 'Deweloper Silesia',
+			rating: 5,
+			text: 'Zieleń wokół naszej nowej inwestycji została zaprojektowana i wykonana wzorowo. Estetyka, staranność i dobór roślin stoją na najwyższym poziomie.',
+			relative_time_description: '4 miesiące temu',
+			initial: 'D'
+		},
+		{
+			id: '7',
+			author_name: 'Hotel Zielony Kąt',
+			rating: 5,
+			text: 'Dzięki firmie Szanta otoczenie naszego hotelu zyskało nowy, reprezentacyjny wygląd. Nasi goście są zachwyceni ogrodem. Profesjonalizm w każdym calu.',
+			relative_time_description: '5 miesięcy temu',
+			initial: 'H'
+		},
+		{
+			id: '8',
+			author_name: 'Centrum Logistyczne',
+			rating: 5,
+			text: 'Prace pielęgnacyjne i utrzymanie terenów zielonych na rozległym terenie centrum przebiegają zawsze bez zakłóceń. Cieszymy się z długofalowej współpracy.',
+			relative_time_description: '8 miesięcy temu',
+			initial: 'C'
 		}
 	] as Review[]
 };
