@@ -1,94 +1,258 @@
 {
-  "beforeAfter": [
-    {
-      "id": "patio-transformacja",
-      "title": "Renowacja ścieżki i patio",
-      "description": "Niesamowity proces przemiany starej, nierównej ścieżki w elegancką i trwałą trasę z wykonaniem z naturalnego kamienia.",
-      "beforeImage": "images/patio-sciezka1A.jpeg",
-      "afterImage": "images/patio-sciezka1B.jpeg"
-    },
-    {
-      "id": "przystanek-zielony",
-      "title": "Zielona wiatka przystankowa",
-      "description": "Przemiana betonowej konstrukcji w oazę ekologiczną z dachem retencyjnym i bujną roślinnością.",
-      "beforeImage": "images/przystanek1A.jpeg",
-      "afterImage": "images/przystanek1B.jpeg"
-    }
-  ],
-  "projects": [
-    {
-      "projectId": "zielony-przystanek-1",
-      "projectName": "Zielony Przystanek - Wariant I",
-      "category": "Mała Architektura",
-      "isFeatured": true,
-      "description": "Nowoczesny zielony przystanek miejski z dachem pokrytym rozchodnikiem oraz kompozycją traw ozdobnych.",
-      "images": ["images/przystanek1A.jpeg", "images/przystanek1B.jpeg"]
-    },
-    {
-      "projectId": "zielony-przystanek-2",
-      "projectName": "Zielony Przystanek - Wariant II",
-      "category": "Mała Architektura",
-      "description": "Kolejna realizacja proekologicznej wiaty miejskiej z gęstym nasadzeniem bylin filtrujących powietrze.",
-      "images": ["images/przystanek2A.jpeg", "images/przystanek2B.jpeg"]
-    },
-    {
-      "projectId": "aranzacja-piaskowa-1",
-      "projectName": "Ogród Piaskowy z Głazami I",
-      "category": "Zakładanie Ogrodów",
-      "description": "Minimalistyczny i niewymagający częstej pielęgnacji ogród żwirowy z elementami sucholubnymi.",
-      "images": ["images/piasek1A.jpeg"]
-    },
-    {
-      "projectId": "aranzacja-piaskowa-2",
-      "projectName": "Ogród Piaskowy z Głazami II",
-      "category": "Zakładanie Ogrodów",
-      "isFeatured": true,
-      "description": "Kompaktowa aranżacja sucha stanowiąca świetną ozdobę przy wjeździe na posesję.",
-      "images": ["images/piasek2A.jpeg"]
-    },
-    {
-      "projectId": "aranzacja-piaskowa-3",
-      "projectName": "Ogród Piaskowy z Głazami III",
-      "category": "Zakładanie Ogrodów",
-      "description": "Suchy ogród ozdobny przełamany barwnymi bylinami tolerującymi wysokie nasłonecznienie.",
-      "images": ["images/piasek3A.jpeg"]
-    },
-    {
-      "projectId": "wyspa-zieleni-1",
-      "projectName": "Centralna Wyspa Ogrodowa I",
-      "category": "Projektowanie Ogrodów",
-      "isFeatured": true,
-      "description": "Wielopoziomowa, podwyższona rabata z bogatą roślinnością zimozieloną jako punkt centralny ogrodu.",
-      "images": ["images/wyspa-zieleni1A.jpeg"]
-    },
-    {
-      "projectId": "wyspa-zieleni-2",
-      "projectName": "Centralna Wyspa Ogrodowa II",
-      "category": "Projektowanie Ogrodów",
-      "description": "Aranżacja wyspowa z dominacją traw ozdobnych szumiących na wietrze i roślin kwitnących.",
-      "images": ["images/wyspa-zieleni2A.jpeg"]
-    },
-    {
-      "projectId": "kamienne-patio",
-      "projectName": "Patio i Ścieżka z Naturalnego Kamienia",
-      "category": "Mała Architektura",
-      "description": "Precyzyjnie ułożona nawierzchnia z łupanego kamienia naturalnego tworząca strefę relaksu w ogrodzie.",
-      "images": ["images/patio-sciezka1A.jpeg", "images/patio-sciezka1B.jpeg"]
-    },
-    {
-      "projectId": "rewitalizacja-rabat",
-      "projectName": "Rewitalizacja Rabat Kwiatowych",
-      "category": "Pielęgnacja Zieleni",
-      "description": "Odnowienie starych rabat kwiatowych, wymiana ziemi oraz wprowadzenie kompozycji bylin wieloletnich.",
-      "images": ["images/kwiaty1A.jpeg"]
-    }
-  ],
-  "categories": [
-    "Wszystkie",
-    "Wyróżnione",
-    "Projektowanie Ogrodów",
-    "Zakładanie Ogrodów",
-    "Pielęgnacja Zieleni",
-    "Mała Architektura"
-  ]
+	"projects": [
+		{
+			"projectId": "ogrod-1",
+			"projectName": "Ogród 1",
+			"category": "Zakładanie Ogrodów",
+			"description": "Kompleksowa realizacja ogrodu przydomowego z wykorzystaniem kamienia naturalnego.",
+			"images": [
+				"/images/projects/Ogród 1/1.JPG",
+				"/images/projects/Ogród 1/3.JPG",
+				"/images/projects/Ogród 1/5.JPG",
+				"/images/projects/Ogród 1/6.JPG",
+				"/images/projects/Ogród 1/8.JPG",
+				"/images/projects/Ogród 1/11.JPG"
+			]
+		},
+		{
+			"projectId": "ogrod-2",
+			"projectName": "Ogród 2",
+			"category": "Projektowanie Ogrodów",
+			"description": "Nowoczesny projekt ogrodu uwzględniający dbałość o detale i estetykę otoczenia.",
+			"images": [
+				"/images/projects/Ogród 2/1.jpg",
+				"/images/projects/Ogród 2/2.jpg",
+				"/images/projects/Ogród 2/3.jpg",
+				"/images/projects/Ogród 2/5.jpg"
+			]
+		},
+		{
+			"projectId": "ogrod-3",
+			"projectName": "Ogród 3",
+			"category": "Zakładanie Ogrodów",
+			"description": "Zieleń idealnie dopasowana do architektury budynku, tworząca harmonijną spójność.",
+			"images": [
+				"/images/projects/Ogród 3/1.jpg",
+				"/images/projects/Ogród 3/3.jpg",
+				"/images/projects/Ogród 3/5.jpg",
+				"/images/projects/Ogród 3/8.jpg"
+			]
+		},
+		{
+			"projectId": "ogrod-4",
+			"projectName": "Ogród 4",
+			"category": "Pielęgnacja Zieleni",
+			"description": "Profesjonalna pielęgnacja istniejącej zieleni i staranne przygotowanie terenu.",
+			"images": ["/images/projects/Ogród 4/3.JPG", "/images/projects/Ogród 4/8.JPG"]
+		},
+		{
+			"projectId": "ogrod-5",
+			"projectName": "Ogród 5",
+			"category": "Zakładanie Ogrodów",
+			"description": "Rozbudowana aranżacja przestrzeni wokół domu z bogatą roślinnością i bylinami.",
+			"isFeatured": true,
+			"images": [
+				"/images/projects/Ogród 5/1.JPG",
+				"/images/projects/Ogród 5/2.JPG",
+				"/images/projects/Ogród 5/3.JPG",
+				"/images/projects/Ogród 5/4.JPG",
+				"/images/projects/Ogród 5/5.JPG",
+				"/images/projects/Ogród 5/6.JPG",
+				"/images/projects/Ogród 5/6a.JPG",
+				"/images/projects/Ogród 5/7.JPG",
+				"/images/projects/Ogród 5/8.JPG",
+				"/images/projects/Ogród 5/14.JPG",
+				"/images/projects/Ogród 5/15.JPG",
+				"/images/projects/Ogród 5/17.JPG",
+				"/images/projects/Ogród 5/18.JPG",
+				"/images/projects/Ogród 5/19.JPG",
+				"/images/projects/Ogród 5/24.JPG"
+			]
+		},
+		{
+			"projectId": "ogrod-6",
+			"projectName": "Ogród 6",
+			"category": "Projektowanie Ogrodów",
+			"description": "Starannie zaprojektowane nasadzenia nadające otoczeniu wyjątkowy charakter.",
+			"images": [
+				"/images/projects/Ogród 6/1 (2).jpg",
+				"/images/projects/Ogród 6/1 (7).jpg",
+				"/images/projects/Ogród 6/1 (9).jpg",
+				"/images/projects/Ogród 6/1 (11).jpg",
+				"/images/projects/Ogród 6/1 (12).jpg",
+				"/images/projects/Ogród 6/1 (16).jpg"
+			]
+		},
+		{
+			"projectId": "park-2",
+			"projectName": "Park 2",
+			"category": "Zakładanie Ogrodów",
+			"description": "Rewitalizacja przestrzeni publicznej: zieleń miejska i estetyczne alejki spacerowe.",
+			"images": [
+				"/images/projects/Park 2/1.jpg",
+				"/images/projects/Park 2/2.jpg",
+				"/images/projects/Park 2/3.jpg",
+				"/images/projects/Park 2/6.jpg",
+				"/images/projects/Park 2/11.jpg",
+				"/images/projects/Park 2/12.jpg",
+				"/images/projects/Park 2/17.jpg"
+			]
+		},
+		{
+			"projectId": "park-siedlce",
+			"projectName": "Park w Siedlcu",
+			"category": "Pielęgnacja Zieleni",
+			"description": "Staranna pielęgnacja i odnowienie istniejącej zieleni w Parku w Siedlcu.",
+			"images": [
+				"/images/projects/Park w Siedlcu/1.JPG",
+				"/images/projects/Park w Siedlcu/2.JPG",
+				"/images/projects/Park w Siedlcu/3.JPG",
+				"/images/projects/Park w Siedlcu/4.JPG",
+				"/images/projects/Park w Siedlcu/5.JPG",
+				"/images/projects/Park w Siedlcu/7.JPG",
+				"/images/projects/Park w Siedlcu/8.JPG",
+				"/images/projects/Park w Siedlcu/DSC07824.JPG",
+				"/images/projects/Park w Siedlcu/DSC08785.JPG",
+				"/images/projects/Park w Siedlcu/DSC08788.JPG",
+				"/images/projects/Park w Siedlcu/DSC08791.JPG"
+			]
+		},
+		{
+			"projectId": "potok-mostem",
+			"projectName": "Potok z mostem",
+			"category": "Mała Architektura",
+			"description": "Wykonanie malowniczego potoku z kamiennym mostem oraz nasadzeniami tuż nad wodą.",
+			"isFeatured": true,
+			"images": [
+				"/images/projects/Potok z mostem/IMG_0336.JPG",
+				"/images/projects/Potok z mostem/IMG_0318.JPG",
+				"/images/projects/Potok z mostem/IMG_0322.JPG",
+				"/images/projects/Potok z mostem/IMG_0332.JPG",
+				"/images/projects/Potok z mostem/IMG_6964.JPG",
+				"/images/projects/Potok z mostem/IMG_6992.JPG",
+				"/images/projects/Potok z mostem/1016526_565715483471598_856310930_n.jpg",
+				"/images/projects/Potok z mostem/1044408_565715786804901_1718674674_n.jpg",
+				"/images/projects/Potok z mostem/1162_565716073471539_1172220_n.jpg",
+				"/images/projects/Potok z mostem/994166_565715346804945_1327284498_n.jpg"
+			]
+		},
+		{
+			"projectId": "rondo-flagi",
+			"projectName": "Rondo Flagi RP",
+			"category": "Zakładanie Ogrodów",
+			"description": "Estetyczna zieleń miejska i staranny układ drogowy przy Rondzie Flagi RP.",
+			"images": [
+				"/images/projects/Rondo Flagi RP/5.JPG",
+				"/images/projects/Rondo Flagi RP/10.JPG",
+				"/images/projects/Rondo Flagi RP/11.JPG",
+				"/images/projects/Rondo Flagi RP/29.jpg"
+			]
+		},
+		{
+			"projectId": "rondo-zawiercie",
+			"projectName": "Rondo Zawiercie",
+			"category": "Zakładanie Ogrodów",
+			"description": "Aranżacja nowoczesnej zieleni miejskiej na reprezentacyjnym rondzie w Zawierciu.",
+			"images": [
+				"/images/projects/Rondo Zawiercie/3.JPG",
+				"/images/projects/Rondo Zawiercie/9.JPG",
+				"/images/projects/Rondo Zawiercie/13.JPG",
+				"/images/projects/Rondo Zawiercie/27.jpg"
+			]
+		},
+		{
+			"projectId": "silownia",
+			"projectName": "Siłownia na powietrzu",
+			"category": "Mała Architektura",
+			"description": "Kompleksowa realizacja placu sportowego z urządzeniami zewnętrznymi i bezpieczną nawierzchnią.",
+			"images": [
+				"/images/projects/Siłownia na powietrzu/1.JPG",
+				"/images/projects/Siłownia na powietrzu/2.JPG",
+				"/images/projects/Siłownia na powietrzu/7.JPG",
+				"/images/projects/Siłownia na powietrzu/8.JPG",
+				"/images/projects/Siłownia na powietrzu/10.JPG",
+				"/images/projects/Siłownia na powietrzu/14.JPG"
+			]
+		},
+		{
+			"projectId": "zrodlo-warty",
+			"projectName": "Źródło Warty",
+			"category": "Mała Architektura",
+			"description": "Częściowa rewitalizacja i zagospodarowanie otoczenia wokół Źródła Warty z użyciem naturalnych materiałów.",
+			"isFeatured": true,
+			"images": [
+				"/images/projects/Źródło Warty/2.JPG",
+				"/images/projects/Źródło Warty/3.JPG",
+				"/images/projects/Źródło Warty/4.JPG",
+				"/images/projects/Źródło Warty/5.JPG",
+				"/images/projects/Źródło Warty/9.JPG",
+				"/images/projects/Źródło Warty/14.JPG"
+			]
+		},
+		{
+			"projectId": "piaskownice",
+			"projectName": "Obrzeża i Piaskownice",
+			"category": "Mała Architektura",
+			"description": "Piaskownice z solidnymi obrzeżami dla najmłodszych, realizowane w ramach ulepszania placów zabaw.",
+			"images": ["/images/Piaskownice/piasek1A.jpeg", "/images/Piaskownice/piasek3A.jpeg"]
+		},
+		{
+			"projectId": "przystanek-1",
+			"projectName": "Zielony Przystanek I",
+			"category": "Zakładanie Ogrodów",
+			"description": "Zazielenienie okolic miejskiego przystanku komunikacji - poprawa lokalnego mikroklimatu i estetyki.",
+			"images": ["/images/Przystanek 1/przystanek1A.jpeg", "/images/Przystanek 1/przystanek1B.jpeg"]
+		},
+		{
+			"projectId": "przystanek-2",
+			"projectName": "Zielony Przystanek II",
+			"category": "Zakładanie Ogrodów",
+			"description": "Kolejny etap wprowadzania zieleni miejskiej w infrastrukturę miejską wokół wiat przystankowych.",
+			"images": ["/images/Przystanek 2/przystanek2A.jpeg", "/images/Przystanek 2/przystanek2B.jpeg"]
+		},
+		{
+			"projectId": "patio-sciezka",
+			"projectName": "Patio i Ścieżka z Kamienia",
+			"category": "Mała Architektura",
+			"description": "Precyzyjnie wykonana nawierzchnia z naturalnego kamienia łupanego na prywatnej posesji.",
+			"images": [
+				"/images/projects/Pozostałe/patio-sciezka1A.jpeg",
+				"/images/projects/Pozostałe/patio-sciezka1B.jpeg"
+			]
+		},
+		{
+			"projectId": "wyspa-zieleni",
+			"projectName": "Wyspa Zieleni",
+			"category": "Projektowanie Ogrodów",
+			"description": "Okazała wyspa z dekoracyjnymi trawami ozdobnymi jako centralny, reprezentacyjny punkt ogrodu.",
+			"images": [
+				"/images/projects/Pozostałe/wyspa-zieleni1A.jpeg",
+				"/images/projects/Pozostałe/wyspa-zieleni2A.jpeg"
+			]
+		}
+	],
+	"categories": [
+		"Wszystkie",
+		"Wyróżnione",
+		"Projektowanie Ogrodów",
+		"Zakładanie Ogrodów",
+		"Pielęgnacja Zieleni",
+		"Mała Architektura"
+	],
+	"beforeAfter": [
+		{
+			"id": "comp-1",
+			"title": "Renowacja ronda",
+			"description": "Całkowita metamorfoza ronda w Zawierciu.",
+			"beforeImage": "/images/comparison/1/before.jpg",
+			"afterImage": "/images/comparison/1/after.JPG"
+		},
+		{
+			"id": "comp-2",
+			"title": "Nowa aranżacja parku",
+			"description": "Kompleksowa przebudowa i rewitalizacja parku miejskiego.",
+			"beforeImage": "/images/comparison/2/before.JPG",
+			"afterImage": "/images/comparison/2/after.JPG"
+		}
+	]
 }
