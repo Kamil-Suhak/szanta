@@ -62,7 +62,7 @@ export const sklepData = {
 			categoryId: 'kostka_brukowa',
 			name: 'Kostka brukowa',
 			description: 'Wysokiej jakości kostka brukowa na podjazdy, ścieżki i tarasy.',
-			images: ['/images/shop/kostka brukowa.jpeg']
+			images: ['/images/shop/kostka brukowa.jpeg', '/images/shop/kostka brukowa 2.jpeg']
 		},
 		{
 			id: 'kb2',
@@ -82,13 +82,6 @@ export const sklepData = {
 			description:
 				'Jasny piasek idealny do tworzenia suchych aranżacji, czy na podłoże do roślin pustynnych.',
 			images: ['/images/shop/piasek2A.jpeg']
-		},
-		{
-			id: 'w3',
-			categoryId: 'wypozyczalnia',
-			name: 'Sprzęt do sadzenia',
-			description: 'Wydajny sprzęt i maszyny ułatwiające sadzenie dużych roślin i drzew.',
-			images: ['/images/shop/sadzenie drzew.jpeg']
 		},
 		{
 			id: 't1',
@@ -111,6 +104,13 @@ export const sklepData = {
 			name: 'Żwiry ogrodowe',
 			description: 'Dekoracyjny żwir w różnych odcieniach, doskonały na ścieżki i rabaty.',
 			images: ['/images/shop/żwiry.jpeg']
+		},
+		{
+			id: 'zw2',
+			categoryId: 'zwiry',
+			name: 'Żwiry dekoracyjne',
+			description: 'Żwir na opaski dookoła trawników, pod rośliny',
+			images: ['/images/shop/żwiry 2.jpeg']
 		},
 		{
 			id: 'zy1',

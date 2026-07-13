@@ -6,23 +6,23 @@ export const services = {
 	},
 	list: [
 		{
-			id: 'projektowanie',
-			icon: 'PenTool',
-			title: 'Projektowanie Ogrodów',
+			id: 'architektura-miejska',
+			icon: 'Building',
+			title: 'Architektura miejska',
 			description:
-				'Tworzymy unikalne, dopasowane do Twoich potrzeb koncepcje przestrzeni. Nasze projekty łączą estetykę z funkcjonalnością, uwzględniając warunki panujące na działce oraz Twoje osobiste preferencje. Od wstępnych szkiców po szczegółowe plany nasadzeń – dbamy o każdy detal.',
+				'Zajmujemy się projektowaniem i aranżacją przestrzeni publicznych, tworząc estetyczne i funkcjonalne strefy zieleni w tkance miejskiej. Nasze realizacje obejmują parki, skwery oraz zieleń przyuliczną, łącząc nowoczesne rozwiązania architektoniczne z dbałością o środowisko i komfort mieszkańców.',
 			images: [
 				{
-					url: '/images/projects/Ogród 6/1 (2).jpg',
-					annotation: 'Wizualizacja projektu ogrodu'
+					url: '/images/services/miejska 1.JPG',
+					annotation: 'Estetyczne, zielone rondo'
 				},
 				{
-					url: '/images/projects/Ogród 6/1 (7).jpg',
-					annotation: 'Dobór roślin i układ przestrzenny'
+					url: '/images/services/miejska 2.jpeg',
+					annotation: 'Zadaszony przystanek w Myszkowie'
 				},
 				{
-					url: '/images/projects/Ogród 6/1 (9).jpg',
-					annotation: 'Detale w projekcie małej architektury'
+					url: '/images/services/miejska 3.JPG',
+					annotation: 'Kwieciste rodno w Zawierciu'
 				}
 			]
 		},
