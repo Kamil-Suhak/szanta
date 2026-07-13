@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { sklepData } from '$lib/lang/pl/sklep';
+	import EnhancedImage from '../../util/EnhancedImage.svelte';
 	import { ChevronLeft, ChevronRight, Menu, X, ChevronDown } from 'lucide-svelte';
 	import { fade, slide } from 'svelte/transition';
 
@@ -104,7 +105,7 @@
 							in:fade
 						>
 							<div class="relative aspect-4/3 w-full overflow-hidden bg-gray-100">
-								<img
+								<EnhancedImage
 									src={product.images[currentIdx]}
 									alt={product.name}
 									class="h-full w-full object-cover"

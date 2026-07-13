@@ -1,7 +1,7 @@
 <script lang="ts">
 	import manifest from '$lib/data/projects-manifest.json';
 	import { sectionData } from '$lib/lang/pl/projects';
-	import CloudflareImage from '../../util/CloudflareImage.svelte';
+	import EnhancedImage from '../../util/EnhancedImage.svelte';
 	import { X, ChevronLeft, ChevronRight, Star } from 'lucide-svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
@@ -148,7 +148,7 @@
 					tabindex="0"
 				>
 					<div class="absolute inset-0 bg-gray-200">
-						<CloudflareImage
+						<EnhancedImage
 							src={manifest.beforeAfter[activeBeforeAfterIdx].afterImage}
 							alt={sectionData.after}
 							class="pointer-events-none absolute inset-0 h-full w-full object-cover"
@@ -165,7 +165,7 @@
 						style="clip-path: inset(0 {100 - sliderPos}% 0 0);"
 						transition:fade={{ duration: 450 }}
 					>
-						<CloudflareImage
+						<EnhancedImage
 							src={manifest.beforeAfter[activeBeforeAfterIdx].beforeImage}
 							alt={sectionData.before}
 							class="absolute inset-0 h-full w-full object-cover"
@@ -284,7 +284,7 @@
 						class="w-full overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-transform duration-300 group-hover:-translate-y-1.5"
 					>
 						<div class="aspect-4/3 w-full overflow-hidden">
-							<CloudflareImage
+							<EnhancedImage
 								src={project.images[0]}
 								alt={project.projectName}
 								class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-103"
@@ -381,7 +381,7 @@
 			<div class="flex-1 overflow-y-auto px-6 pb-8 {isMobile ? 'pt-2' : 'pt-4'}">
 				<div class="mb-8 flex flex-col gap-4">
 					{#each selectedProject.images as image (image)}
-						<CloudflareImage
+						<EnhancedImage
 							src={image}
 							alt={selectedProject.projectName}
 							class="max-h-[300px] w-full rounded-2xl object-cover shadow-sm lg:max-h-[400px]"

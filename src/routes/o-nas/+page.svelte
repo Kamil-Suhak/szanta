@@ -76,8 +76,8 @@
 							class="relative overflow-hidden rounded-3xl border border-gray-100 bg-white p-4 shadow-2xl transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_30px_60px_-15px_rgba(45,132,53,0.3)]"
 						>
 							<div class="aspect-square overflow-hidden rounded-2xl bg-gray-50">
-								<img
-									src="/images/profilowe.jpeg"
+								<enhanced:img
+									src="../../../static/images/profilowe.jpeg"
 									alt={about.owner.photoAlt}
 									class="h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-105"
 								/>

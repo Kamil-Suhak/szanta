@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { services } from '$lib/lang/pl/services';
+	import EnhancedImage from '../../util/EnhancedImage.svelte';
 	import {
 		Menu,
 		X,
@@ -190,7 +191,7 @@
 											aria-label="Powiększ obraz"
 											tabindex={activeServiceId === null ? 0 : -1}
 										>
-											<img
+											<EnhancedImage
 												src={s.images[0].url}
 												alt={s.images[0].annotation}
 												class="h-full w-full object-cover transition-all duration-500 group-hover:brightness-75"
@@ -236,7 +237,7 @@
 												aria-label="Powiększ obraz"
 												tabindex={activeServiceId === s.id ? 0 : -1}
 											>
-												<img
+												<EnhancedImage
 													src={image.url}
 													alt={image.annotation}
 													class="h-full w-full object-cover transition-all duration-500 group-hover:brightness-75"

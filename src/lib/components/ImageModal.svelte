@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { X } from 'lucide-svelte';
 	import { fade, scale } from 'svelte/transition';
+	import EnhancedImage from '../../util/EnhancedImage.svelte';
 
 	let { image, onclose } = $props<{
 		image: { url: string; annotation: string } | null;
@@ -55,7 +56,7 @@
 			in:scale={{ start: 0.95, duration: 300, opacity: 0 }}
 			out:scale={{ start: 0.95, duration: 200, opacity: 0 }}
 		>
-			<img
+			<EnhancedImage
 				src={image.url}
 				alt={image.annotation}
 				class="max-h-[85vh] w-auto max-w-full rounded-lg object-contain shadow-2xl"
