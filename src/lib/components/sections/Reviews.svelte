@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { reviewsData } from '$lib/lang/pl/reviews';
-	import { Quote } from 'lucide-svelte';
+	import { Quote, ExternalLink } from 'lucide-svelte';
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
@@ -368,6 +368,21 @@
 											{activeReview.relative_time_description}
 										</div>
 									</div>
+
+									{#if activeReview.pdf_url}
+										<div class="ml-auto flex items-center">
+											<a
+												href={activeReview.pdf_url}
+												target="_blank"
+												rel="noopener noreferrer"
+												class="inline-flex items-center justify-center rounded-full bg-gray-100 p-3 text-gray-500 shadow-sm transition-all duration-300 hover:scale-105 hover:bg-gray-200 hover:text-(--forest-green) focus:ring-2 focus:ring-(--forest-green) focus:outline-none"
+												aria-label={`Pobierz lub otwórz referencję w formacie PDF od ${activeReview.author_name}`}
+												title="Otwórz referencję PDF"
+											>
+												<ExternalLink size={24} />
+											</a>
+										</div>
+									{/if}
 								</div>
 							</div>
 						{/key}
