@@ -358,7 +358,7 @@
 										</button>
 
 										<!-- Hidden input for SvelteKit server action submission -->
-										<input type="hidden" name="service" value={selectedServiceId} />
+										<input type="hidden" name="service" value={selectedService?.title || ''} />
 
 										{#if serverErrors.service}
 											<span class="absolute bottom-[-20px] left-1 text-[11px] font-bold text-red-500" transition:slide>

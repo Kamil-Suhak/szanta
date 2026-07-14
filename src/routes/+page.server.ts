@@ -5,7 +5,7 @@ import { env } from '$env/dynamic/private';
 export const actions: Actions = {
 	default: async ({ request }) => {
 		const formData = await request.formData();
-		
+
 		// 1. Honeypot check (bots will fill this field)
 		const honeypot = formData.get('b_phone');
 		if (honeypot && honeypot.toString().trim() !== '') {
@@ -55,9 +55,9 @@ export const actions: Actions = {
 			const longWordRegex = /\S{50,}/;
 			if (longWordRegex.test(message) || (name && longWordRegex.test(name))) {
 				console.warn('[Security] Bot submission caught by long word filter.');
-				return fail(400, { 
+				return fail(400, {
 					values: { name, email, phone, service, message },
-					errors: { global: 'botDetected' } 
+					errors: { global: 'botDetected' }
 				});
 			}
 		}
@@ -71,12 +71,15 @@ export const actions: Actions = {
 
 		// 5. Construct and Send Email via Brevo API
 		const brevoKey = env.BREVO_API_KEY;
-		const recipientEmail = env.RECIPIENT_EMAIL || 'szanta.ogrody@gmail.com';
+		const isTestMode = env.TEST_MODE === 'true';
+		const recipientEmail = isTestMode
+			? env.ADMIN_EMAIL || 'admin@szantaogrody.pl'
+			: env.RECIPIENT_EMAIL || 'szanta.ogrody@gmail.com';
 		const senderEmail = env.SENDER_EMAIL || 'no-reply@szantaogrody.pl';
 
-		const emailSubject = `[Kontakt Szanta] Nowe zapytanie od: ${name}`;
+		const emailSubject = `[Kontakt Szanta.com] Nowe zapytanie od: ${name} na temat: ${service}`;
 		const emailHtml = `
-			<h2>Nowe zapytanie z formularza kontaktowego Szanta Ogrody</h2>
+			<h2>Nowe zapytanie z formularza kontaktowego Szanta.com</h2>
 			<hr />
 			<p><strong>Imię i nazwisko:</strong> ${name}</p>
 			<p><strong>E-mail:</strong> ${email}</p>
@@ -95,7 +98,7 @@ export const actions: Actions = {
 			console.log('Subject:', emailSubject);
 			console.log('Content:', emailHtml.replace(/<[^>]*>/g, ' ').trim());
 			console.log('--------------------------------------------------');
-			
+
 			// Simulate network latency in dev
 			await new Promise((resolve) => setTimeout(resolve, 800));
 			return { success: true, devMode: true };
