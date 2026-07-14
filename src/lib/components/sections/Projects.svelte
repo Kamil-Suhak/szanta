@@ -7,7 +7,19 @@
 	import { onMount } from 'svelte';
 	import Button from '../ui/Button.svelte';
 
+	let activeCategory = $state(sectionData.all);
+	let selectedProject = $state<(typeof manifest.projects)[0] | null>(null);
+	let isMobile = $state(false);
 	let slideDirection = $state(1);
+
+	let activeBeforeAfterIdx = $state(0);
+	let sliderPos = $state(50);
+	let isDraggingSlider = $state(false);
+
+	let touchStartY = $state(0);
+	let touchCurrentY = $state(0);
+	let isDraggingDrawer = $state(false);
+	const SWIPE_THRESHOLD = 100;
 
 	function setCategory(category: string) {
 		const oldIdx = manifest.categories.indexOf(activeCategory);
@@ -16,28 +28,18 @@
 		activeCategory = category;
 	}
 
-	let activeCategory = $state(sectionData.all);
-	let selectedProject = $state<(typeof manifest.projects)[0] | null>(null);
-	let isMobile = $state(false);
-
-	let activeBeforeAfterIdx = $state(0);
-	let sliderPos = $state(50);
-	let isDraggingSlider = $state(false);
-	let sliderContainer = $state<HTMLElement | null>(null);
-
-	let touchStartY = $state(0);
-	let touchCurrentY = $state(0);
-	let isDraggingDrawer = $state(false);
-	const SWIPE_THRESHOLD = 100;
-
-	function checkMobile() {
-		if (typeof window !== 'undefined') {
-			isMobile = window.innerWidth < 1024;
-		}
-	}
-
 	onMount(() => {
-		checkMobile();
+		if (typeof window !== 'undefined') {
+			const mql = window.matchMedia('(max-width: 1023px)');
+			isMobile = mql.matches;
+			
+			const handleChange = (e: MediaQueryListEvent) => {
+				isMobile = e.matches;
+			};
+			
+			mql.addEventListener('change', handleChange);
+			return () => mql.removeEventListener('change', handleChange);
+		}
 	});
 
 	let filteredProjects = $derived(
@@ -47,18 +49,6 @@
 				? manifest.projects.filter((p) => p.isFeatured)
 				: manifest.projects.filter((p) => p.category === activeCategory)
 	);
-
-	function getCardClasses(index: number) {
-		const patterns = [
-			{ span: 'col-span-1 lg:col-span-1', aspect: 'aspect-16/9 lg:aspect-3/4' },
-			{ span: 'col-span-1 lg:col-span-2', aspect: 'aspect-16/9 lg:aspect-21/9' },
-			{ span: 'col-span-1 lg:col-span-1', aspect: 'aspect-16/9 lg:aspect-square' },
-			{ span: 'col-span-1 lg:col-span-1', aspect: 'aspect-16/9 lg:aspect-square' },
-			{ span: 'col-span-1 lg:col-span-1', aspect: 'aspect-16/9 lg:aspect-3/4' },
-			{ span: 'col-span-1 lg:col-span-2', aspect: 'aspect-16/9 lg:aspect-21/9' }
-		];
-		return patterns[index % patterns.length];
-	}
 
 	$effect(() => {
 		if (typeof document !== 'undefined') {
@@ -71,19 +61,46 @@
 		}
 	});
 
-	function updateSlider(clientX: number) {
-		if (!sliderContainer) return;
-		const rect = sliderContainer.getBoundingClientRect();
-		const x = clientX - rect.left;
-		sliderPos = Math.max(0, Math.min(100, (x / rect.width) * 100));
-	}
+	function sliderAction(node: HTMLElement) {
+		function updateSlider(clientX: number) {
+			const rect = node.getBoundingClientRect();
+			const x = clientX - rect.left;
+			sliderPos = Math.max(0, Math.min(100, (x / rect.width) * 100));
+		}
 
-	function handleMouseMove(e: MouseEvent) {
-		if (isDraggingSlider) updateSlider(e.clientX);
-	}
+		function onMouseMove(e: MouseEvent) { updateSlider(e.clientX); }
+		function onTouchMove(e: TouchEvent) { updateSlider(e.touches[0].clientX); }
 
-	function handleTouchMoveSlider(e: TouchEvent) {
-		if (isDraggingSlider) updateSlider(e.touches[0].clientX);
+		function onEnd() {
+			isDraggingSlider = false;
+			window.removeEventListener('mousemove', onMouseMove);
+			window.removeEventListener('touchmove', onTouchMove);
+			window.removeEventListener('mouseup', onEnd);
+			window.removeEventListener('touchend', onEnd);
+		}
+
+		function onStart(clientX: number) {
+			isDraggingSlider = true;
+			updateSlider(clientX);
+			window.addEventListener('mousemove', onMouseMove);
+			window.addEventListener('touchmove', onTouchMove, { passive: true });
+			window.addEventListener('mouseup', onEnd);
+			window.addEventListener('touchend', onEnd);
+		}
+
+		function onMouseDown(e: MouseEvent) { onStart(e.clientX); }
+		function onTouchStart(e: TouchEvent) { onStart(e.touches[0].clientX); }
+
+		node.addEventListener('mousedown', onMouseDown);
+		node.addEventListener('touchstart', onTouchStart, { passive: true });
+
+		return {
+			destroy() {
+				node.removeEventListener('mousedown', onMouseDown);
+				node.removeEventListener('touchstart', onTouchStart);
+				onEnd();
+			}
+		};
 	}
 
 	function handleKeyDownSlider(e: KeyboardEvent) {
@@ -118,11 +135,6 @@
 </script>
 
 <svelte:window
-	onmousemove={handleMouseMove}
-	onmouseup={() => (isDraggingSlider = false)}
-	ontouchmove={handleTouchMoveSlider}
-	ontouchend={() => (isDraggingSlider = false)}
-	onresize={checkMobile}
 	onkeydown={(e) => {
 		if (e.key === 'Escape') selectedProject = null;
 	}}
@@ -143,10 +155,8 @@
 		{#if manifest.beforeAfter && manifest.beforeAfter.length > 0}
 			<div class="mb-24 rounded-3xl border border-gray-100 bg-gray-50/50 p-6 md:p-8 lg:p-12">
 				<div
-					bind:this={sliderContainer}
+					use:sliderAction
 					class="relative mx-auto aspect-video w-full max-w-[950px] cursor-ew-resize overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-md select-none"
-					onmousedown={() => (isDraggingSlider = true)}
-					ontouchstart={() => (isDraggingSlider = true)}
 					onkeydown={handleKeyDownSlider}
 					role="slider"
 					aria-valuenow={sliderPos}
@@ -357,14 +367,14 @@
 </section>
 
 {#if selectedProject}
-	<!-- svelte-ignore a11y_click_events_have_key_events -->
-	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div class="fixed inset-0 z-1100 flex lg:justify-end">
-		<div
-			class="absolute inset-0 bg-black/60 transition-opacity {isMobile ? '' : 'backdrop-blur-sm'}"
+		<button
+			type="button"
+			aria-label="Zamknij"
+			class="absolute inset-0 w-full cursor-default border-none bg-black/60 transition-opacity {isMobile ? '' : 'backdrop-blur-sm'}"
 			transition:fade={{ duration: 300 }}
 			onclick={() => (selectedProject = null)}
-		></div>
+		></button>
 
 		<div
 			class="relative flex w-full flex-col bg-white shadow-2xl lg:my-4 lg:h-[calc(100vh-2rem)] lg:w-[450px] lg:rounded-l-3xl lg:py-4 {isMobile
@@ -377,6 +387,7 @@
 				: ''}
 		>
 			{#if isMobile}
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<div
 					class="flex w-full cursor-grab items-center justify-center pt-4 pb-2 active:cursor-grabbing"
 					ontouchstart={handleTouchStartDrawer}
