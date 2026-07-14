@@ -14,7 +14,7 @@
 	let pausedTime = $state<number>(0);
 	let rafId: ReturnType<typeof requestAnimationFrame>;
 
-	const MOBILE_RING_RADIUS = 23.5;
+	const MOBILE_RING_RADIUS = 33.75;
 	const MOBILE_RING_CIRCUMFERENCE = 2 * Math.PI * MOBILE_RING_RADIUS;
 	const ITEMS_PER_PAGE = 4;
 	const TOTAL_PAGES = Math.ceil(reviewsData.items.length / ITEMS_PER_PAGE);
@@ -164,19 +164,19 @@
 										<svg
 											class="absolute inset-0 h-full w-full -rotate-90 transition-opacity duration-300
 												{activeIndex === i ? 'opacity-100' : 'opacity-0'}"
-											viewBox="0 0 52 52"
+											viewBox="0 0 70 70"
 										>
 											<circle
-												cx="26"
-												cy="26"
+												cx="35"
+												cy="35"
 												r={MOBILE_RING_RADIUS}
 												fill="none"
 												class="stroke-(--bg-white)"
 												stroke-width="2.5"
 											/>
 											<circle
-												cx="26"
-												cy="26"
+												cx="35"
+												cy="35"
 												r={MOBILE_RING_RADIUS}
 												fill="none"
 												class="stroke-(--forest-green)"
@@ -188,7 +188,7 @@
 										</svg>
 
 										<div
-											class="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full font-bold transition-all duration-500 sm:h-11 sm:w-11
+											class="relative flex h-[58px] w-[58px] items-center justify-center overflow-hidden rounded-full font-bold transition-all duration-500 sm:h-[68px] sm:w-[68px]
 												{activeIndex === i
 												? 'scale-110 border-(--forest-green) shadow-[0_4px_12px_-2px_rgba(45,132,53,0.35)]'
 												: 'border-gray-200 shadow-sm hover:scale-105 hover:border-(--forest-green)/50'}"
