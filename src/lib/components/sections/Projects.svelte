@@ -4,9 +4,17 @@
 	import EnhancedImage from '$lib/components/ui/EnhancedImage.svelte';
 	import { X, ChevronLeft, ChevronRight, Star } from 'lucide-svelte';
 	import { fade, fly } from 'svelte/transition';
-	import { flip } from 'svelte/animate';
 	import { onMount } from 'svelte';
 	import Button from '../ui/Button.svelte';
+
+	let slideDirection = $state(1);
+
+	function setCategory(category: string) {
+		const oldIdx = manifest.categories.indexOf(activeCategory);
+		const newIdx = manifest.categories.indexOf(category);
+		slideDirection = newIdx >= oldIdx ? 1 : -1;
+		activeCategory = category;
+	}
 
 	let activeCategory = $state(sectionData.all);
 	let selectedProject = $state<(typeof manifest.projects)[0] | null>(null);
@@ -193,7 +201,7 @@
 				<div
 					class="mx-auto mt-8 flex max-w-[950px] flex-col justify-between gap-6 border-t border-gray-200/60 pt-8 md:flex-row md:items-center"
 				>
-					<div class="grid flex-1 grid-cols-1 grid-rows-1 min-h-[96px] sm:min-h-[72px]">
+					<div class="grid min-h-[96px] flex-1 grid-cols-1 grid-rows-1 sm:min-h-[72px]">
 						{#key activeBeforeAfterIdx}
 							<div class="col-start-1 row-start-1" transition:fade={{ duration: 350 }}>
 								<h3 class="mb-2 text-2xl font-extrabold tracking-tight text-text-dark">
@@ -255,7 +263,7 @@
 						: activeCategory === category
 							? 'border-forest-green bg-forest-green text-white shadow-md'
 							: 'border-forest-green bg-transparent text-text-dark hover:bg-gray-100'}"
-					onclick={() => (activeCategory = category)}
+					onclick={() => setCategory(category)}
 				>
 					{#if category === sectionData.featured}
 						<Star
@@ -269,71 +277,81 @@
 			{/each}
 		</div>
 
-		<div
-			class="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 xl:grid-cols-4"
-		>
-			{#each filteredProjects as project, idx (project.projectId)}
-				<button
-					animate:flip={{ duration: 400 }}
-					in:fade={{ duration: 300 }}
-					out:fade={{ duration: 300 }}
-					class="group col-span-1 w-full cursor-pointer self-start text-left focus:outline-none"
-					onclick={() => (selectedProject = project)}
-				>
+		<div class="relative mt-16 overflow-hidden">
+			<div class="grid grid-cols-1 grid-rows-1">
+				{#key activeCategory}
 					<div
-						class="w-full overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-transform duration-300 group-hover:-translate-y-1.5"
+						class="col-start-1 row-start-1 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 xl:grid-cols-4"
+						in:fly={{ x: slideDirection * 80, duration: 350, delay: 200, opacity: 0 }}
+						out:fly={{ x: slideDirection * -80, duration: 250, opacity: 0 }}
 					>
-						<div class="aspect-4/3 w-full overflow-hidden">
-							<EnhancedImage
-								src={project.images[0]}
-								alt={project.projectName}
-								class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-103"
-							/>
-						</div>
+						{#each filteredProjects as project (project.projectId)}
+							<button
+								class="group col-span-1 w-full cursor-pointer self-start text-left focus:outline-none"
+								onclick={() => (selectedProject = project)}
+							>
+								<div
+									class="w-full overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-transform duration-300 group-hover:-translate-y-1.5"
+								>
+									<div class="aspect-4/3 w-full overflow-hidden">
+										<EnhancedImage
+											src={project.images[0]}
+											alt={project.projectName}
+											class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-103"
+										/>
+									</div>
 
-						<div class="bg-white p-6">
-							<div>
-								<div class="mb-2 flex items-center justify-between gap-2">
-									<span
-										class="block text-[10px] font-extrabold tracking-widest text-forest-green uppercase"
-									>
-										{project.category}
-									</span>
-									{#if project.isFeatured}
-										<div class="flex items-center text-[10px] font-bold tracking-wider uppercase">
-											<span
-												class="mr-0 rounded-lg rounded-r-none bg-yellow-100 py-1 pl-2 text-yellow-800"
+									<div class="bg-white p-6">
+										<div>
+											<div class="mb-2 flex items-center justify-between gap-2">
+												<span
+													class="block text-[10px] font-extrabold tracking-widest text-forest-green uppercase"
+												>
+													{project.category}
+												</span>
+												{#if project.isFeatured}
+													<div
+														class="flex items-center text-[10px] font-bold tracking-wider uppercase"
+													>
+														<span
+															class="mr-0 rounded-lg rounded-r-none bg-yellow-100 py-1 pl-2 text-yellow-800"
+														>
+															{sectionData.featured}
+														</span>
+														<Star
+															class="mx-0 inline-block h-5.5 w-5.5 rounded-lg rounded-l-none bg-yellow-100 fill-yellow-500 px-1 py-0.5 text-yellow-500"
+														/>
+													</div>
+												{/if}
+											</div>
+											<h3
+												class="text-lg leading-snug font-extrabold text-text-dark transition-colors duration-300 group-hover:text-forest-green"
 											>
-												{sectionData.featured}
-											</span>
-											<Star
-												class="mx-0 inline-block h-5.5 w-5.5 rounded-lg rounded-l-none bg-yellow-100 fill-yellow-500 px-1 py-0.5 text-yellow-500"
+												{project.projectName}
+											</h3>
+										</div>
+										<div
+											class="mt-4 flex items-center gap-1 text-sm font-bold text-forest-green opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+										>
+											<span>{sectionData.details}</span>
+											<ChevronRight
+												size={16}
+												class="transition-transform group-hover:translate-x-1"
 											/>
 										</div>
-									{/if}
+									</div>
 								</div>
-								<h3
-									class="text-lg leading-snug font-extrabold text-text-dark transition-colors duration-300 group-hover:text-forest-green"
-								>
-									{project.projectName}
-								</h3>
-							</div>
-							<div
-								class="mt-4 flex items-center gap-1 text-sm font-bold text-forest-green opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-							>
-								<span>{sectionData.details}</span>
-								<ChevronRight size={16} class="transition-transform group-hover:translate-x-1" />
-							</div>
-						</div>
-					</div>
-				</button>
-			{/each}
+							</button>
+						{/each}
 
-			{#if filteredProjects.length === 0}
-				<div class="col-span-full py-16 text-center text-gray-500" transition:fade>
-					{sectionData.emptyState}
-				</div>
-			{/if}
+						{#if filteredProjects.length === 0}
+							<div class="col-span-full py-16 text-center text-gray-500">
+								{sectionData.emptyState}
+							</div>
+						{/if}
+					</div>
+				{/key}
+			</div>
 		</div>
 	</div>
 </section>
