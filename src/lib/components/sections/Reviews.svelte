@@ -16,7 +16,7 @@
 
 	function tick(now: number) {
 		if (startTime === null) startTime = now;
-		
+
 		if (isHovered || document.hidden) {
 			if (pausedTime === 0) pausedTime = now;
 			rafId = requestAnimationFrame(tick);
@@ -24,7 +24,7 @@
 		}
 
 		if (pausedTime > 0) {
-			startTime += (now - pausedTime);
+			startTime += now - pausedTime;
 			pausedTime = 0;
 		}
 
@@ -34,7 +34,7 @@
 			startTime = now;
 			elapsed = 0;
 		}
-		
+
 		progress = elapsed / 5000;
 		rafId = requestAnimationFrame(tick);
 	}
@@ -168,16 +168,30 @@
 					<div
 						class="absolute flex h-[140px] w-[140px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-solid border-(--forest-green)/20 bg-linear-to-b from-(--forest-green)/5 to-transparent shadow-[inset_0_0_20px_rgba(45,132,53,0.05)] lg:h-[160px] lg:w-[160px]"
 					>
-						<svg class="h-[100px] w-[100px] -rotate-90 lg:h-[120px] lg:w-[120px]" viewBox="0 0 100 100">
-							<circle cx="50" cy="50" r="46" fill="none" class="stroke-(--forest-green)/10" stroke-width="4" />
-							<circle 
-								cx="50" cy="50" r="46" 
-								fill="none" 
-								class="stroke-(--forest-green)" 
-								stroke-width="4" 
+						<svg
+							class="h-[100px] w-[100px] -rotate-90 lg:h-[120px] lg:w-[120px]"
+							viewBox="0 0 100 100"
+						>
+							<circle
+								cx="50"
+								cy="50"
+								r="46"
+								fill="none"
+								class="stroke-(--forest-green)/10"
+								stroke-width="4"
+							/>
+							<circle
+								cx="50"
+								cy="50"
+								r="46"
+								fill="none"
+								class="stroke-(--forest-green)"
+								stroke-width="4"
 								stroke-linecap="round"
-								stroke-dasharray="289.03" 
-								stroke-dashoffset={activeIndex % 2 === 0 ? 289.03 * (1 - progress) : -289.03 * progress} 
+								stroke-dasharray="289.03"
+								stroke-dashoffset={activeIndex % 2 === 0
+									? 289.03 * (1 - progress)
+									: -289.03 * progress}
 							/>
 						</svg>
 					</div>
@@ -185,10 +199,12 @@
 			</div>
 
 			<!-- Review Text Container -->
-			<div 
-				class="relative z-30 mx-auto mt-12 w-full flex-1 max-w-4xl lg:mt-0"
+			<div
+				class="relative z-30 mx-auto mt-12 w-full max-w-4xl flex-1 lg:mt-0"
 				onmouseenter={() => (isHovered = true)}
 				onmouseleave={() => (isHovered = false)}
+				role="status"
+				aria-live="polite"
 			>
 				<div
 					class="relative rounded-3xl border border-gray-100 bg-linear-to-br from-gray-50 to-white p-6 shadow-xl backdrop-blur-sm transition-transform duration-500 sm:p-14 lg:hover:-translate-y-1"
