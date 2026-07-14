@@ -1,4 +1,4 @@
-import { markers, markersContent } from "$lib/util/config-formatter";
+import { markers, markersContent } from '$lib/utils/config-formatter";
 
 // escape special regex chars
 const escapeRegex = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");

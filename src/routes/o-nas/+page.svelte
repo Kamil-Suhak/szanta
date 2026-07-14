@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { Quote, Leaf, Sprout, ShieldCheck, Sparkles } from 'lucide-svelte';
+	import heroBg from '$lib/assets/images/hero_bg.png';
 
 	let visible = $state(false);
 
@@ -26,7 +27,8 @@
 	<div class="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-white/5 blur-3xl"></div>
 	<div class="absolute -right-32 -bottom-32 h-96 w-96 rounded-full bg-white/5 blur-3xl"></div>
 	<div
-		class="absolute inset-0 bg-[url('/images/hero_bg.png')] bg-cover bg-center opacity-25 mix-blend-overlay brightness-50"
+		class="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-overlay brightness-50"
+		style="background-image: url({heroBg})"
 	></div>
 
 	<div class="relative z-10 container mx-auto max-w-[1200px] px-6 pt-24 pb-12 text-center md:px-8">
@@ -77,7 +79,7 @@
 						>
 							<div class="aspect-square overflow-hidden rounded-2xl bg-gray-50">
 								<enhanced:img
-									src="../../../static/images/profilowe.jpeg"
+									src="$lib/assets/images/profilowe.jpeg"
 									alt={about.owner.photoAlt}
 									class="h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-105"
 								/>

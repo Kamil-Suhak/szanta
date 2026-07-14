@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import { nav } from '$lib/lang/pl/nav';
 	import { Leaf, ChevronDown } from 'lucide-svelte';
-	import Button from './Button.svelte';
+	import Button from '../ui/Button.svelte';
 	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
 

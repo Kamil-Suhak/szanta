@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { X } from 'lucide-svelte';
 	import { fade, scale } from 'svelte/transition';
-	import EnhancedImage from '../../util/EnhancedImage.svelte';
+	import EnhancedImage from '$lib/components/ui/EnhancedImage.svelte';
 
 	let { image, onclose } = $props<{
 		image: { url: string; annotation: string } | null;

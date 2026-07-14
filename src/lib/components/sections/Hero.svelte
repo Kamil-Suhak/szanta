@@ -2,7 +2,8 @@
 	import { hero } from '$lib/lang/pl/hero';
 	import { onMount } from 'svelte';
 	import { CalendarDays, FolderCheck, BadgeCheck } from 'lucide-svelte';
-	import Button from './Button.svelte';
+	import Button from '../ui/Button.svelte';
+	import heroBg from '$lib/assets/images/hero_bg.png';
 
 	let visible = $state(false);
 
@@ -16,7 +17,8 @@
 <section class="relative flex h-screen min-h-[600px] items-center overflow-hidden bg-gray-50">
 	<!-- Background Image -->
 	<div
-		class="absolute inset-[-2px] z-10 bg-[url('/images/hero_bg.png')] bg-cover bg-center brightness-[0.65]"
+		class="absolute inset-[-2px] z-10 bg-cover bg-center brightness-[0.65]"
+		style="background-image: url({heroBg})"
 	></div>
 
 	<!-- Overlay -->

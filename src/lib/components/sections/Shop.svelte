@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { sklepData } from '$lib/lang/pl/sklep';
-	import EnhancedImage from '../../util/EnhancedImage.svelte';
+	import EnhancedImage from '$lib/components/ui/EnhancedImage.svelte';
 	import { ChevronLeft, ChevronRight, Menu, X, ChevronDown } from 'lucide-svelte';
 	import { fade, slide } from 'svelte/transition';
 

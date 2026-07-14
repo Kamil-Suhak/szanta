@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Shop from '$lib/components/Shop.svelte';
+	import Shop from '$lib/components/sections/Shop.svelte';
 </script>
 
 <Shop />

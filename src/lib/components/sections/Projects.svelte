@@ -1,12 +1,12 @@
 <script lang="ts">
 	import manifest from '$lib/data/projects-manifest.json';
 	import { sectionData } from '$lib/lang/pl/projects';
-	import EnhancedImage from '../../util/EnhancedImage.svelte';
+	import EnhancedImage from '$lib/components/ui/EnhancedImage.svelte';
 	import { X, ChevronLeft, ChevronRight, Star } from 'lucide-svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 	import { onMount } from 'svelte';
-	import Button from './Button.svelte';
+	import Button from '../ui/Button.svelte';
 
 	let activeCategory = $state(sectionData.all);
 	let selectedProject = $state<(typeof manifest.projects)[0] | null>(null);

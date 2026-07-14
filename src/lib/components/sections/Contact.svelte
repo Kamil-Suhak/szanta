@@ -4,7 +4,7 @@
 	import { services } from '$lib/lang/pl/services';
 	import { enhance } from '$app/forms';
 	import { fade, slide, fly } from 'svelte/transition';
-	import Button from './Button.svelte';
+	import Button from '../ui/Button.svelte';
 	import {
 		Phone,
 		Mail,

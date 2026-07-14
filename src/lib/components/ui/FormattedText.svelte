@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { markerStyles, markers, markersContent } from '$lib/util/config-formatter';
-	import { markerRegex } from '$lib/util/generate-regex';
+	import { markerStyles, markers, markersContent } from '$lib/utils/config-formatter';
+	import { markerRegex } from '$lib/utils/generate-regex';
 
 	let { text }: { text: string } = $props();
 

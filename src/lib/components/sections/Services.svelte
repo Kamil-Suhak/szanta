@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { services } from '$lib/lang/pl/services';
-	import EnhancedImage from '../../util/EnhancedImage.svelte';
+	import EnhancedImage from '$lib/components/ui/EnhancedImage.svelte';
 	import {
 		Menu,
 		X,
@@ -14,7 +14,7 @@
 		Axe
 	} from 'lucide-svelte';
 	import { fade, fly } from 'svelte/transition';
-	import ImageModal from './ImageModal.svelte';
+	import ImageModal from '../ui/ImageModal.svelte';
 
 	const iconMap: Record<string, any> = {
 		PenTool,

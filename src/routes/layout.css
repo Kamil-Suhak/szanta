@@ -8,7 +8,7 @@
 	--color-forest-green-dark: #1e3d1a;
 	--color-text-dark: #1a1a1a;
 	--color-text-muted: #4a4a4a;
-	--color-bg-white: #eeffcd;
+	--color-bg-white: #ffffff;
 
 	--animate-fade-in-up: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 	--animate-fade-in-left: fade-in-left 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -41,7 +41,7 @@
 	--forest-green-dark: #1e3d1a;
 	--text-dark: #1a1a1a;
 	--text-muted: #4a4a4a;
-	--bg-white: ##eeffcd;
+	--bg-white: #ffffff;
 }
 
 * {
