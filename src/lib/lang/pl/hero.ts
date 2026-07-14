@@ -4,7 +4,7 @@ export const hero = {
 	ctaPrimary: 'Zobacz Nasze Realizacje',
 	ctaSecondary: 'Skontaktuj się z nami',
 	stats: [
-		{ label: 'Lat doświadczenia', value: '10+' },
+		{ label: 'Lat doświadczenia', value: '25+' },
 		{ label: 'Zrealizowanych projektów', value: '200+' },
 		{ label: 'Zadowolonych klientów', value: '100%' }
 	]
