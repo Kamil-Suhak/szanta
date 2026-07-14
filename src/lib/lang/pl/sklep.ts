@@ -17,7 +17,7 @@ export const sklepData = {
 			categoryId: 'krzewy',
 			name: 'Drzewa i krzewy ozdobne',
 			description: 'Szeroki wybór drzew i krzewów ozdobnych do każdego ogrodu.',
-			images: ['/images/shop/drzewa krzewy.jpeg']
+			images: ['/images/shop/drzewa-krzewy.jpeg']
 		},
 		{
 			id: 'k2',
@@ -25,9 +25,9 @@ export const sklepData = {
 			name: 'Duże drzewa',
 			description: 'Dojrzałe, duże drzewa pozwalające na natychmiastowy efekt w aranżacji.',
 			images: [
-				'/images/shop/duże drzewo.jpeg',
-				'/images/shop/duże drzewa 2.jpeg',
-				'/images/shop/duże drzewa 3.jpeg'
+				'/images/shop/duze-drzewo.jpeg',
+				'/images/shop/duze-drzewa-2.jpeg',
+				'/images/shop/duze-drzewa-3.jpeg'
 			]
 		},
 		{
@@ -37,8 +37,8 @@ export const sklepData = {
 			description: 'Idealne rozwiązanie na mniejsze rabaty i do kompozycji wielopoziomowych.',
 			images: [
 				'/images/shop/krzewy.jpeg',
-				'/images/shop/krzewy małe rośliny.jpeg',
-				'/images/shop/krzewy małe rośliny 2.jpeg'
+				'/images/shop/krzewy-małe-rośliny.jpeg',
+				'/images/shop/krzewy-małe-rośliny-2.jpeg'
 			]
 		},
 		{
@@ -55,14 +55,14 @@ export const sklepData = {
 			name: 'Kamienie ozdobne',
 			description:
 				'Naturalne kamienie ozdobne w różnych frakcjach, idealne do ściółkowania i dekoracji.',
-			images: ['/images/shop/kamienie ozdobne.jpeg', '/images/shop/kamienie ozdobne 2.jpeg']
+			images: ['/images/shop/kamienie-ozdobne.jpeg', '/images/shop/kamienie-ozdobne-2.jpeg']
 		},
 		{
 			id: 'kb1',
 			categoryId: 'kostka_brukowa',
 			name: 'Kostka brukowa',
 			description: 'Wysokiej jakości kostka brukowa na podjazdy, ścieżki i tarasy.',
-			images: ['/images/shop/kostka brukowa.jpeg', '/images/shop/kostka brukowa 2.jpeg']
+			images: ['/images/shop/kostka-brukowa.jpeg', '/images/shop/kostka-brukowa-2.jpeg']
 		},
 		{
 			id: 'kb2',
@@ -71,8 +71,8 @@ export const sklepData = {
 			description: 'Płyty tarasowe i elementy do tworzenia dekoracyjnych ścieżek ogrodowych.',
 			images: [
 				'/images/shop/płytki.jpeg',
-				'/images/shop/płytki 2.jpeg',
-				'/images/shop/ścieżka ozdobna.jpeg'
+				'/images/shop/płytki-2.jpeg',
+				'/images/shop/ścieżka-ozdobna.jpeg'
 			]
 		},
 		{
@@ -96,7 +96,7 @@ export const sklepData = {
 			categoryId: 'materialy_ogrodowe',
 			name: 'Drewno na wiaty i altanki',
 			description: 'Wyselekcjonowane drewno konstrukcyjne do budowy altan, wiat i zadaszeń.',
-			images: ['/images/shop/wiaty altanki.jpeg']
+			images: ['/images/shop/wiaty-altanki.jpeg']
 		},
 		{
 			id: 'zw1',
@@ -110,7 +110,7 @@ export const sklepData = {
 			categoryId: 'zwiry',
 			name: 'Żwiry dekoracyjne',
 			description: 'Żwir na opaski dookoła trawników, pod rośliny',
-			images: ['/images/shop/żwiry 2.jpeg']
+			images: ['/images/shop/żwiry-2.jpeg']
 		},
 		{
 			id: 'zy1',
