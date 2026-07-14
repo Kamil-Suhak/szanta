@@ -3,7 +3,7 @@
 	import { sectionData } from '$lib/lang/pl/projects';
 	import EnhancedImage from '$lib/components/ui/EnhancedImage.svelte';
 	import { X, ChevronLeft, ChevronRight, Star } from 'lucide-svelte';
-	import { fade, fly } from 'svelte/transition';
+	import { fade, fly, scale } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import Button from '../ui/Button.svelte';
 
@@ -13,6 +13,7 @@
 	let slideDirection = $state(1);
 
 	let activeBeforeAfterIdx = $state(0);
+	let beforeAfterSlideDirection = $state(1);
 	let sliderPos = $state(50);
 	let isDraggingSlider = $state(false);
 
@@ -21,34 +22,88 @@
 	let isDraggingDrawer = $state(false);
 	const SWIPE_THRESHOLD = 100;
 
+	let currentPage = $state(0);
+	let itemsPerPage = $state(4);
+	let swipeProjectsStartX = 0;
+	const SWIPE_X_THRESHOLD = 50;
+	let transitionType = $state<'page' | 'category'>('category');
+
 	function setCategory(category: string) {
+		transitionType = 'category';
 		const oldIdx = manifest.categories.indexOf(activeCategory);
 		const newIdx = manifest.categories.indexOf(category);
 		slideDirection = newIdx >= oldIdx ? 1 : -1;
 		activeCategory = category;
+		currentPage = 0;
 	}
 
 	onMount(() => {
 		if (typeof window !== 'undefined') {
 			const mql = window.matchMedia('(max-width: 1023px)');
 			isMobile = mql.matches;
-			
+
 			const handleChange = (e: MediaQueryListEvent) => {
 				isMobile = e.matches;
 			};
-			
+
 			mql.addEventListener('change', handleChange);
-			return () => mql.removeEventListener('change', handleChange);
+
+			function handleResize() {
+				if (window.innerWidth >= 1280) itemsPerPage = 16;
+				else if (window.innerWidth >= 1024) itemsPerPage = 12;
+				else if (window.innerWidth >= 640) itemsPerPage = 8;
+				else itemsPerPage = 4;
+			}
+			handleResize();
+			window.addEventListener('resize', handleResize);
+
+			return () => {
+				mql.removeEventListener('change', handleChange);
+				window.removeEventListener('resize', handleResize);
+			};
 		}
 	});
 
-	let filteredProjects = $derived(
+	let allProjects = $derived(
 		activeCategory === sectionData.all
 			? manifest.projects
 			: activeCategory === sectionData.featured
 				? manifest.projects.filter((p) => p.isFeatured)
 				: manifest.projects.filter((p) => p.category === activeCategory)
 	);
+
+	let totalPages = $derived(Math.ceil(allProjects.length / itemsPerPage));
+
+	$effect(() => {
+		if (currentPage >= totalPages && totalPages > 0) {
+			currentPage = totalPages - 1;
+		}
+	});
+
+	let filteredProjects = $derived(
+		allProjects.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
+	);
+
+	function setPage(page: number) {
+		transitionType = 'page';
+		slideDirection = page > currentPage ? 1 : -1;
+		currentPage = page;
+	}
+
+	function handleProjectsTouchStart(e: TouchEvent) {
+		swipeProjectsStartX = e.touches[0].clientX;
+	}
+
+	function handleProjectsTouchEnd(e: TouchEvent) {
+		const diff = swipeProjectsStartX - e.changedTouches[0].clientX;
+		if (Math.abs(diff) > SWIPE_X_THRESHOLD) {
+			if (diff > 0 && currentPage < totalPages - 1) {
+				setPage(currentPage + 1);
+			} else if (diff < 0 && currentPage > 0) {
+				setPage(currentPage - 1);
+			}
+		}
+	}
 
 	$effect(() => {
 		if (typeof document !== 'undefined') {
@@ -68,8 +123,12 @@
 			sliderPos = Math.max(0, Math.min(100, (x / rect.width) * 100));
 		}
 
-		function onMouseMove(e: MouseEvent) { updateSlider(e.clientX); }
-		function onTouchMove(e: TouchEvent) { updateSlider(e.touches[0].clientX); }
+		function onMouseMove(e: MouseEvent) {
+			updateSlider(e.clientX);
+		}
+		function onTouchMove(e: TouchEvent) {
+			updateSlider(e.touches[0].clientX);
+		}
 
 		function onEnd() {
 			isDraggingSlider = false;
@@ -88,8 +147,12 @@
 			window.addEventListener('touchend', onEnd);
 		}
 
-		function onMouseDown(e: MouseEvent) { onStart(e.clientX); }
-		function onTouchStart(e: TouchEvent) { onStart(e.touches[0].clientX); }
+		function onMouseDown(e: MouseEvent) {
+			onStart(e.clientX);
+		}
+		function onTouchStart(e: TouchEvent) {
+			onStart(e.touches[0].clientX);
+		}
 
 		node.addEventListener('mousedown', onMouseDown);
 		node.addEventListener('touchstart', onTouchStart, { passive: true });
@@ -132,6 +195,25 @@
 		}
 		touchCurrentY = 0;
 	}
+
+	function dynamicIn(node: Element, params: { delay?: number } = {}) {
+		if (transitionType === 'page') {
+			return fly(node, {
+				x: slideDirection * 80,
+				duration: 350,
+				delay: params.delay || 0,
+				opacity: 0
+			});
+		}
+		return scale(node, { start: 0.95, duration: 350, delay: params.delay || 0, opacity: 0 });
+	}
+
+	function dynamicOut(node: Element) {
+		if (transitionType === 'page') {
+			return fly(node, { x: slideDirection * -80, duration: 250, opacity: 0 });
+		}
+		return scale(node, { start: 1.02, duration: 250, opacity: 0 });
+	}
 </script>
 
 <svelte:window
@@ -165,35 +247,38 @@
 					aria-label={sectionData.ariaLabel}
 					tabindex="0"
 				>
-					<div class="absolute inset-0 bg-gray-200">
-						<EnhancedImage
-							src={manifest.beforeAfter[activeBeforeAfterIdx].afterImage}
-							alt={sectionData.after}
-							class="pointer-events-none absolute inset-0 h-full w-full object-cover"
-						/>
-						<div
-							class="pointer-events-none absolute right-4 bottom-4 rounded-lg bg-forest-green/95 px-3 py-1.5 text-xs font-bold tracking-widest text-white uppercase backdrop-blur-md"
-						>
-							{sectionData.after}
-						</div>
-					</div>
+					{#key activeBeforeAfterIdx}
+						<div class="absolute inset-0" in:fade={{ duration: 350 }} out:fade={{ duration: 250 }}>
+							<div class="absolute inset-0 bg-gray-200">
+								<EnhancedImage
+									src={manifest.beforeAfter[activeBeforeAfterIdx].afterImage}
+									alt={sectionData.after}
+									class="pointer-events-none absolute inset-0 h-full w-full object-cover"
+								/>
+								<div
+									class="pointer-events-none absolute right-4 bottom-4 rounded-lg bg-forest-green/95 px-3 py-1.5 text-xs font-bold tracking-widest text-white uppercase backdrop-blur-md"
+								>
+									{sectionData.after}
+								</div>
+							</div>
 
-					<div
-						class="pointer-events-none absolute inset-0 z-10"
-						style="clip-path: inset(0 {100 - sliderPos}% 0 0);"
-						transition:fade={{ duration: 450 }}
-					>
-						<EnhancedImage
-							src={manifest.beforeAfter[activeBeforeAfterIdx].beforeImage}
-							alt={sectionData.before}
-							class="absolute inset-0 h-full w-full object-cover"
-						/>
-						<div
-							class="pointer-events-none absolute bottom-4 left-4 rounded-lg bg-black/60 px-3 py-1.5 text-xs font-bold tracking-widest text-white uppercase backdrop-blur-md"
-						>
-							{sectionData.before}
+							<div
+								class="pointer-events-none absolute inset-0 z-10"
+								style="clip-path: inset(0 {100 - sliderPos}% 0 0);"
+							>
+								<EnhancedImage
+									src={manifest.beforeAfter[activeBeforeAfterIdx].beforeImage}
+									alt={sectionData.before}
+									class="absolute inset-0 h-full w-full object-cover"
+								/>
+								<div
+									class="pointer-events-none absolute bottom-4 left-4 rounded-lg bg-black/60 px-3 py-1.5 text-xs font-bold tracking-widest text-white uppercase backdrop-blur-md"
+								>
+									{sectionData.before}
+								</div>
+							</div>
 						</div>
-					</div>
+					{/key}
 
 					<div
 						class="absolute top-0 bottom-0 z-20 w-1 cursor-ew-resize bg-white shadow-[0_0_10px_rgba(0,0,0,0.3)]"
@@ -211,9 +296,15 @@
 				<div
 					class="mx-auto mt-8 flex max-w-[950px] flex-col justify-between gap-6 border-t border-gray-200/60 pt-8 md:flex-row md:items-center"
 				>
-					<div class="grid min-h-[96px] flex-1 grid-cols-1 grid-rows-1 sm:min-h-[72px]">
+					<div
+						class="grid min-h-[96px] flex-1 grid-cols-1 grid-rows-1 overflow-hidden sm:min-h-[72px]"
+					>
 						{#key activeBeforeAfterIdx}
-							<div class="col-start-1 row-start-1" transition:fade={{ duration: 350 }}>
+							<div
+								class="col-start-1 row-start-1"
+								in:fly={{ x: beforeAfterSlideDirection * 80, duration: 350, opacity: 0 }}
+								out:fly={{ x: beforeAfterSlideDirection * -80, duration: 250, opacity: 0 }}
+							>
 								<h3 class="mb-2 text-2xl font-extrabold tracking-tight text-text-dark">
 									{manifest.beforeAfter[activeBeforeAfterIdx].title}
 								</h3>
@@ -233,6 +324,7 @@
 										? 'bg-white text-forest-green shadow-sm'
 										: 'text-gray-500 hover:text-text-dark'}"
 									onclick={() => {
+										beforeAfterSlideDirection = idx > activeBeforeAfterIdx ? 1 : -1;
 										activeBeforeAfterIdx = idx;
 										sliderPos = 50;
 									}}
@@ -287,13 +379,20 @@
 			{/each}
 		</div>
 
-		<div class="relative mt-16 overflow-hidden">
+		<div
+			class="relative mt-16 overflow-hidden"
+			ontouchstart={handleProjectsTouchStart}
+			ontouchend={handleProjectsTouchEnd}
+			role="group"
+			aria-roledescription="carousel"
+			aria-label={sectionData.title}
+		>
 			<div class="grid grid-cols-1 grid-rows-1">
-				{#key activeCategory}
+				{#key `${activeCategory}-${currentPage}`}
 					<div
 						class="col-start-1 row-start-1 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 xl:grid-cols-4"
-						in:fly={{ x: slideDirection * 80, duration: 350, delay: 200, opacity: 0 }}
-						out:fly={{ x: slideDirection * -80, duration: 250, opacity: 0 }}
+						in:dynamicIn={{ delay: 200 }}
+						out:dynamicOut
 					>
 						{#each filteredProjects as project (project.projectId)}
 							<button
@@ -363,6 +462,40 @@
 				{/key}
 			</div>
 		</div>
+
+		{#if totalPages > 1}
+			<div class="mt-12 flex items-center justify-center gap-2">
+				<button
+					class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-colors hover:bg-gray-100 disabled:cursor-default disabled:opacity-30 disabled:hover:bg-transparent"
+					disabled={currentPage === 0}
+					onclick={() => setPage(currentPage - 1)}
+					aria-label="Poprzednia strona"
+				>
+					<ChevronLeft size={20} class="text-gray-600" />
+				</button>
+
+				<div class="flex gap-1.5">
+					{#each Array(totalPages) as _, i (i)}
+						<button
+							class="h-2.5 rounded-full transition-all duration-300 {currentPage === i
+								? 'w-6 bg-forest-green'
+								: 'w-2.5 bg-gray-300 hover:bg-gray-400'}"
+							onclick={() => setPage(i)}
+							aria-label={`Strona ${i + 1}`}
+						></button>
+					{/each}
+				</div>
+
+				<button
+					class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-colors hover:bg-gray-100 disabled:cursor-default disabled:opacity-30 disabled:hover:bg-transparent"
+					disabled={currentPage === totalPages - 1}
+					onclick={() => setPage(currentPage + 1)}
+					aria-label="Następna strona"
+				>
+					<ChevronRight size={20} class="text-gray-600" />
+				</button>
+			</div>
+		{/if}
 	</div>
 </section>
 
@@ -371,7 +504,9 @@
 		<button
 			type="button"
 			aria-label="Zamknij"
-			class="absolute inset-0 w-full cursor-default border-none bg-black/60 transition-opacity {isMobile ? '' : 'backdrop-blur-sm'}"
+			class="absolute inset-0 w-full cursor-default border-none bg-black/60 transition-opacity {isMobile
+				? ''
+				: 'backdrop-blur-sm'}"
 			transition:fade={{ duration: 300 }}
 			onclick={() => (selectedProject = null)}
 		></button>
