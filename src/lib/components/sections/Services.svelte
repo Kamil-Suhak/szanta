@@ -11,7 +11,8 @@
 		Scissors,
 		Droplets,
 		Hammer,
-		Axe
+		Axe,
+		Building
 	} from 'lucide-svelte';
 	import { fade, fly } from 'svelte/transition';
 	import ImageModal from '../ui/ImageModal.svelte';
@@ -22,7 +23,8 @@
 		Scissors,
 		Droplets,
 		Hammer,
-		Axe
+		Axe,
+		Building
 	};
 
 	let activeServiceId = $state<string | null>(null);
