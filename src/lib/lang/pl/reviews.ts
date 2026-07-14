@@ -51,7 +51,7 @@ export const reviewsData = {
 		},
 		{
 			id: '5',
-			author_name: 'Starostwo Powiatowe w Zawierciu',
+			author_name: 'Zarząd Dróg Powiatowych w Zawierciu',
 			rating: 5,
 			text: 'Udzielamy rekomendacji firmie SZANTA Pana Klaudiusza Grocholi jako firmie wykazującej się starannością wykonanych usług [oraz] terminowością wykonania.',
 			date_written: '13 maja 2026',
@@ -62,14 +62,14 @@ export const reviewsData = {
 			id: '6',
 			author_name: 'Urząd Gminy w Myszkowie',
 			rating: 5,
-			text: 'Wszystkie usługi wynikające z przedmiotowych umów zostały wykonane terminowo, bez zastrzeżeń, zgodnie z zaleceniami oraz sztuką ogrodniczą. Współpracując z Urzędem firma [...] udowodniła, że jest sprawdzonym, rzetelnym i godnym zaufania profesjonalnym partnerem w realizacji powierzonych zadań.',
+			text: 'Wszystkie usługi [...] zostały wykonane bez zastrzeżeń. [...] Współpracując z Urzędem firma [...] udowodniła, że jest sprawdzonym, rzetelnym i godnym zaufania profesjonalnym partnerem w realizacji powierzonych zadań.',
 			date_written: '5 listopada 2018',
 			initial: 'U',
 			pdf_url: '/src/lib/assets/documents/Referencje-PoswiadczenieGminaMyszkow-usuniecie-drzew.pdf'
 		},
 		{
 			id: '7',
-			author_name: 'Zarząd Dróg Powiatowych w Zawierciu',
+			author_name: 'Starostwo Powiatowe w Zawierciu',
 			rating: 5,
 			text: 'Udzielamy rekomendacji firmie SZANTA Pana Klaudiusza Grocholi jako firmie wykazującej się starannością wykonanych usług, [...], a przede wszystkim dobrą jakością nasadzonego materiału.',
 			date_written: '25 października 2024',
