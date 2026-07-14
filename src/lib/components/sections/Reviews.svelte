@@ -365,7 +365,7 @@
 											{activeReview.author_name}
 										</div>
 										<div class="text-xs font-medium text-(--text-muted)">
-											{activeReview.relative_time_description}
+											{activeReview.date_written}
 										</div>
 									</div>
 

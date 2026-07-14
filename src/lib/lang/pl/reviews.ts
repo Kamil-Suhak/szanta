@@ -3,7 +3,7 @@ export interface Review {
 	author_name: string;
 	rating: number;
 	text: string;
-	relative_time_description: string;
+	date_written: string;
 	profile_photo_url?: string;
 	initial: string;
 	pdf_url?: string;
@@ -15,75 +15,75 @@ export const reviewsData = {
 	items: [
 		{
 			id: '1',
-			author_name: 'Urząd Miasta Katowice',
+			author_name: 'Gmina Myszków',
 			rating: 5,
-			text: 'Firma Szanta wywiązała się z umowy w sposób terminowy i rzetelny. Prace polegały na rewitalizacji zieleni miejskiej. Z pełnym przekonaniem polecamy firmę jako rzetelnego wykonawcę.',
-			relative_time_description: '2 miesiące temu',
-			initial: 'U',
-			pdf_url: '/src/lib/assets/documents/urzad-katowice.pdf'
+			text: 'Usługa realizowana była należycie, tj. terminowo oraz w sposób zgodny z wymaganiami określonymi przez Zamawiającego.',
+			date_written: '28 stycznia 2025',
+			initial: 'G',
+			pdf_url: '/src/lib/assets/documents/GminaMyszkowPielegnacja.pdf'
 		},
 		{
 			id: '2',
-			author_name: 'Firma Budowlana Kowalski',
+			author_name: 'MOK "Centrum" w Zawierciu',
 			rating: 5,
-			text: 'Współpraca przy zakładaniu zieleni wokół nowo wybudowanych osiedli przebiegła bezproblemowo. Doceniamy fachowe doradztwo i sprawne przeprowadzenie prac. Polecamy do współpracy.',
-			relative_time_description: '3 miesiące temu',
-			initial: 'F',
-			pdf_url: '/src/lib/assets/documents/firma-kowalski.pdf'
+			text: 'Usługa zrealizowana z należytą starannością, terminowo oraz w sposób zgodny z wymaganiami Zamawiającego. [...] Polecamy usługi Firmy [...] wszystkim tym, którzy [...] cenią sobie solidne partnerstwo w biznesie.',
+			date_written: '7 lutego 2025',
+			initial: 'M',
+			pdf_url: '/src/lib/assets/documents/MOKZawiercieWycinka2024.pdf'
 		},
 		{
 			id: '3',
-			author_name: 'Spółdzielnia Mieszkaniowa',
+			author_name: 'MPGL w Świętochłowicach',
 			rating: 5,
-			text: 'Zleciliśmy firmie Szanta wiosenne porządki i pielęgnację terenów zielonych na naszych osiedlach. Efekt przerósł nasze najśmielsze oczekiwania. Zdecydowanie nawiążemy stałą współpracę!',
-			relative_time_description: 'tydzień temu',
-			initial: 'S',
-			pdf_url: '/src/lib/assets/documents/spoldzielnia.pdf'
+			text: 'Prace zostały ukończone prawidłowo, terminowo, z należytą starannością, zgodnie z zakresem rzeczowym umowy, obowiązującymi normami, przepisami BHP oraz Prawem Budowlanym [...].',
+			date_written: '12 lutego 2025',
+			initial: 'M',
+			pdf_url: '/src/lib/assets/documents/MPGLSwietochlowiceZagospodarowanieWspolnota2024.pdf'
 		},
 		{
 			id: '4',
-			author_name: 'Parki Miejskie Sp. z o.o.',
+			author_name: 'Gmina Myszków',
 			rating: 5,
-			text: 'Wszystkie prace, od niwelacji terenu po nasadzenia, zostały wykonane z największą starannością. Ekipa Szanta posiada odpowiedni sprzęt i wiedzę potrzebną do realizacji dużych inwestycji.',
-			relative_time_description: 'pół roku temu',
-			initial: 'P',
-			pdf_url: '/src/lib/assets/documents/parki-miejskie.pdf'
+			text: 'Powyższe usługi zostały zrealizowane z należytą starannością, terminowo oraz w sposób zgodny z wymaganiami określonymi przez Zamawiającego.',
+			date_written: '22 października 2025',
+			initial: 'G',
+			pdf_url: '/src/lib/assets/documents/MyszkowZagospodarowanie-terenow-miejskich.pdf'
 		},
 		{
 			id: '5',
-			author_name: 'Zarząd Zieleni Miejskiej',
+			author_name: 'Starostwo Powiatowe w Zawierciu',
 			rating: 5,
-			text: 'Szybka i sprawna przycinka drzew w parkach. Firma dysponuje profesjonalnym sprzętem i wiedzą. Zostawili po sobie idealny porządek. Gorąco polecamy!',
-			relative_time_description: 'miesiąc temu',
-			initial: 'Z',
-			pdf_url: '/src/lib/assets/documents/zarzad-zieleni.pdf'
+			text: 'Udzielamy rekomendacji firmie SZANTA Pana Klaudiusza Grocholi jako firmie wykazującej się starannością wykonanych usług [oraz] terminowością wykonania.',
+			date_written: '13 maja 2026',
+			initial: 'S',
+			pdf_url: '/src/lib/assets/documents/PowiatZawiercieReferencje.pdf'
 		},
 		{
 			id: '6',
-			author_name: 'Deweloper Silesia',
+			author_name: 'Urząd Gminy w Myszkowie',
 			rating: 5,
-			text: 'Zieleń wokół naszej nowej inwestycji została zaprojektowana i wykonana wzorowo. Estetyka, staranność i dobór roślin stoją na najwyższym poziomie.',
-			relative_time_description: '4 miesiące temu',
-			initial: 'D',
-			pdf_url: '/src/lib/assets/documents/deweloper-silesia.pdf'
+			text: 'Wszystkie usługi wynikające z przedmiotowych umów zostały wykonane terminowo, bez zastrzeżeń, zgodnie z zaleceniami oraz sztuką ogrodniczą. Współpracując z Urzędem firma [...] udowodniła, że jest sprawdzonym, rzetelnym i godnym zaufania profesjonalnym partnerem w realizacji powierzonych zadań.',
+			date_written: '5 listopada 2018',
+			initial: 'U',
+			pdf_url: '/src/lib/assets/documents/Referencje-PoswiadczenieGminaMyszkow-usuniecie-drzew.pdf'
 		},
 		{
 			id: '7',
-			author_name: 'Hotel Zielony Kąt',
+			author_name: 'Zarząd Dróg Powiatowych w Zawierciu',
 			rating: 5,
-			text: 'Dzięki firmie Szanta otoczenie naszego hotelu zyskało nowy, reprezentacyjny wygląd. Nasi goście są zachwyceni ogrodem. Profesjonalizm w każdym calu.',
-			relative_time_description: '5 miesięcy temu',
-			initial: 'H',
-			pdf_url: '/src/lib/assets/documents/hotel-zielony-kat.pdf'
+			text: 'Udzielamy rekomendacji firmie SZANTA Pana Klaudiusza Grocholi jako firmie wykazującej się starannością wykonanych usług, [...], a przede wszystkim dobrą jakością nasadzonego materiału.',
+			date_written: '25 października 2024',
+			initial: 'Z',
+			pdf_url: '/src/lib/assets/documents/ReferencjePowiatZawiercieNasadzenie76szt-drzew.pdf'
 		},
 		{
 			id: '8',
-			author_name: 'Centrum Logistyczne',
+			author_name: 'ZGM w Zawierciu',
 			rating: 5,
-			text: 'Prace pielęgnacyjne i utrzymanie terenów zielonych na rozległym terenie centrum przebiegają zawsze bez zakłóceń. Cieszymy się z długofalowej współpracy.',
-			relative_time_description: '8 miesięcy temu',
-			initial: 'C',
-			pdf_url: '/src/lib/assets/documents/centrum-logistyczne.pdf'
+			text: 'Usługa została wykonana terminowo oraz fachowo z należytą starannością. [...] Wykonawca zachował warunki 24 miesięcznej gwarancji, co zostało potwierdzone ostateczną wizją lokalną w terenie.',
+			date_written: '8 października 2025',
+			initial: 'Z',
+			pdf_url: '/src/lib/assets/documents/ZGMZawiercieNasadzenie15szt-drzew.pdf'
 		}
 	] as Review[]
 };
