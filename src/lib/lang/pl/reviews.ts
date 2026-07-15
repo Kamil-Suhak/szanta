@@ -1,3 +1,12 @@
+import doc1 from '$lib/assets/documents/GminaMyszkowPielegnacja.pdf';
+import doc2 from '$lib/assets/documents/MOKZawiercieWycinka2024.pdf';
+import doc3 from '$lib/assets/documents/MPGLSwietochlowiceZagospodarowanieWspolnota2024.pdf';
+import doc4 from '$lib/assets/documents/MyszkowZagospodarowanie-terenow-miejskich.pdf';
+import doc5 from '$lib/assets/documents/PowiatZawiercieReferencje.pdf';
+import doc6 from '$lib/assets/documents/Referencje-PoswiadczenieGminaMyszkow-usuniecie-drzew.pdf';
+import doc7 from '$lib/assets/documents/ReferencjePowiatZawiercieNasadzenie76szt-drzew.pdf';
+import doc8 from '$lib/assets/documents/ZGMZawiercieNasadzenie15szt-drzew.pdf';
+
 export interface Review {
 	id: string;
 	author_name: string;
@@ -20,7 +29,7 @@ export const reviewsData = {
 			text: 'Usługa realizowana była należycie, tj. terminowo oraz w sposób zgodny z wymaganiami określonymi przez Zamawiającego.',
 			date_written: '28 stycznia 2025',
 			initial: 'G',
-			pdf_url: '/src/lib/assets/documents/GminaMyszkowPielegnacja.pdf'
+			pdf_url: doc1
 		},
 		{
 			id: '2',
@@ -29,7 +38,7 @@ export const reviewsData = {
 			text: 'Usługa zrealizowana z należytą starannością, terminowo oraz w sposób zgodny z wymaganiami Zamawiającego. [...] Polecamy usługi Firmy [...] wszystkim tym, którzy [...] cenią sobie solidne partnerstwo w biznesie.',
 			date_written: '7 lutego 2025',
 			initial: 'M',
-			pdf_url: '/src/lib/assets/documents/MOKZawiercieWycinka2024.pdf'
+			pdf_url: doc2
 		},
 		{
 			id: '3',
@@ -38,7 +47,7 @@ export const reviewsData = {
 			text: 'Prace zostały ukończone prawidłowo, terminowo, z należytą starannością, zgodnie z zakresem rzeczowym umowy, obowiązującymi normami, przepisami BHP oraz Prawem Budowlanym [...].',
 			date_written: '12 lutego 2025',
 			initial: 'M',
-			pdf_url: '/src/lib/assets/documents/MPGLSwietochlowiceZagospodarowanieWspolnota2024.pdf'
+			pdf_url: doc3
 		},
 		{
 			id: '4',
@@ -47,7 +56,7 @@ export const reviewsData = {
 			text: 'Powyższe usługi zostały zrealizowane z należytą starannością, terminowo oraz w sposób zgodny z wymaganiami określonymi przez Zamawiającego.',
 			date_written: '22 października 2025',
 			initial: 'G',
-			pdf_url: '/src/lib/assets/documents/MyszkowZagospodarowanie-terenow-miejskich.pdf'
+			pdf_url: doc4
 		},
 		{
 			id: '5',
@@ -56,7 +65,7 @@ export const reviewsData = {
 			text: 'Udzielamy rekomendacji firmie SZANTA Pana Klaudiusza Grocholi jako firmie wykazującej się starannością wykonanych usług [oraz] terminowością wykonania.',
 			date_written: '13 maja 2026',
 			initial: 'S',
-			pdf_url: '/src/lib/assets/documents/PowiatZawiercieReferencje.pdf'
+			pdf_url: doc5
 		},
 		{
 			id: '6',
@@ -65,7 +74,7 @@ export const reviewsData = {
 			text: 'Wszystkie usługi [...] zostały wykonane bez zastrzeżeń. [...] Współpracując z Urzędem firma [...] udowodniła, że jest sprawdzonym, rzetelnym i godnym zaufania profesjonalnym partnerem w realizacji powierzonych zadań.',
 			date_written: '5 listopada 2018',
 			initial: 'U',
-			pdf_url: '/src/lib/assets/documents/Referencje-PoswiadczenieGminaMyszkow-usuniecie-drzew.pdf'
+			pdf_url: doc6
 		},
 		{
 			id: '7',
@@ -74,7 +83,7 @@ export const reviewsData = {
 			text: 'Udzielamy rekomendacji firmie SZANTA Pana Klaudiusza Grocholi jako firmie wykazującej się starannością wykonanych usług, [...], a przede wszystkim dobrą jakością nasadzonego materiału.',
 			date_written: '25 października 2024',
 			initial: 'Z',
-			pdf_url: '/src/lib/assets/documents/ReferencjePowiatZawiercieNasadzenie76szt-drzew.pdf'
+			pdf_url: doc7
 		},
 		{
 			id: '8',
@@ -83,7 +92,7 @@ export const reviewsData = {
 			text: 'Usługa została wykonana terminowo oraz fachowo z należytą starannością. [...] Wykonawca zachował warunki 24 miesięcznej gwarancji, co zostało potwierdzone ostateczną wizją lokalną w terenie.',
 			date_written: '8 października 2025',
 			initial: 'Z',
-			pdf_url: '/src/lib/assets/documents/ZGMZawiercieNasadzenie15szt-drzew.pdf'
+			pdf_url: doc8
 		}
 	] as Review[]
 };

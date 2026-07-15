@@ -46,7 +46,12 @@
 			? `/src/lib/assets${src}`
 			: `/src/lib/assets/images/${src.replace(/^\//, '')}`;
 
-		const module: any = imageModules[globKey];
+		// Make lookup case-insensitive to avoid issues with mismatched casing between JSON and file system
+		const matchingKey = Object.keys(imageModules).find(
+			(k) => k.toLowerCase() === globKey.toLowerCase()
+		);
+
+		const module: any = matchingKey ? imageModules[matchingKey] : undefined;
 
 		if (module && module.default) {
 			return module.default;
