@@ -43,10 +43,7 @@
 			"projectName": "Ogród 4",
 			"category": "Pielęgnacja Zieleni",
 			"description": "Profesjonalna pielęgnacja istniejącej zieleni i staranne przygotowanie terenu.",
-			"images": [
-				"/images/projects/Ogród-4/3.jpg",
-				"/images/projects/Ogród-4/8.jpg"
-			]
+			"images": ["/images/projects/Ogród-4/3.jpg", "/images/projects/Ogród-4/8.jpg"]
 		},
 		{
 			"projectId": "ogrod-5",
@@ -197,30 +194,21 @@
 			"projectName": "Obrzeża i Piaskownice",
 			"category": "Mała Architektura",
 			"description": "Piaskownice z solidnymi obrzeżami dla najmłodszych, realizowane w ramach ulepszania placów zabaw.",
-			"images": [
-				"/images/Piaskownice/piasek1A.jpeg",
-				"/images/Piaskownice/piasek3A.jpeg"
-			]
+			"images": ["/images/Piaskownice/piasek1A.jpeg", "/images/Piaskownice/piasek3A.jpeg"]
 		},
 		{
 			"projectId": "przystanek-1",
 			"projectName": "Zielony Przystanek I",
 			"category": "Zakładanie Ogrodów",
 			"description": "Zazielenienie okolic miejskiego przystanku komunikacji - poprawa lokalnego mikroklimatu i estetyki.",
-			"images": [
-				"/images/Przystanek-1/przystanek1A.jpeg",
-				"/images/Przystanek-1/przystanek1B.jpeg"
-			]
+			"images": ["/images/Przystanek-1/przystanek1A.jpeg", "/images/Przystanek-1/przystanek1B.jpeg"]
 		},
 		{
 			"projectId": "przystanek-2",
 			"projectName": "Zielony Przystanek II",
 			"category": "Zakładanie Ogrodów",
 			"description": "Kolejny etap wprowadzania zieleni miejskiej w infrastrukturę miejską wokół wiat przystankowych.",
-			"images": [
-				"/images/Przystanek-2/przystanek2A.jpeg",
-				"/images/Przystanek-2/przystanek2B.jpeg"
-			]
+			"images": ["/images/Przystanek-2/przystanek2A.jpeg", "/images/Przystanek-2/przystanek2B.jpeg"]
 		},
 		{
 			"projectId": "patio-sciezka",
@@ -256,15 +244,15 @@
 			"id": "comp-1",
 			"title": "Renowacja ronda",
 			"description": "Całkowita metamorfoza ronda w Zawierciu.",
-			"beforeImage": "/images/comparison/1/before.jpg",
-			"afterImage": "/images/comparison/1/after.jpg"
+			"beforeImage": "/images/comparison/rondo/before1.jpg",
+			"afterImage": "/images/comparison/rondo/after1.jpg"
 		},
 		{
 			"id": "comp-2",
 			"title": "Nowa aranżacja parku",
 			"description": "Kompleksowa przebudowa i rewitalizacja parku miejskiego.",
-			"beforeImage": "/images/comparison/2/before.jpg",
-			"afterImage": "/images/comparison/2/after.jpg"
+			"beforeImage": "/images/comparison/park/before2.jpg",
+			"afterImage": "/images/comparison/park/after2.jpg"
 		}
 	]
 }
