@@ -7,10 +7,11 @@ export const services = {
 	overview: {
 		title: 'Kompleksowa Obsługa Twojego Ogrodu',
 		description: {
-			start: 'Oferujemy kompleksowe usługi z zakresu projektowania, zakładania i pielęgnacji ogrodów. Nasze doświadczenie pozwala nam sprostać nawet najbardziej wymagającym projektom, tworząc przestrzenie zielone, które zachwycają przez cały rok. Wybierz jedną z usług z menu ',
-			desktopDirection: 'po lewej stronie',
-			mobileDirection: 'w prawym górnym rogu',
-			end: ', aby dowiedzieć się więcej o tym, jak możemy odmienić Twój ogród.'
+			start:
+				'Oferujemy kompleksowe usługi z zakresu projektowania, zakładania i pielęgnacji ogrodów. Nasze doświadczenie pozwala nam sprostać nawet najbardziej wymagającym projektom, tworząc przestrzenie zielone, które zachwycają przez cały rok. Wybierz jedną z usług z menu ',
+			desktopDirection: 'po lewej stronie,',
+			mobileDirection: 'w prawym górnym rogu,',
+			end: 'aby dowiedzieć się więcej o tym, jak możemy odmienić Twój ogród.'
 		}
 	},
 	list: [
