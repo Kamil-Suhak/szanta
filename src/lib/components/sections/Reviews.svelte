@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { reviewsData } from '$lib/lang/pl/reviews';
-	import { Quote, ExternalLink } from 'lucide-svelte';
+	import { Quote, FileSearchCorner } from 'lucide-svelte';
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
@@ -46,6 +46,29 @@
 			const target =
 				dx < 0 ? Math.min(currentPage + 1, TOTAL_PAGES - 1) : Math.max(currentPage - 1, 0);
 			manualPage = target;
+		}
+	}
+
+	let textTouchStartX = $state(0);
+	let textSwiping = $state(false);
+
+	function handleTextTouchStart(e: TouchEvent) {
+		textTouchStartX = e.touches[0].clientX;
+		textSwiping = true;
+	}
+
+	function handleTextTouchEnd(e: TouchEvent) {
+		if (!textSwiping) return;
+		textSwiping = false;
+		const dx = e.changedTouches[0].clientX - textTouchStartX;
+		if (Math.abs(dx) > 50) {
+			if (dx < 0) {
+				// Swipe left -> Next review
+				setActive((activeIndex + 1) % reviewsData.items.length);
+			} else {
+				// Swipe right -> Previous review
+				setActive((activeIndex - 1 + reviewsData.items.length) % reviewsData.items.length);
+			}
 		}
 	}
 
@@ -193,18 +216,26 @@
 												? 'scale-110 border-(--forest-green) shadow-[0_4px_12px_-2px_rgba(45,132,53,0.35)]'
 												: 'border-gray-200 shadow-sm hover:scale-105 hover:border-(--forest-green)/50'}"
 										>
-											<svg
-												class="h-full w-full transition-colors duration-500
-													{activeIndex === i
-													? 'bg-linear-to-br from-(--forest-green)/15 to-(--forest-green)/5 text-(--forest-green)'
-													: 'bg-linear-to-br from-gray-100 to-gray-50 text-gray-400 group-hover:text-gray-500'}"
-												fill="currentColor"
-												viewBox="0 0 24 24"
-											>
-												<path
-													d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
+											{#if review.profile_photo_url}
+												<img
+													src={review.profile_photo_url}
+													alt={review.author_name}
+													class="h-full w-full object-cover"
 												/>
-											</svg>
+											{:else}
+												<svg
+													class="h-full w-full transition-colors duration-500
+														{activeIndex === i
+														? 'bg-linear-to-br from-(--forest-green)/15 to-(--forest-green)/5 text-(--forest-green)'
+														: 'bg-linear-to-br from-gray-100 to-gray-50 text-gray-400 group-hover:text-gray-500'}"
+													fill="currentColor"
+													viewBox="0 0 24 24"
+												>
+													<path
+														d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
+													/>
+												</svg>
+											{/if}
 										</div>
 									</button>
 								{/each}
@@ -246,18 +277,27 @@
 								aria-label={`Pokaż opinię od ${review.author_name}`}
 								aria-current={activeIndex === i ? 'true' : 'false'}
 							>
-								<svg
-									class="h-full w-full transition-colors duration-500
-										{activeIndex === i
-										? 'bg-linear-to-br from-(--forest-green)/15 to-(--forest-green)/5 text-(--forest-green)'
-										: 'bg-linear-to-br from-gray-100 to-gray-50 text-gray-400 group-hover:from-gray-50 group-hover:to-gray-100/50 group-hover:text-gray-500'}"
-									fill="currentColor"
-									viewBox="0 0 24 24"
-								>
-									<path
-										d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
+								{#if review.profile_photo_url}
+									<img
+										src={review.profile_photo_url}
+										alt={review.author_name}
+										class="h-full w-full object-cover transition-opacity duration-500
+											{activeIndex === i ? 'opacity-100' : 'opacity-80 group-hover:opacity-100'}"
 									/>
-								</svg>
+								{:else}
+									<svg
+										class="h-full w-full transition-colors duration-500
+											{activeIndex === i
+											? 'bg-linear-to-br from-(--forest-green)/15 to-(--forest-green)/5 text-(--forest-green)'
+											: 'bg-linear-to-br from-gray-100 to-gray-50 text-gray-400 group-hover:from-gray-50 group-hover:to-gray-100/50 group-hover:text-gray-500'}"
+										fill="currentColor"
+										viewBox="0 0 24 24"
+									>
+										<path
+											d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
+										/>
+									</svg>
+								{/if}
 
 								<!-- Tooltip on hover -->
 								<div
@@ -317,6 +357,8 @@
 				class="relative z-30 mx-auto mt-8 w-full max-w-4xl flex-1 lg:mt-0"
 				onmouseenter={() => (isHovered = true)}
 				onmouseleave={() => (isHovered = false)}
+				ontouchstart={handleTextTouchStart}
+				ontouchend={handleTextTouchEnd}
 				role="status"
 				aria-live="polite"
 			>
@@ -330,8 +372,7 @@
 						<Quote class="h-14 w-14 sm:h-24 sm:w-24" strokeWidth={1} fill="currentColor" />
 					</div>
 
-					<!-- Use CSS Grid for overlap to prevent snapping during transition -->
-					<div class="relative grid min-h-[260px] w-full sm:min-h-[340px]">
+					<div class="relative grid min-h-[368px] w-full sm:min-h-[428px]">
 						{#key activeIndex}
 							<div
 								class="col-start-1 row-start-1 flex h-full flex-col"
@@ -340,25 +381,33 @@
 							>
 								<!-- Review Text -->
 								<blockquote
-									class="mt-8 mb-4 line-clamp-4 text-xl leading-relaxed font-semibold text-(--text-dark) italic sm:line-clamp-5 sm:text-3xl"
+									class="mt-8 mb-4 line-clamp-8 text-xl leading-relaxed font-medium text-(--text-dark) italic lg:text-3xl"
 								>
 									{activeReview.text}
 								</blockquote>
 
-								<!-- Author Info (Pushed to bottom via mt-auto) -->
+								<!-- Author Info -->
 								<div class="mt-auto flex items-center gap-4 border-t border-gray-200/60 pt-4">
 									<div
-										class="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-(--forest-green)/20 shadow-md lg:hidden"
+										class="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-(--forest-green)/20 shadow-md"
 									>
-										<svg
-											class="h-full w-full bg-linear-to-br from-(--forest-green)/15 to-(--forest-green)/5 text-(--forest-green)"
-											fill="currentColor"
-											viewBox="0 0 24 24"
-										>
-											<path
-												d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
+										{#if activeReview.profile_photo_url}
+											<img
+												src={activeReview.profile_photo_url}
+												alt={activeReview.author_name}
+												class="h-full w-full object-cover"
 											/>
-										</svg>
+										{:else}
+											<svg
+												class="h-full w-full bg-linear-to-br from-(--forest-green)/15 to-(--forest-green)/5 text-(--forest-green)"
+												fill="currentColor"
+												viewBox="0 0 24 24"
+											>
+												<path
+													d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
+												/>
+											</svg>
+										{/if}
 									</div>
 									<div>
 										<div class="text-base font-bold text-(--text-dark)">
@@ -379,7 +428,7 @@
 												aria-label={`Pobierz lub otwórz referencję w formacie PDF od ${activeReview.author_name}`}
 												title="Otwórz referencję PDF"
 											>
-												<ExternalLink size={24} />
+												<FileSearchCorner size={24} />
 											</a>
 										</div>
 									{/if}
