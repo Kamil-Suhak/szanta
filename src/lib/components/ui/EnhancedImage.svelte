@@ -26,15 +26,13 @@
 	}>();
 
 	// Eagerly load a dictionary of all images in the src/lib/assets/images directory so we can look them up dynamically
-	const imageModules = import.meta.glob(
-		'/src/lib/assets/images/**/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp,JPG,JPEG,PNG,WEBP}',
-		{
-			eager: true,
-			query: {
-				enhanced: true
-			}
+	const imageModules = import.meta.glob('/src/lib/assets/images/**/*.{jpeg,jpg,png,JPG,JPEG,PNG}', {
+		eager: true,
+		query: {
+			enhanced: true,
+			format: 'avif;jpg'
 		}
-	);
+	});
 
 	let finalSrc = $derived.by(() => {
 		// External URLs don't get processed
