@@ -23,8 +23,8 @@
 		? 'h-[70px] border-b border-gray-200/20 bg-white/80 py-2 shadow-lg backdrop-blur-xl'
 		: 'h-[90px] bg-transparent py-4'}"
 >
-	<div class="mx-auto flex h-full max-w-[100vw] items-center px-4 md:px-8">
-		<div class="flex flex-1 justify-start">
+	<div class="mx-auto flex h-full max-w-[100vw] items-center justify-evenly px-0 lg:justify-between lg:px-8">
+		<div class="contents lg:flex lg:flex-1 lg:justify-start">
 			<a
 				href="/"
 				class="flex items-center gap-2 text-xl font-bold decoration-0 transition-all duration-300 md:text-2xl {isActiveStyle
@@ -75,7 +75,7 @@
 			</a>
 		</div>
 
-		<div class="flex flex-1 items-center justify-end gap-3 md:gap-4">
+		<div class="contents lg:flex lg:flex-1 lg:items-center lg:justify-end lg:gap-4">
 			<Button
 				href="#kontakt"
 				variant={isActiveStyle ? 'primary' : 'secondary'}
