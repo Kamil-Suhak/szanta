@@ -62,7 +62,7 @@
 				class="max-h-[85vh] w-auto max-w-full rounded-lg object-contain shadow-2xl"
 				loading="lazy"
 			/>
-			<div class="mt-4 text-center text-lg font-medium text-white/90">
+			<div class="mt-4 text-center text-base sm:text-lg font-medium text-white/90">
 				{image.annotation}
 			</div>
 		</div>
