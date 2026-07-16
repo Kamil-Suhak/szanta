@@ -71,11 +71,10 @@ export const actions: Actions = {
 
 		// 5. Construct and Send Email via Brevo API
 		const brevoKey = env.BREVO_API_KEY;
+		// const brevoKey = null;
 		const isTestMode = env.TEST_MODE === 'true';
-		const recipientEmail = isTestMode
-			? env.ADMIN_EMAIL || 'admin@szantaogrody.pl'
-			: env.RECIPIENT_EMAIL || 'szanta.ogrody@gmail.com';
-		const senderEmail = env.SENDER_EMAIL || 'no-reply@szantaogrody.pl';
+		const recipientEmail = isTestMode ? env.ADMIN_EMAIL : env.RECIPIENT_EMAIL;
+		const senderEmail = env.SENDER_EMAIL;
 
 		const emailSubject = `[Kontakt Szanta.com] Nowe zapytanie od: ${name} na temat: ${service}`;
 		const emailHtml = `
