@@ -12,3 +12,10 @@ NODE_VERSION = "24"
 
 [env.production]
 compatibility_flags = [ "nodejs_als", "nodejs_compat" ]
+
+[env.production.vars]
+ADMIN_EMAIL = "kamilsuhak@gmail.com"
+RECIPIENT_EMAIL = "szanta_grochola@interia.pl"
+SENDER_EMAIL = "kontakt@szanta.com"
+TEST_MODE = "false"
+NODE_VERSION = "24"
