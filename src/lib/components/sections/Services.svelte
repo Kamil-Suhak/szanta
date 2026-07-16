@@ -56,7 +56,7 @@
 		<!-- Section Header -->
 		<div class="mb-16 text-center">
 			<h2 class="mb-4 text-4xl font-extrabold tracking-tight text-(--forest-green) sm:text-5xl">
-				Nasze Usługi
+				{services.ui.heading}
 			</h2>
 			<div class="mx-auto h-1 w-24 rounded bg-(--forest-green)"></div>
 		</div>
@@ -70,7 +70,7 @@
 				>
 					<!-- Mobile Header -->
 					<div class="flex items-center justify-between border-b p-6 lg:hidden">
-						<span class="text-xl font-bold text-(--forest-green)">Usługi</span>
+						<span class="text-xl font-bold text-(--forest-green)">{services.ui.sidebarTitle}</span>
 						<button
 							class="rounded-full p-2 text-gray-500 hover:bg-gray-100"
 							onclick={() => (isMobileSidebarOpen = false)}
@@ -89,7 +89,7 @@
 										: 'bg-(--forest-green)/0 text-(--text-dark) hover:bg-(--forest-green)/10'}"
 									onclick={() => handleServiceClick(null)}
 								>
-									<span class="font-semibold">Przegląd Usług</span>
+									<span class="font-semibold">{services.ui.sidebarOverview}</span>
 									<ChevronRight 
 										size={18} 
 										class="transition-all duration-300 group-hover:translate-x-1 {activeServiceId === null ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}" 
@@ -182,7 +182,10 @@
 								{services.overview.title}
 							</h3>
 							<p class="max-w-3xl text-lg leading-relaxed text-(--text-muted)">
-								{services.overview.description}
+								{services.overview.description.start}
+								<span class="hidden lg:inline">{services.overview.description.desktopDirection}</span>
+								<span class="inline lg:hidden">{services.overview.description.mobileDirection}</span>
+								{services.overview.description.end}
 							</p>
 							<div class="relative mt-12 h-[320px] w-full sm:h-[400px]">
 								{#each services.list.slice(0, 3) as s, i (s.id)}
