@@ -7,5 +7,6 @@ export const nav = {
 		{ href: '/#kontakt', text: 'Kontakt' },
 		{ href: '/o-nas', text: 'O nas' }
 	],
+	shop: 'Sklep',
 	cta: 'Darmowa Wycena'
 };

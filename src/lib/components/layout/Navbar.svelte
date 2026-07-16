@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { nav } from '$lib/lang/pl/nav';
-	import { Leaf, ChevronDown } from 'lucide-svelte';
+	import { Leaf, Menu, X } from 'lucide-svelte';
 	import Button from '../ui/Button.svelte';
 	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
@@ -68,14 +68,14 @@
 					? 'text-text-muted hover:text-forest-green'
 					: 'text-white/90 hover:text-white'}"
 			>
-				<span class="text-wrapper">Sklep</span>
+				<span class="text-wrapper">{nav.shop}</span>
 				<span class="bg-bubble {isActiveStyle ? 'bg-forest-green/10' : 'bg-white/20'}"></span>
 				<span class="underline-base {isActiveStyle ? 'bg-forest-green/40' : 'bg-white/40'}"></span>
 				<span class="underline-active {isActiveStyle ? 'bg-forest-green' : 'bg-white'}"></span>
 			</a>
 		</div>
 
-		<div class="flex flex-1 justify-end">
+		<div class="flex flex-1 items-center justify-end gap-3 md:gap-4">
 			<Button
 				href="#kontakt"
 				variant={isActiveStyle ? 'primary' : 'secondary'}
@@ -83,21 +83,22 @@
 			>
 				{nav.cta}
 			</Button>
-		</div>
 
-		<!-- Mobile Dropdown Toggle -->
-		<button
-			class="absolute bottom-1 left-1/2 flex -translate-x-1/2 items-center justify-center p-1 transition-colors lg:hidden {isActiveStyle
-				? 'text-forest-green'
-				: 'text-white'}"
-			onclick={() => (isMobileMenuOpen = !isMobileMenuOpen)}
-			aria-label="Menu"
-		>
-			<ChevronDown
-				size={20}
-				class="transition-transform duration-300 {isMobileMenuOpen ? 'rotate-180' : ''}"
-			/>
-		</button>
+			<!-- Mobile Menu Toggle -->
+			<button
+				class="flex h-10 w-10 items-center justify-center rounded-lg transition-colors lg:hidden {isActiveStyle
+					? 'text-forest-green hover:bg-forest-green/10'
+					: 'text-white hover:bg-white/10'}"
+				onclick={() => (isMobileMenuOpen = !isMobileMenuOpen)}
+				aria-label="Menu"
+			>
+				{#if isMobileMenuOpen}
+					<X size={24} />
+				{:else}
+					<Menu size={24} />
+				{/if}
+			</button>
+		</div>
 	</div>
 
 	<!-- Expanded Mobile Menu -->
@@ -108,6 +109,9 @@
 		>
 			<div class="flex flex-col items-center gap-6">
 				{#each nav.links as link (link.href)}
+					{#if link.href === '/o-nas'}
+						<div class="-my-3 h-0.5 w-24 bg-gray-300"></div>
+					{/if}
 					<a
 						href={link.href}
 						class="text-lg font-medium text-text-dark hover:text-forest-green"
@@ -116,13 +120,13 @@
 						{link.text}
 					</a>
 				{/each}
-				<div class="h-px w-16 bg-gray-200"></div>
+				<div class="-my-3 h-0.5 w-24 bg-gray-300"></div>
 				<a
 					href="/sklep"
 					class="text-lg font-medium text-text-dark hover:text-forest-green"
 					onclick={() => (isMobileMenuOpen = false)}
 				>
-					Sklep
+					{nav.shop}
 				</a>
 			</div>
 		</div>
