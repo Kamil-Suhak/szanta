@@ -3,7 +3,7 @@ export const sklepData = {
 	categories: [
 		{ id: 'materialy_ogrodowe', name: 'Materiały ogrodowe' },
 		{ id: 'trawy', name: 'Trawy' },
-		{ id: 'krzewy', name: 'Dzrewa i krzewy' },
+		{ id: 'krzewy', name: 'Drzewa i krzewy' },
 		{ id: 'zwiry', name: 'Żwiry' },
 		{ id: 'piaski', name: 'Piaski' },
 		{ id: 'zywoploty', name: 'Żywopłoty' },
