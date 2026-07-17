@@ -3,7 +3,7 @@
 	import Navbar from '$lib/components/layout/Navbar.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import favicon from '$lib/assets/favicon.svg';
-	import ogCover from '$lib/assets/images/og-cover.png';
+	import ogCover from '$lib/assets/og-cover.jpg';
 	import { page } from '$app/state';
 
 	let { children } = $props();
