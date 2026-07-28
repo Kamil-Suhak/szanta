@@ -139,7 +139,7 @@
 		{
 			"projectId": "rondo-flagi",
 			"projectName": "Rondo Flagi RP",
-			"category": "Zakładanie Ogrodów",
+			"category": "Architektura miejska",
 			"description": "Estetyczna zieleń miejska i staranny układ drogowy przy Rondzie Flagi RP.",
 			"images": [
 				"/images/projects/Rondo-Flagi-RP/5.jpg",
@@ -151,7 +151,7 @@
 		{
 			"projectId": "rondo-zawiercie",
 			"projectName": "Rondo Zawiercie",
-			"category": "Zakładanie Ogrodów",
+			"category": "Architektura miejska",
 			"description": "Aranżacja nowoczesnej zieleni miejskiej na reprezentacyjnym rondzie w Zawierciu.",
 			"images": [
 				"/images/projects/Rondo-Zawiercie/3.jpg",
@@ -163,7 +163,7 @@
 		{
 			"projectId": "silownia",
 			"projectName": "Siłownia na powietrzu",
-			"category": "Mała Architektura",
+			"category": "Architektura miejska",
 			"description": "Kompleksowa realizacja placu sportowego z urządzeniami zewnętrznymi i bezpieczną nawierzchnią.",
 			"images": [
 				"/images/projects/Siłownia-na-powietrzu/1.jpg",
@@ -198,16 +198,16 @@
 		},
 		{
 			"projectId": "przystanek-1",
-			"projectName": "Zielony Przystanek I",
-			"category": "Zakładanie Ogrodów",
-			"description": "Zazielenienie okolic miejskiego przystanku komunikacji - poprawa lokalnego mikroklimatu i estetyki.",
+			"projectName": "Przystanek autobusowy I",
+			"category": "Architektura miejska",
+			"description": "Estetyczna wiata przystankowa z dopasowaną infrastrukturą pasażerską w Myszkowie.",
 			"images": ["/images/Przystanek-1/przystanek1A.jpeg", "/images/Przystanek-1/przystanek1B.jpeg"]
 		},
 		{
 			"projectId": "przystanek-2",
-			"projectName": "Zielony Przystanek II",
-			"category": "Zakładanie Ogrodów",
-			"description": "Kolejny etap wprowadzania zieleni miejskiej w infrastrukturę miejską wokół wiat przystankowych.",
+			"projectName": "Przystanek autobusowy II",
+			"category": "Architektura miejska",
+			"description": "Nowoczesna, funkcjonalna wiata przystankowa zrealizowana w Myszkowie.",
 			"images": ["/images/Przystanek-2/przystanek2A.jpeg", "/images/Przystanek-2/przystanek2B.jpeg"]
 		},
 		{
@@ -234,6 +234,7 @@
 	"categories": [
 		"Wszystkie",
 		"Wyróżnione",
+		"Architektura miejska",
 		"Projektowanie Ogrodów",
 		"Zakładanie Ogrodów",
 		"Pielęgnacja Zieleni",

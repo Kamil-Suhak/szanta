@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { about } from '$lib/lang/pl/about';
+	import { common } from '$lib/lang/pl/common';
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
-	import { Quote, Leaf } from 'lucide-svelte';
+	import { Quote } from 'lucide-svelte';
 	import heroBg from '$lib/assets/images/hero_bg.png';
 
 	let visible = $state(false);
@@ -13,7 +14,7 @@
 </script>
 
 <svelte:head>
-	<title>{about.title} | Szanta Ogrody</title>
+	<title>{about.title} | {common.company.name}</title>
 	<meta name="description" content={about.subtitle} />
 </svelte:head>
 
@@ -99,11 +100,16 @@
 			<div class="space-y-8 lg:col-span-7">
 				{#if visible}
 					<div in:fly={{ x: 40, delay: 500, duration: 1000 }} class="space-y-6">
-						<div class="flex items-center gap-3">
-							<Leaf class="animate-pulse text-forest-green" size={24} />
-							<span class="text-sm font-extrabold tracking-widest text-forest-green uppercase"
-								>{about.storyTitle}</span
+						<div class="space-y-2">
+							<div class="flex items-center gap-2.5 text-xs font-bold tracking-widest text-forest-green uppercase">
+								<span class="h-px w-6 bg-forest-green"></span>
+								{about.storyEyebrow}
+							</div>
+							<h2
+								class="text-3xl font-extrabold tracking-tight text-text-dark sm:text-4xl lg:text-[2.25rem] lg:leading-tight"
 							>
+								{about.storyTitle}
+							</h2>
 						</div>
 
 						<div class="space-y-4 text-base leading-relaxed text-text-muted sm:text-lg">
@@ -112,10 +118,9 @@
 						</div>
 
 						<!-- Stylized blockquote for Owner's Quote -->
-						<div
+						<!-- <div
 							class="relative overflow-hidden rounded-2xl border-l-4 border-forest-green bg-forest-green/5 p-6 shadow-xs md:p-8"
 						>
-							<!-- Absolute decorative quote icon -->
 							<div class="absolute -right-4 -bottom-6 text-forest-green/10 opacity-60">
 								<Quote size={120} strokeWidth={1} />
 							</div>
@@ -135,7 +140,7 @@
 									</p>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				{/if}
 			</div>

@@ -78,9 +78,8 @@ export const sklepData = {
 		{
 			id: 'p1',
 			categoryId: 'piaski',
-			name: 'Piasek ozdobny',
-			description:
-				'Jasny piasek idealny do tworzenia suchych aranżacji, czy na podłoże do roślin pustynnych.',
+			name: 'Piasek',
+			description: 'Atestowany piasek idealny do piaskownic.',
 			images: ['/images/shop/piasek2A.jpeg']
 		},
 		{
@@ -94,8 +93,8 @@ export const sklepData = {
 		{
 			id: 'm1',
 			categoryId: 'materialy_ogrodowe',
-			name: 'Drewno na wiaty i altanki',
-			description: 'Wyselekcjonowane drewno konstrukcyjne do budowy altan, wiat i zadaszeń.',
+			name: 'Wiaty i altanki',
+			description: 'Realizujemy indywidualne projekty altan i wiat, dopasowane do potrzeb klienta.',
 			images: ['/images/shop/wiaty-altanki.jpeg']
 		},
 		{
