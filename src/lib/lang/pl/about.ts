@@ -12,20 +12,5 @@ export const about = {
 		quote:
 			'„Dla nas nie ma znaczenia, czy to mały ogródek, czy duża inwestycja miejska. Zawsze stawiamy na solidne wykonanie i przemyślane rozwiązania, które przetrwają lata.”',
 		photoAlt: 'Zdjęcie właściciela firmy Szanta'
-	},
-	valuesTitle: 'Jak pracujemy',
-	values: [
-		{
-			title: 'Wszechstronność',
-			desc: 'Ogrody, parki, skwery czy wycinka drzew – mamy odpowiedni sprzęt i doświadczenie, żeby sprawnie poradzić sobie z każdym zadaniem, niezależnie od jego skali.'
-		},
-		{
-			title: 'Konkretne działanie',
-			desc: 'Nie owijamy w bawełnę, robimy swoje. Stawiamy na trwałe materiały, sprawdzone rozwiązania i rzetelną pracę w terenie od pierwszego dnia.'
-		},
-		{
-			title: 'Brak szablonów',
-			desc: 'Każdy teren wymaga innego podejścia. Zawsze dopasowujemy się do specyfiki miejsca – czy to pas zieleni przy ruchliwej ulicy, czy cichy zakątek na tyłach domu.'
-		}
-	]
+	}
 };

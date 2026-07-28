@@ -2,7 +2,7 @@
 	import { about } from '$lib/lang/pl/about';
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
-	import { Quote, Leaf, Sprout, ShieldCheck, Sparkles } from 'lucide-svelte';
+	import { Quote, Leaf } from 'lucide-svelte';
 	import heroBg from '$lib/assets/images/hero_bg.png';
 
 	let visible = $state(false);
@@ -10,8 +10,6 @@
 	onMount(() => {
 		visible = true;
 	});
-
-	const valueIcons = [ShieldCheck, Sprout, Sparkles];
 </script>
 
 <svelte:head>
@@ -142,37 +140,5 @@
 				{/if}
 			</div>
 		</div>
-
-		<!-- Section for Values (valuesTitle & values list) from about.ts -->
-		<!-- {#if about.values && about.values.length > 0}
-			<div class="mt-24 lg:mt-32">
-				{#if visible}
-					<div in:fade={{ delay: 800, duration: 800 }} class="mb-16 text-center">
-						<h2 class="text-3xl font-extrabold tracking-tight text-text-dark sm:text-4xl">
-							{about.valuesTitle}
-						</h2>
-						<div class="mx-auto mt-4 h-1 w-16 rounded bg-forest-green"></div>
-					</div>
-
-					<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-						{#each about.values as val, i (val.title)}
-							{@const Icon = valueIcons[i % valueIcons.length]}
-							<div
-								in:fly={{ y: 40, delay: 900 + i * 150, duration: 800 }}
-								class="group flex flex-col items-center rounded-3xl border border-gray-100 bg-white p-8 text-center shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
-							>
-								<div
-									class="flex h-14 w-14 items-center justify-center rounded-2xl bg-forest-green/10 text-forest-green transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
-								>
-									<Icon size={26} />
-								</div>
-								<h3 class="mt-6 text-xl font-bold text-text-dark">{val.title}</h3>
-								<p class="mt-3 text-sm leading-relaxed font-medium text-text-muted">{val.desc}</p>
-							</div>
-						{/each}
-					</div>
-				{/if}
-			</div>
-		{/if} -->
 	</div>
 </section>

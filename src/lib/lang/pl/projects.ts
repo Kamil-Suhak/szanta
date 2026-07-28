@@ -14,13 +14,3 @@ export const sectionData = {
 	details: 'Zobacz szczegóły',
 	ctaDetails: 'Chcę podobny projekt'
 };
-
-export const categories = [
-	'Wszystkie',
-	'Wyróżnione',
-	'Projektowanie Ogrodów',
-	'Zakładanie Ogrodów',
-	'Pielęgnacja Zieleni',
-	'Systemy Nawadniające',
-	'Mała Architektura'
-];

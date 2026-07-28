@@ -33,7 +33,6 @@ export const contact = {
 		subtitle: 'Masz pytania? Chętnie na nie odpowiemy. Zadzwoń, napisz lub odwiedź nas.',
 		phoneLabel: 'Zadzwoń do nas',
 		emailLabel: 'Napisz e-mail',
-		addressLabel: 'Śląsk',
-		hoursLabel: 'Godziny pracy'
+		addressLabel: 'Śląsk'
 	}
 };

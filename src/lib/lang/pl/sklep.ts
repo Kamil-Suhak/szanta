@@ -121,7 +121,6 @@ export const sklepData = {
 		}
 	],
 	buttons: {
-		showMore: 'Pokaż więcej',
 		prevImage: 'Poprzednie zdjęcie',
 		nextImage: 'Następne zdjęcie'
 	}
